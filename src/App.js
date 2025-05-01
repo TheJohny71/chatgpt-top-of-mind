@@ -1,7 +1,12 @@
+import React, { useState } from 'react';
+import Dashboard from './Dashboard';
+import ModelsTab from './pages/ModelsTab';
+import './App.css';
+
 function App() {
+  // If dashboard is active, render only the Dashboard component without wrapper
   const [activeTab, setActiveTab] = useState('dashboard');
 
-  // If dashboard is active, render only the Dashboard component without wrapper
   if (activeTab === 'dashboard') {
     return <Dashboard />;
   }
@@ -85,3 +90,5 @@ function App() {
     </div>
   );
 }
+
+export default App;
