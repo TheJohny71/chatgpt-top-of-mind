@@ -1,16 +1,5 @@
 import React from 'react';
 import { Bell, Search, MessageSquare, AlertTriangle, CheckCircle, Info } from 'lucide-react';
-import { updates, models } from './updateData';
-
-// Helper function to get the correct icon
-const getIcon = (iconName) => {
-  switch(iconName) {
-    case 'AlertTriangle': return <AlertTriangle className="h-5 w-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />;
-    case 'Info': return <Info className="h-5 w-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" />;
-    case 'CheckCircle': return <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />;
-    default: return <Info className="h-5 w-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" />;
-  }
-};
 
 const Dashboard = () => {
   return (
@@ -121,37 +110,87 @@ const Dashboard = () => {
           <p className="text-gray-600 mb-4">Stay informed about the latest changes to ChatGPT Enterprise for legal research.</p>
           
           <div className="space-y-4">
-            {/* Map through updates */}
-            {updates.map(update => (
-              <div key={update.id} className={`bg-white rounded-lg shadow-sm p-4 border-l-4 border-${update.color}-500`}>
-                <div className="flex items-start">
-                  {getIcon(update.icon)}
-                  <div>
-                    <div className="flex items-center">
-                      <h3 className="text-lg font-medium text-gray-800 mr-2">{update.title}</h3>
-                      <span className={`bg-${update.color}-100 text-${update.color}-800 text-xs font-medium px-2.5 py-0.5 rounded`}>
-                        {update.category}
-                      </span>
-                      {update.tags.map((tag, index) => (
-                        <span key={index} className="bg-blue-100 text-blue-800 text-xs font-medium ml-2 px-2.5 py-0.5 rounded">
-                          {tag}
-                        </span>
-                      ))}
-                      <span className="ml-auto text-sm text-gray-500">{update.date}</span>
-                      {update.isNew && <span className="ml-2 inline-flex h-2 w-2 bg-blue-500 rounded-full"></span>}
-                    </div>
-                    <p className="text-gray-600 mt-1">{update.content}</p>
-                    <div className="mt-2">
-                      {update.links.map((link, index) => (
-                        <button key={index} className="text-blue-700 hover:text-blue-800 text-sm font-medium ml-4 first:ml-0">
-                          {link.text}
-                        </button>
-                      ))}
-                    </div>
+            {/* Critical Update */}
+            <div className="bg-white rounded-lg shadow-sm p-4 border-l-4 border-red-500">
+              <div className="flex items-start">
+                <AlertTriangle className="h-5 w-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
+                <div>
+                  <div className="flex items-center">
+                    <h3 className="text-lg font-medium text-gray-800 mr-2">API Security Update Required</h3>
+                    <span className="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">CRITICAL</span>
+                    <span className="bg-blue-100 text-blue-800 text-xs font-medium ml-2 px-2.5 py-0.5 rounded">LEGAL</span>
+                    <span className="ml-auto text-sm text-gray-500">Apr 28, 2025</span>
+                    <span className="ml-2 inline-flex h-2 w-2 bg-blue-500 rounded-full"></span>
+                  </div>
+                  <p className="text-gray-600 mt-1">
+                    All Enterprise customers must update their API authentication methods by May 15 to comply 
+                    with new regulatory requirements. Authentication requests using legacy tokens will be rejected 
+                    after this date.
+                  </p>
+                  <div className="mt-2">
+                    <button className="text-blue-700 hover:text-blue-800 text-sm font-medium">
+                      Read More
+                    </button>
+                    <button className="text-blue-700 hover:text-blue-800 text-sm font-medium ml-4">
+                      View Implementation Guide
+                    </button>
                   </div>
                 </div>
               </div>
-            ))}
+            </div>
+            
+            {/* New Model Update */}
+            <div className="bg-white rounded-lg shadow-sm p-4 border-l-4 border-blue-500">
+              <div className="flex items-start">
+                <Info className="h-5 w-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" />
+                <div>
+                  <div className="flex items-center">
+                    <h3 className="text-lg font-medium text-gray-800 mr-2">New Models Released: o3 and o4-mini</h3>
+                    <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">NEW</span>
+                    <span className="bg-purple-100 text-purple-800 text-xs font-medium ml-2 px-2.5 py-0.5 rounded">MODELS</span>
+                    <span className="ml-auto text-sm text-gray-500">Apr 16, 2025</span>
+                  </div>
+                  <p className="text-gray-600 mt-1">
+                    Two new models optimized for legal research are now available. The o3 model excels at 
+                    cross-jurisdictional research, while o4-mini is designed for high-volume document review.
+                  </p>
+                  <div className="mt-2">
+                    <button className="text-blue-700 hover:text-blue-800 text-sm font-medium">
+                      Read More
+                    </button>
+                    <button className="text-blue-700 hover:text-blue-800 text-sm font-medium ml-4">
+                      View Model Capabilities
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* API Update */}
+            <div className="bg-white rounded-lg shadow-sm p-4 border-l-4 border-green-500">
+              <div className="flex items-start">
+                <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                <div>
+                  <div className="flex items-center">
+                    <h3 className="text-lg font-medium text-gray-800 mr-2">Enterprise API Updates for Legal</h3>
+                    <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">FEATURES</span>
+                    <span className="ml-auto text-sm text-gray-500">Mar 22, 2025</span>
+                  </div>
+                  <p className="text-gray-600 mt-1">
+                    API enhancements provide improved document handling capabilities, including automatic 
+                    citation formatting and jurisdiction-aware responses.
+                  </p>
+                  <div className="mt-2">
+                    <button className="text-blue-700 hover:text-blue-800 text-sm font-medium">
+                      Read More
+                    </button>
+                    <button className="text-blue-700 hover:text-blue-800 text-sm font-medium ml-4">
+                      View API Documentation
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
             
             <div className="flex justify-center mt-4">
               <button className="text-blue-700 hover:text-blue-800 border border-blue-700 rounded-full px-4 py-1 text-sm font-medium">
@@ -172,37 +211,107 @@ const Dashboard = () => {
           <p className="text-gray-600 mb-4">Select models optimized for legal research with specialized capabilities.</p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {models.map(model => (
-              <div key={model.id} className="bg-white rounded-lg shadow-sm overflow-hidden relative">
-                <div className={`h-2 bg-${model.topColor} w-full absolute top-0`}></div>
-                <div className="p-5 pt-6">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-serif text-gray-800">{model.name}</h3>
-                    <span className={`bg-${model.tagColor}-100 text-${model.tagColor}-800 text-xs font-semibold px-2.5 py-0.5 rounded`}>
-                      {model.tag}
-                    </span>
+            <div className="bg-white rounded-lg shadow-sm overflow-hidden relative">
+              <div className="h-2 bg-blue-700 w-full absolute top-0"></div>
+              <div className="p-5 pt-6">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-serif text-gray-800">o3</h3>
+                  <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">NEW</span>
+                </div>
+                <p className="text-gray-600 mt-2 text-sm">
+                  Advanced legal reasoning with cross-jurisdictional capabilities
+                </p>
+                <div className="mt-4 text-sm">
+                  <div className="flex justify-between mb-1">
+                    <span>Case Law Research</span>
+                    <span className="text-blue-700 font-medium">Excellent</span>
                   </div>
-                  <p className="text-gray-600 mt-2 text-sm">{model.description}</p>
-                  <div className="mt-4 text-sm">
-                    {model.capabilities.map((capability, index) => (
-                      <div key={index}>
-                        <div className="flex justify-between mb-1">
-                          <span>{capability.name}</span>
-                          <span className={`text-${model.tagColor}-700 font-medium`}>{capability.rating}</span>
-                        </div>
-                        <div className="w-full bg-gray-200 rounded-full h-1.5 mb-3">
-                          <div className={`bg-${model.topColor} h-1.5 rounded-full`} style={{ width: `${capability.percentage}%` }}></div>
-                        </div>
-                      </div>
-                    ))}
-                    
-                    <button className="mt-3 w-full text-center border border-gray-300 rounded-lg py-2 hover:bg-gray-50 transition-colors text-gray-700">
-                      View Details
-                    </button>
+                  <div className="w-full bg-gray-200 rounded-full h-1.5 mb-3">
+                    <div className="bg-blue-700 h-1.5 rounded-full" style={{ width: "100%" }}></div>
                   </div>
+                  
+                  <div className="flex justify-between mb-1">
+                    <span>Document Analysis</span>
+                    <span className="text-blue-700 font-medium">Good</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-1.5 mb-3">
+                    <div className="bg-blue-700 h-1.5 rounded-full" style={{ width: "80%" }}></div>
+                  </div>
+                  
+                  <button className="mt-3 w-full text-center border border-gray-300 rounded-lg py-2 hover:bg-gray-50 transition-colors text-gray-700">
+                    View Details
+                  </button>
                 </div>
               </div>
-            ))}
+            </div>
+            
+            <div className="bg-white rounded-lg shadow-sm overflow-hidden relative">
+              <div className="h-2 bg-purple-600 w-full absolute top-0"></div>
+              <div className="p-5 pt-6">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-serif text-gray-800">o4-mini</h3>
+                  <span className="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded">NEW</span>
+                </div>
+                <p className="text-gray-600 mt-2 text-sm">
+                  Optimized for speed and high-volume document review applications
+                </p>
+                <div className="mt-4 text-sm">
+                  <div className="flex justify-between mb-1">
+                    <span>Case Law Research</span>
+                    <span className="text-purple-700 font-medium">Fair</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-1.5 mb-3">
+                    <div className="bg-purple-600 h-1.5 rounded-full" style={{ width: "60%" }}></div>
+                  </div>
+                  
+                  <div className="flex justify-between mb-1">
+                    <span>Document Analysis</span>
+                    <span className="text-purple-700 font-medium">Fair</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-1.5 mb-3">
+                    <div className="bg-purple-600 h-1.5 rounded-full" style={{ width: "60%" }}></div>
+                  </div>
+                  
+                  <button className="mt-3 w-full text-center border border-gray-300 rounded-lg py-2 hover:bg-gray-50 transition-colors text-gray-700">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-white rounded-lg shadow-sm overflow-hidden relative">
+              <div className="h-2 bg-green-600 w-full absolute top-0"></div>
+              <div className="p-5 pt-6">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-serif text-gray-800">o1</h3>
+                  <span className="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">STANDARD</span>
+                </div>
+                <p className="text-gray-600 mt-2 text-sm">
+                  Reliable performance for general legal research and document review
+                </p>
+                <div className="mt-4 text-sm">
+                  <div className="flex justify-between mb-1">
+                    <span>Case Law Research</span>
+                    <span className="text-green-700 font-medium">Excellent</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-1.5 mb-3">
+                    <div className="bg-green-600 h-1.5 rounded-full" style={{ width: "100%" }}></div>
+                  </div>
+                  
+                  <div className="flex justify-between mb-1">
+                    <span>Document Analysis</span>
+                    <span className="text-green-700 font-medium">Good</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-1.5 mb-3">
+                    <div className="bg-green-600 h-1.5 rounded-full" style={{ width: "80%" }}></div>
+                  </div>
+                  
+                  <button className="mt-3 w-full text-center border border-gray-300 rounded-lg py-2 hover:bg-gray-50 transition-colors text-gray-700">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
         
