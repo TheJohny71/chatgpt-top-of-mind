@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import Dashboard from './Dashboard';
-import ModelsTab from './pages/ModelsTab';
-import './App.css';
-
 function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
 
+  // If dashboard is active, render only the Dashboard component without wrapper
+  if (activeTab === 'dashboard') {
+    return <Dashboard />;
+  }
+
+  // For other tabs, render with the App's layout
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Header */}
@@ -64,7 +65,6 @@ function App() {
 
       {/* Main Content */}
       <main className="flex-grow">
-        {activeTab === 'dashboard' && <Dashboard />}
         {activeTab === 'models' && <ModelsTab />}
         {/* Additional tabs would be rendered here */}
       </main>
@@ -85,5 +85,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
