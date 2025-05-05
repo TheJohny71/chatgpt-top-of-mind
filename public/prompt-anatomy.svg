@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="auto" aria-labelledby="title desc">
+  <title id="title">The Anatomy of a Prompt: 7 Building Blocks</title>
+  <desc id="desc">A visual diagram showing the seven components of an effective prompt structure</desc>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa" rx="8" ry="8"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" font-weight="600" text-anchor="middle" fill="#333">The Anatomy of a Prompt: 7 Building Blocks</text>
+  <text x="400" y="65" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-style="italic" text-anchor="middle" fill="#555">"Structure Beats Charm"</text>
+  
+  <!-- Main Prompt Container -->
+  <rect x="100" y="90" width="600" height="440" fill="#fff" stroke="#ddd" stroke-width="2" rx="8" ry="8" filter="drop-shadow(0px 2px 3px rgba(0,0,0,0.1))"/>
+  
+  <!-- Block 1: Context/Policy -->
+  <rect x="120" y="110" width="560" height="60" fill="#f0f7ff" stroke="#91d5ff" stroke-width="1.5" rx="8" ry="8" filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.05))"/>
+  <text x="150" y="135" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#0050b3">1. CONTEXT/POLICY</text>
+  <text x="150" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" fill="#333">Background information and purpose for the model. Sets the stage.</text>
+  <text x="600" y="145" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#0050b3" text-anchor="end">Early influence</text>
+  
+  <!-- Block 2: Role -->
+  <rect x="120" y="180" width="560" height="60" fill="#f6ffed" stroke="#b7eb8f" stroke-width="1.5" rx="8" ry="8" filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.05))"/>
+  <text x="150" y="205" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#135200">2. ROLE</text>
+  <text x="150" y="225" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" fill="#333">The persona or identity the model should adopt.</text>
+  <text x="600" y="215" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#135200" text-anchor="end">Identity framing</text>
+  
+  <!-- Block 3: Task -->
+  <rect x="120" y="250" width="560" height="60" fill="#fff7e6" stroke="#ffd591" stroke-width="1.5" rx="8" ry="8" filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.05))"/>
+  <text x="150" y="275" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#874d00">3. TASK</text>
+  <text x="150" y="295" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" fill="#333">The specific action or goal the model needs to achieve.</text>
+  <text x="600" y="285" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#874d00" text-anchor="end">Goal direction</text>
+  
+  <!-- Block 4: Constraints -->
+  <rect x="120" y="320" width="560" height="60" fill="#fff2f0" stroke="#ffccc7" stroke-width="1.5" rx="8" ry="8" filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.05))"/>
+  <text x="150" y="345" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#a8071a">4. CONSTRAINTS</text>
+  <text x="150" y="365" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" fill="#333">Rules, style guidelines, and format requirements.</text>
+  <text x="600" y="355" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#a8071a" text-anchor="end">Boundary setting</text>
+  
+  <!-- Block 5: Examples -->
+  <rect x="120" y="390" width="560" height="60" fill="#f9f0ff" stroke="#d3adf7" stroke-width="1.5" rx="8" ry="8" filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.05))"/>
+  <text x="150" y="415" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#531dab">5. EXAMPLES</text>
+  <text x="150" y="435" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" fill="#333">Demonstrations of the desired input-output format or behavior.</text>
+  <text x="600" y="425" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#531dab" text-anchor="end">Pattern teaching</text>
+  
+  <!-- Block 6: Output Spec -->
+  <rect x="120" y="460" width="560" height="60" fill="#e6fffb" stroke="#87e8de" stroke-width="1.5" rx="8" ry="8" filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.05))"/>
+  <text x="150" y="485" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#006d75">6. OUTPUT SPEC</text>
+  <text x="150" y="505" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" fill="#333">Explicit instructions on the required output format.</text>
+  <text x="600" y="495" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#006d75" text-anchor="end">Response shaping</text>
+  
+  <!-- Final Block: Fallback -->
+  <rect x="120" y="530" width="560" height="60" fill="#fff0f6" stroke="#ffadd2" stroke-width="1.5" rx="8" ry="8" filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.05))"/>
+  <text x="150" y="555" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#c41d7f">7. FALLBACK/ERROR HANDLING</text>
+  <text x="150" y="575" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" fill="#333">Instructions on how to respond if difficulties arise.</text>
+  <text x="600" y="565" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#c41d7f" text-anchor="end">Safety net</text>
+
+  <!-- Flow Indicators - Simplified -->
+  <path d="M 65 140 L 115 140" stroke="#888" stroke-width="1.5" fill="none" stroke-linecap="round">
+    <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite" />
+  </path>
+  <path d="M 65 210 L 115 210" stroke="#888" stroke-width="1.5" fill="none" stroke-linecap="round">
+    <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite" begin="0.5s" />
+  </path>
+  <path d="M 65 280 L 115 280" stroke="#888" stroke-width="1.5" fill="none" stroke-linecap="round">
+    <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite" begin="1s" />
+  </path>
+    <path d="M 65 350 L 115 350" stroke="#888" stroke-width="1.5" fill="none" stroke-linecap="round">
+    <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite" begin="1.5s" />
+  </path>
+  <path d="M 65 420 L 115 420" stroke="#888" stroke-width="1.5" fill="none" stroke-linecap="round">
+    <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite" begin="2s" />
+  </path>
+  <path d="M 65 490 L 115 490" stroke="#888" stroke-width="1.5" fill="none" stroke-linecap="round">
+    <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite" begin="2.5s" />
+  </path>
+  <path d="M 65 560 L 115 560" stroke="#888" stroke-width="1.5" fill="none" stroke-linecap="round">
+    <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite" begin="3s" />
+  </path>
+  
+  <!-- Vertical Flow Line -->
+  <path d="M 65 140 L 65 560" stroke="#888" stroke-width="1.5" fill="none" stroke-dasharray="1, 3" />
+  
+  <!-- Processing Indicator -->
+  <rect x="735" y="140" width="30" height="420" fill="#f0f0f0" rx="6" ry="6" />
+  <text x="750" y="350" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#555" text-anchor="middle" transform="rotate(90,750,350)">SEQUENTIAL PROCESSING</text>
+  
+  <!-- Notes -->
+  <text x="400" y="610" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#666" text-anchor="middle">Order matters: Early tokens steer the search space, but recency can override in conflicts</text>
+  <text x="400" y="628" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#666" text-anchor="middle">Based on "The Universal Anatomy of the Prompt" by Nate B. Jones</text>
+</svg>

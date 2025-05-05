@@ -16,5 +16,12 @@ module.exports = {
     'border-green-500', 'text-green-500', 'text-green-600', 'text-green-700', 'text-green-800',
     'bg-indigo-100', 'bg-indigo-200', 'bg-indigo-500', 'bg-indigo-600',
     'border-indigo-500', 'text-indigo-500', 'text-indigo-600', 'text-indigo-700', 'text-indigo-800',
+    // New colors for Prompt Library tab
+    'bg-amber-50', 'bg-amber-500', 'border-amber-500', 'text-amber-500', 'text-amber-700', 'text-amber-800',
+    'bg-emerald-50', 'bg-emerald-500', 'border-emerald-500', 'text-emerald-500', 'text-emerald-700', 'text-emerald-800',
+    'bg-teal-50', 'bg-teal-100', 'border-teal-100', 'text-teal-700', 'text-teal-800',
+    'bg-yellow-50', 'bg-yellow-100', 'border-yellow-100', 'text-yellow-700', 'text-yellow-800',
+    'bg-red-50', 'bg-red-100', 'border-red-100', 'text-red-500', 'text-red-700', 'text-red-800',
+    'border-indigo-500', 'border-l-4', 'border-amber-500', 'border-emerald-500', 'border-purple-500'
   ]
 }

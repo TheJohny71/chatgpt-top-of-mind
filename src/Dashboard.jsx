@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Bell, Search, MessageSquare, AlertTriangle, CheckCircle, Info } from 'lucide-react';
+import { Bell, Search, MessageSquare, AlertTriangle, CheckCircle, Info, ExternalLink } from 'lucide-react';
 import ModelsTab from './pages/ModelsTab'; // Import the ModelsTab component
+import PromptLibraryTab from './pages/PromptLibraryTab'; // Import the PromptLibraryTab component
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('overview'); // Add state for active tab
@@ -79,9 +80,11 @@ const Dashboard = () => {
       <main className="flex-1 p-6 max-w-7xl mx-auto w-full">
         {/* Render content based on active tab */}
         
-        {/* If Models tab is selected, use our new ModelsTab component */}
+        {/* If Models tab is selected, use our ModelsTab component */}
         {activeTab === 'models' ? (
           <ModelsTab />
+        ) : activeTab === 'prompt-library' ? (
+          <PromptLibraryTab />
         ) : (
           /* Otherwise, show the original content */
           <>
