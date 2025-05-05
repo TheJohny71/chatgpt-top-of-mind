@@ -10,26 +10,26 @@ const ModelsTab = () => {
     {
       id: 'gpt4o',
       name: 'GPT-4o',
-      color: 'purple',
+      color: 'blue',
       status: 'Available',
-      description: 'The latest multimodal model with best-in-class performance for legal research and document analysis.',
+      description: 'OpenAI\'s multimodal model with real-time reasoning across text, vision, and voice for professional legal tasks.',
       contextWindow: '128,000 tokens',
-      knowledgeCutoff: 'April 2023',
+      knowledgeCutoff: 'April 2024',
       tokenLimit: '128,000 tokens',
       legalRating: 5,
       recommended: true,
       performance: {
-        contractReview: 98,
-        caseAnalysis: 95,
-        legalResearch: 97
+        contractReview: 92,
+        caseAnalysis: 90,
+        legalResearch: 87
       },
       estimatedTime: {
-        contractReview: '15-20 min',
-        caseBrief: '10-15 min'
+        contractReview: '18-22 min',
+        caseBrief: '12-15 min'
       },
       practiceAreas: {
         contracts: 5,
-        litigation: 5,
+        litigation: 4,
         ip: 4,
         compliance: 5,
         corporate: 5
@@ -43,65 +43,30 @@ const ModelsTab = () => {
       docsLink: '#'
     },
     {
-      id: 'gpt4',
-      name: 'GPT-4',
-      color: 'blue',
-      status: 'Available',
-      description: 'Powerful model suitable for a wide range of legal tasks with advanced reasoning capabilities.',
-      contextWindow: '32,000 tokens',
-      knowledgeCutoff: 'April 2023',
-      tokenLimit: '32,000 tokens',
-      legalRating: 4,
-      recommended: true,
-      performance: {
-        contractReview: 92,
-        caseAnalysis: 90,
-        legalResearch: 88
-      },
-      estimatedTime: {
-        contractReview: '25-30 min',
-        caseBrief: '20-25 min'
-      },
-      practiceAreas: {
-        contracts: 4,
-        litigation: 4,
-        ip: 4,
-        compliance: 4,
-        corporate: 4
-      },
-      pricing: {
-        inputTokens: '0.009',
-        outputTokens: '0.027',
-        monthlyCost: '500.00',
-        costPerRequest: '0.38'
-      },
-      docsLink: '#'
-    },
-    {
-      id: 'claude3opus',
-      name: 'Claude 3 Opus',
-      color: 'indigo',
+      id: 'gpt45',
+      name: 'GPT-4.5',
+      color: 'purple',
       status: 'New',
-      description: 'Anthropic\'s most powerful model with excellent legal reasoning and document understanding.',
+      description: 'OpenAI\'s powerful model with superior nuanced understanding and exceptional document analysis capabilities.',
       contextWindow: '200,000 tokens',
-      knowledgeCutoff: 'August 2023',
+      knowledgeCutoff: 'January 2025',
       tokenLimit: '200,000 tokens',
       legalRating: 5,
       recommended: true,
       performance: {
         contractReview: 97,
         caseAnalysis: 96,
-        legalResearch: 94
+        legalResearch: 95
       },
       estimatedTime: {
         contractReview: '15-18 min',
-        caseBrief: '12-15 min'
+        caseBrief: '10-13 min'
       },
       practiceAreas: {
         contracts: 5,
         litigation: 5,
         ip: 5,
-        compliance: 4,
+        compliance: 5,
         corporate: 5
       },
       pricing: {
@@ -113,65 +78,65 @@ const ModelsTab = () => {
       docsLink: '#'
     },
     {
-      id: 'gpt35turbo',
-      name: 'GPT-3.5 Turbo',
-      color: 'green',
-      status: 'Available',
-      description: 'Faster, more cost-effective model suitable for basic legal tasks and document drafting.',
-      contextWindow: '16,000 tokens',
-      knowledgeCutoff: 'April 2023',
-      tokenLimit: '16,000 tokens',
-      legalRating: 3,
-      recommended: false,
+      id: 'o3',
+      name: 'o3',
+      color: 'indigo',
+      status: 'New',
+      description: 'OpenAI\'s advanced reasoning model with exceptional capabilities in complex legal analysis and problem-solving.',
+      contextWindow: '128,000 tokens',
+      knowledgeCutoff: 'January 2025',
+      tokenLimit: '128,000 tokens',
+      legalRating: 5,
+      recommended: true,
       performance: {
-        contractReview: 75,
-        caseAnalysis: 68,
-        legalResearch: 70
+        contractReview: 96,
+        caseAnalysis: 94,
+        legalResearch: 95
       },
       estimatedTime: {
-        contractReview: '35-45 min',
-        caseBrief: '30-40 min'
+        contractReview: '25-30 min',
+        caseBrief: '18-22 min'
       },
       practiceAreas: {
-        contracts: 3,
-        litigation: 2,
-        ip: 3,
-        compliance: 3,
-        corporate: 3
+        contracts: 5,
+        litigation: 5,
+        ip: 5,
+        compliance: 4,
+        corporate: 5
       },
       pricing: {
-        inputTokens: '0.0015',
-        outputTokens: '0.002',
-        monthlyCost: '150.00',
-        costPerRequest: '0.10'
+        inputTokens: '0.015',
+        outputTokens: '0.075',
+        monthlyCost: '700.00',
+        costPerRequest: '0.60'
       },
       docsLink: '#'
     },
     {
-      id: 'claude3sonnet',
-      name: 'Claude 3 Sonnet',
-      color: 'indigo',
-      status: 'Available',
-      description: 'Balanced performance and cost-effectiveness for legal tasks requiring nuanced understanding.',
-      contextWindow: '100,000 tokens',
-      knowledgeCutoff: 'August 2023',
-      tokenLimit: '100,000 tokens',
+      id: 'o4mini',
+      name: 'o4-mini',
+      color: 'green',
+      status: 'New',
+      description: 'Smaller, faster reasoning model offering impressive results for math, coding, and visual analysis at lower cost.',
+      contextWindow: '128,000 tokens',
+      knowledgeCutoff: 'January 2025',
+      tokenLimit: '128,000 tokens',
       legalRating: 4,
       recommended: false,
       performance: {
-        contractReview: 90,
-        caseAnalysis: 87,
-        legalResearch: 85
+        contractReview: 89,
+        caseAnalysis: 86,
+        legalResearch: 87
       },
       estimatedTime: {
-        contractReview: '22-28 min',
-        caseBrief: '18-22 min'
+        contractReview: '18-22 min',
+        caseBrief: '12-15 min'
       },
       practiceAreas: {
         contracts: 4,
         litigation: 4,
         ip: 4,
-        compliance: 3,
+        compliance: 4,
         corporate: 4
       },
       pricing: {
@@ -183,37 +148,37 @@ const ModelsTab = () => {
       docsLink: '#'
     },
     {
-      id: 'llama3',
-      name: 'Llama 3',
-      color: 'blue',
-      status: 'Beta',
-      description: 'Meta\'s open-source model optimized for enterprise use with good performance at legal tasks.',
+      id: 'o3minihigh',
+      name: 'o3-mini-high',
+      color: 'teal',
+      status: 'New',
+      description: 'Specialized reasoning model optimized for deep analysis with higher-level reasoning at efficient computational cost.',
       contextWindow: '128,000 tokens',
-      knowledgeCutoff: 'December 2023',
+      knowledgeCutoff: 'October 2024',
       tokenLimit: '128,000 tokens',
-      legalRating: 3,
+      legalRating: 4,
       recommended: false,
       performance: {
-        contractReview: 82,
-        caseAnalysis: 78,
-        legalResearch: 75
+        contractReview: 85,
+        caseAnalysis: 83,
+        legalResearch: 84
       },
       estimatedTime: {
-        contractReview: '30-35 min',
-        caseBrief: '25-30 min'
+        contractReview: '15-20 min',
+        caseBrief: '10-15 min'
       },
       practiceAreas: {
-        contracts: 3,
-        litigation: 3,
-        ip: 3,
-        compliance: 3,
-        corporate: 3
+        contracts: 4,
+        litigation: 4,
+        ip: 4,
+        compliance: 4,
+        corporate: 4
       },
       pricing: {
-        inputTokens: '0.0000',
-        outputTokens: '0.0000',
-        monthlyCost: 'Self-hosted',
-        costPerRequest: 'Variable'
+        inputTokens: '0.006',
+        outputTokens: '0.018',
+        monthlyCost: '250.00',
+        costPerRequest: '0.20'
       },
       docsLink: '#'
     }
@@ -366,7 +331,7 @@ const ModelsTab = () => {
         <h3 className="text-xl font-semibold text-gray-900 mb-4">
           Practice Area Suitability
         </h3>
-        <PracticeAreaTable models={allModels.slice(0, 5)} />
+        <PracticeAreaTable models={allModels} />
       </section>
 
       {/* Pricing Information */}
