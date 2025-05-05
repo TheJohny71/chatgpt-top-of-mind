@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import ModelCard from '../components/ModelCard';
 import ComparisonTable from '../components/ComparisonTable';
 import PracticeAreaTable from '../components/PracticeAreaTable';
-import PricingTable from '../components/PricingTable';
 
 const ModelsTab = () => {
   // Sample model data - in a real app this would come from an API or data source
@@ -34,12 +33,6 @@ const ModelsTab = () => {
         compliance: 5,
         corporate: 5
       },
-      pricing: {
-        inputTokens: '0.01',
-        outputTokens: '0.03',
-        monthlyCost: '650.00',
-        costPerRequest: '0.45'
-      },
       docsLink: '#'
     },
     {
@@ -68,12 +61,6 @@ const ModelsTab = () => {
         ip: 5,
         compliance: 5,
         corporate: 5
-      },
-      pricing: {
-        inputTokens: '0.015',
-        outputTokens: '0.075',
-        monthlyCost: '720.00',
-        costPerRequest: '0.55'
       },
       docsLink: '#'
     },
@@ -104,12 +91,6 @@ const ModelsTab = () => {
         compliance: 4,
         corporate: 5
       },
-      pricing: {
-        inputTokens: '0.015',
-        outputTokens: '0.075',
-        monthlyCost: '700.00',
-        costPerRequest: '0.60'
-      },
       docsLink: '#'
     },
     {
@@ -138,12 +119,6 @@ const ModelsTab = () => {
         ip: 4,
         compliance: 4,
         corporate: 4
-      },
-      pricing: {
-        inputTokens: '0.008',
-        outputTokens: '0.024',
-        monthlyCost: '350.00',
-        costPerRequest: '0.25'
       },
       docsLink: '#'
     },
@@ -174,21 +149,14 @@ const ModelsTab = () => {
         compliance: 4,
         corporate: 4
       },
-      pricing: {
-        inputTokens: '0.006',
-        outputTokens: '0.018',
-        monthlyCost: '250.00',
-        costPerRequest: '0.20'
-      },
       docsLink: '#'
     }
   ];
 
-  // Filter categories
+  // Filter categories - removed "Available Now" as requested
   const filterOptions = [
-    { id: 'all', label: 'All Models' },
     { id: 'recommended', label: 'Recommended for Legal' },
-    { id: 'available', label: 'Available Now' },
+    { id: 'all', label: 'All Models' },
     { id: 'new', label: 'New Models' }
   ];
 
@@ -201,7 +169,6 @@ const ModelsTab = () => {
   const filteredModels = allModels.filter(model => {
     if (activeFilter === 'all') return true;
     if (activeFilter === 'recommended') return model.recommended;
-    if (activeFilter === 'available') return model.status.toLowerCase() === 'available';
     if (activeFilter === 'new') return model.status.toLowerCase() === 'new' || model.status.toLowerCase() === 'beta';
     return true;
   });
@@ -290,8 +257,7 @@ const ModelsTab = () => {
       <section className="mb-12">
         <h3 className="text-xl font-semibold text-gray-900 mb-4">
           {activeFilter === 'all' ? 'All Available Models' : 
-           activeFilter === 'recommended' ? 'All Recommended Models' :
-           activeFilter === 'available' ? 'Currently Available Models' : 
+           activeFilter === 'recommended' ? 'All Recommended Models' : 
            'New & Beta Models'}
         </h3>
         
@@ -332,14 +298,6 @@ const ModelsTab = () => {
           Practice Area Suitability
         </h3>
         <PracticeAreaTable models={allModels} />
-      </section>
-
-      {/* Pricing Information */}
-      <section className="mb-12">
-        <h3 className="text-xl font-semibold text-gray-900 mb-4">
-          Pricing Information
-        </h3>
-        <PricingTable models={allModels} />
       </section>
     </div>
   );
