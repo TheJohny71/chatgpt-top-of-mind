@@ -1,31 +1,17 @@
 import React, { useState } from 'react';
-import { Bell, Search, MessageSquare, AlertTriangle, CheckCircle, Info, ExternalLink } from 'lucide-react';
-import ModelsTab from './pages/ModelsTab'; // Import the ModelsTab component
-import PromptLibraryTab from './pages/PromptLibraryTab'; // Import the PromptLibraryTab component
+import { AlertTriangle, CheckCircle, Info } from 'lucide-react';
+import ModelsTab from './pages/ModelsTab';
+import PromptLibraryTab from './pages/PromptLibraryTab';
 
 const Dashboard = () => {
-  const [activeTab, setActiveTab] = useState('overview'); // Add state for active tab
+  const [activeTab, setActiveTab] = useState('overview');
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
-      {/* Header */}
+      {/* Header - removed search box and feedback button but kept last updated */}
       <header className="bg-blue-900 text-white p-6 flex justify-between items-center shadow-md">
         <h1 className="text-3xl font-serif font-bold">ChatGPT Enterprise: Top of Mind</h1>
-        <div className="flex items-center gap-6">
-          <div className="relative">
-            <input 
-              type="text" 
-              placeholder="Search updates..." 
-              className="pl-10 pr-4 py-2 rounded-full text-gray-800 text-sm w-64"
-            />
-            <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-500" />
-          </div>
-          <button className="flex items-center gap-1 bg-blue-800 hover:bg-blue-700 transition-colors px-4 py-2 rounded-full text-sm">
-            <MessageSquare className="h-4 w-4" />
-            <span>Feedback</span>
-          </button>
-          <span className="text-gray-300 text-sm">Last Updated: April 30, 2025</span>
-        </div>
+        <span className="text-gray-300 text-sm">Last Updated: April 30, 2025</span>
       </header>
       
       {/* Navigation */}
@@ -438,20 +424,6 @@ const Dashboard = () => {
           </>
         )}
       </main>
-      
-      {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 mt-auto">
-        <div className="max-w-7xl mx-auto p-6 flex justify-between items-center">
-          <div className="text-sm text-gray-500">
-            © 2025 OpenAI, Inc. All rights reserved.
-          </div>
-          <div className="flex items-center space-x-6">
-            <a href="#" className="text-sm text-gray-500 hover:text-gray-700">Terms</a>
-            <a href="#" className="text-sm text-gray-500 hover:text-gray-700">Privacy</a>
-            <a href="#" className="text-sm text-gray-500 hover:text-gray-700">Contact</a>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };

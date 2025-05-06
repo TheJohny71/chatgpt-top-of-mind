@@ -282,20 +282,8 @@ If certain information is unavailable or outside your knowledge base, clearly in
               <ul className="space-y-2">
                 <li className="flex items-center">
                   <ExternalLink className="h-4 w-4 text-blue-600 mr-2" />
-                  <a href="https://docs.anthropic.com/claude/docs/prompt-engineering" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                    Anthropic's Prompt Engineering Guide
-                  </a>
-                </li>
-                <li className="flex items-center">
-                  <ExternalLink className="h-4 w-4 text-blue-600 mr-2" />
-                  <a href="https://arxiv.org/abs/2312.16171" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                    "The Impact of Prompt Engineering for Legal Tasks" Research Paper
-                  </a>
-                </li>
-                <li className="flex items-center">
-                  <ExternalLink className="h-4 w-4 text-blue-600 mr-2" />
-                  <a href="https://platform.openai.com/docs/guides/prompt-engineering" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                    OpenAI's Prompt Engineering Resources
+                  <a href="#" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                    ChatGPT at Work - Understanding Prompts
                   </a>
                 </li>
               </ul>
