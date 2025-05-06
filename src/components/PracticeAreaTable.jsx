@@ -139,16 +139,7 @@ const PracticeAreaTable = ({ models }) => {
           </div>
         ))}
         
-        {/* Interactive element to improve usability - now a real button */}
-        <div className="mt-6 flex justify-end">
-          <a href="#all-practice-areas" className="flex items-center text-indigo-700 text-sm font-medium hover:text-indigo-900 transition-colors px-4 py-2 border border-indigo-200 rounded-lg hover:bg-indigo-50">
-            <span>Compare all practice areas</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1">
-              <path d="M5 12h14"></path>
-              <path d="m12 5 7 7-7 7"></path>
-            </svg>
-          </a>
-        </div>
+        {/* Removed the "Compare all practice areas" button as requested */}
       </div>
     </div>
   );

@@ -4,6 +4,15 @@ const ModelCard = ({ model, onSelect, isSelected, showCompareButton = true }) =>
   // Default color if not provided
   const color = model.color || 'blue';
 
+  // Make sure performance bars always have color properly applied
+  const getPerformanceBarColor = () => {
+    // For o4-mini-high model, specifically ensure teal color is used
+    if (model.id === 'o4minihigh' || model.name === 'o4-mini-high') {
+      return 'teal-500';
+    }
+    return `${color}-500`;
+  };
+
   return (
     <div className={`bg-white rounded-lg shadow-md overflow-hidden border ${isSelected ? `border-${color}-500` : 'border-gray-200'}`}>
       {/* Card Header */}
@@ -59,7 +68,7 @@ const ModelCard = ({ model, onSelect, isSelected, showCompareButton = true }) =>
               <span className="text-xs text-gray-600 w-32">Contract Review:</span>
               <div className="w-full bg-gray-200 rounded-full h-2">
                 <div 
-                  className={`bg-${color}-500 h-2 rounded-full`} 
+                  className={`bg-${getPerformanceBarColor()} h-2 rounded-full`} 
                   style={{ width: `${model.performance?.contractReview || 0}%` }}
                 ></div>
               </div>
@@ -69,7 +78,7 @@ const ModelCard = ({ model, onSelect, isSelected, showCompareButton = true }) =>
               <span className="text-xs text-gray-600 w-32">Case Analysis:</span>
               <div className="w-full bg-gray-200 rounded-full h-2">
                 <div 
-                  className={`bg-${color}-500 h-2 rounded-full`} 
+                  className={`bg-${getPerformanceBarColor()} h-2 rounded-full`} 
                   style={{ width: `${model.performance?.caseAnalysis || 0}%` }}
                 ></div>
               </div>
@@ -79,7 +88,7 @@ const ModelCard = ({ model, onSelect, isSelected, showCompareButton = true }) =>
               <span className="text-xs text-gray-600 w-32">Legal Research:</span>
               <div className="w-full bg-gray-200 rounded-full h-2">
                 <div 
-                  className={`bg-${color}-500 h-2 rounded-full`} 
+                  className={`bg-${getPerformanceBarColor()} h-2 rounded-full`} 
                   style={{ width: `${model.performance?.legalResearch || 0}%` }}
                 ></div>
               </div>
