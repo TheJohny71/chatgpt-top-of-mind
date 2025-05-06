@@ -3,15 +3,9 @@ import React from 'react';
 const ModelCard = ({ model, onSelect, isSelected, showCompareButton = true }) => {
   // Default color if not provided
   const color = model.color || 'blue';
-
-  // Make sure performance bars always have color properly applied
-  const getPerformanceBarColor = () => {
-    // For o4-mini-high model, specifically ensure teal color is used
-    if (model.id === 'o4minihigh' || model.name === 'o4-mini-high') {
-      return 'teal-500';
-    }
-    return `${color}-500`;
-  };
+  
+  // Check if this is the o4-mini-high model
+  const isO4MiniHigh = model.id === 'o4minihigh' || model.name === 'o4-mini-high';
 
   return (
     <div className={`bg-white rounded-lg shadow-md overflow-hidden border ${isSelected ? `border-${color}-500` : 'border-gray-200'}`}>
@@ -60,37 +54,58 @@ const ModelCard = ({ model, onSelect, isSelected, showCompareButton = true }) =>
           </div>
         </div>
         
-        {/* Performance Metrics */}
+        {/* Performance Metrics - Using hardcoded teal for o4-mini-high */}
         <div className="mb-4">
           <h4 className="text-sm font-medium mb-2">Performance for Legal Tasks</h4>
           <div className="space-y-2">
             <div className="flex items-center">
               <span className="text-xs text-gray-600 w-32">Contract Review:</span>
               <div className="w-full bg-gray-200 rounded-full h-2">
-                <div 
-                  className={`bg-${getPerformanceBarColor()} h-2 rounded-full`} 
-                  style={{ width: `${model.performance?.contractReview || 0}%` }}
-                ></div>
+                {isO4MiniHigh ? (
+                  <div 
+                    className="bg-teal-500 h-2 rounded-full" 
+                    style={{ width: `${model.performance?.contractReview || 0}%` }}
+                  ></div>
+                ) : (
+                  <div 
+                    className={`bg-${color}-500 h-2 rounded-full`} 
+                    style={{ width: `${model.performance?.contractReview || 0}%` }}
+                  ></div>
+                )}
               </div>
               <span className="text-xs text-gray-600 ml-2">{model.performance?.contractReview || 0}%</span>
             </div>
             <div className="flex items-center">
               <span className="text-xs text-gray-600 w-32">Case Analysis:</span>
               <div className="w-full bg-gray-200 rounded-full h-2">
-                <div 
-                  className={`bg-${getPerformanceBarColor()} h-2 rounded-full`} 
-                  style={{ width: `${model.performance?.caseAnalysis || 0}%` }}
-                ></div>
+                {isO4MiniHigh ? (
+                  <div 
+                    className="bg-teal-500 h-2 rounded-full" 
+                    style={{ width: `${model.performance?.caseAnalysis || 0}%` }}
+                  ></div>
+                ) : (
+                  <div 
+                    className={`bg-${color}-500 h-2 rounded-full`} 
+                    style={{ width: `${model.performance?.caseAnalysis || 0}%` }}
+                  ></div>
+                )}
               </div>
               <span className="text-xs text-gray-600 ml-2">{model.performance?.caseAnalysis || 0}%</span>
             </div>
             <div className="flex items-center">
               <span className="text-xs text-gray-600 w-32">Legal Research:</span>
               <div className="w-full bg-gray-200 rounded-full h-2">
-                <div 
-                  className={`bg-${getPerformanceBarColor()} h-2 rounded-full`} 
-                  style={{ width: `${model.performance?.legalResearch || 0}%` }}
-                ></div>
+                {isO4MiniHigh ? (
+                  <div 
+                    className="bg-teal-500 h-2 rounded-full" 
+                    style={{ width: `${model.performance?.legalResearch || 0}%` }}
+                  ></div>
+                ) : (
+                  <div 
+                    className={`bg-${color}-500 h-2 rounded-full`} 
+                    style={{ width: `${model.performance?.legalResearch || 0}%` }}
+                  ></div>
+                )}
               </div>
               <span className="text-xs text-gray-600 ml-2">{model.performance?.legalResearch || 0}%</span>
             </div>
