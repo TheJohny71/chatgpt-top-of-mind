@@ -6,56 +6,12 @@ const UpdatesTab = () => {
   const [categoryFilter, setCategoryFilter] = useState('All Categories');
   
   // Updates data based on provided links, excluding API updates
+  // Now sorted with most recent updates first (by date)
   const updates = [
-    {
-      id: 1,
-      title: "GPT-4o Upgraded with Enhanced Image Generation",
-      date: "Mar 25, 2025",
-      category: "MODELS",
-      tags: ["NEW"],
-      content: "OpenAI has upgraded ChatGPT's image generation capabilities with GPT-4o. The new functionality allows for more accurate and detailed image creation and editing. Pro subscribers have immediate access, with Plus and Enterprise users gaining access soon.",
-      isNew: true,
-      icon: "Info",
-      color: "blue",
-      links: [
-        { text: "Read Announcement", url: "https://techcrunch.com/2025/03/25/chatgpts-image-generation-feature-gets-an-upgrade/" },
-        { text: "View Capabilities Guide", url: "#" }
-      ]
-    },
-    {
-      id: 2,
-      title: "New Compliance and Administrative Tools for Enterprise",
-      date: "Mar 12, 2025",
-      category: "FEATURES",
-      tags: ["SECURITY"],
-      content: "ChatGPT Enterprise now includes enhanced compliance tools, SCIM support for user management, and improved GPT controls. These updates help organizations meet regulatory requirements while maintaining data security across workspaces.",
-      isNew: true,
-      icon: "CheckCircle",
-      color: "green",
-      links: [
-        { text: "Read More", url: "https://openai.com/index/new-tools-for-chatgpt-enterprise/" },
-        { text: "Implementation Guide", url: "#" }
-      ]
-    },
-    {
-      id: 3,
-      title: "GPT-4o Improvements: Enhanced Instruction Following",
-      date: "Feb 27, 2025",
-      category: "MODELS",
-      tags: ["UPDATE"],
-      content: "OpenAI has made significant improvements to GPT-4o, making it more intuitive, creative, and collaborative. The model now follows instructions more accurately, handles coding tasks more smoothly, and communicates in a clearer, more natural way.",
-      isNew: false,
-      icon: "Info",
-      color: "blue",
-      links: [
-        { text: "Release Notes", url: "https://help.openai.com/en/articles/6825453-chatgpt-release-notes" },
-        { text: "Model Comparison", url: "#" }
-      ]
-    },
     {
       id: 4,
       title: "ChatGPT Shopping Search Features Now Available",
-      date: "Apr 28, 2025",
+      date: "Apr 28, 2025", // Most recent
       category: "FEATURES",
       tags: ["NEW"],
       content: "ChatGPT's web search capabilities now include personalized product recommendations with images, reviews, and direct purchase links. Available to all ChatGPT users, including Enterprise, with no advertisements or commissions.",
@@ -63,8 +19,7 @@ const UpdatesTab = () => {
       icon: "CheckCircle",
       color: "purple",
       links: [
-        { text: "Feature Details", url: "https://www.reuters.com/business/media-telecom/openai-rolls-out-new-shopping-features-with-chatgpt-search-update-2025-04-28/" },
-        { text: "User Guide", url: "#" }
+        { text: "Feature Details", url: "https://www.reuters.com/business/media-telecom/openai-rolls-out-new-shopping-features-with-chatgpt-search-update-2025-04-28/" }
       ]
     },
     {
@@ -78,8 +33,49 @@ const UpdatesTab = () => {
       icon: "AlertTriangle",
       color: "amber",
       links: [
-        { text: "Migration Guide", url: "https://help.openai.com/en/articles/6825453-chatgpt-release-notes" },
-        { text: "Impact Assessment", url: "#" }
+        { text: "Migration Guide", url: "https://help.openai.com/en/articles/6825453-chatgpt-release-notes" }
+      ]
+    },
+    {
+      id: 1,
+      title: "GPT-4o Upgraded with Enhanced Image Generation",
+      date: "Mar 25, 2025",
+      category: "MODELS",
+      tags: ["NEW"],
+      content: "OpenAI has upgraded ChatGPT's image generation capabilities with GPT-4o. The new functionality allows for more accurate and detailed image creation and editing. Pro subscribers have immediate access, with Plus and Enterprise users gaining access soon.",
+      isNew: true,
+      icon: "Info",
+      color: "blue",
+      links: [
+        { text: "Read Announcement", url: "https://techcrunch.com/2025/03/25/chatgpts-image-generation-feature-gets-an-upgrade/" }
+      ]
+    },
+    {
+      id: 2,
+      title: "New Compliance and Administrative Tools for Enterprise",
+      date: "Mar 12, 2025",
+      category: "FEATURES",
+      tags: ["SECURITY"],
+      content: "ChatGPT Enterprise now includes enhanced compliance tools, SCIM support for user management, and improved GPT controls. These updates help organizations meet regulatory requirements while maintaining data security across workspaces.",
+      isNew: true,
+      icon: "CheckCircle",
+      color: "green",
+      links: [
+        { text: "Read More", url: "https://openai.com/index/new-tools-for-chatgpt-enterprise/" }
+      ]
+    },
+    {
+      id: 3,
+      title: "GPT-4o Improvements: Enhanced Instruction Following",
+      date: "Feb 27, 2025", // Oldest
+      category: "MODELS",
+      tags: ["UPDATE"],
+      content: "OpenAI has made significant improvements to GPT-4o, making it more intuitive, creative, and collaborative. The model now follows instructions more accurately, handles coding tasks more smoothly, and communicates in a clearer, more natural way.",
+      isNew: false,
+      icon: "Info",
+      color: "blue",
+      links: [
+        { text: "Release Notes", url: "https://help.openai.com/en/articles/6825453-chatgpt-release-notes" }
       ]
     }
   ];
@@ -112,7 +108,7 @@ const UpdatesTab = () => {
         </p>
       </div>
 
-      {/* Filter and Controls */}
+      {/* Filter Controls */}
       <div className="flex justify-between items-center mb-6">
         <div className="flex gap-2">
           <select 
@@ -126,9 +122,7 @@ const UpdatesTab = () => {
             <option>CRITICAL</option>
           </select>
         </div>
-        <button className="text-sm border border-gray-300 rounded px-2 py-1 bg-white hover:bg-gray-50">
-          Mark All as Read
-        </button>
+        {/* Removed "Mark All as Read" button */}
       </div>
 
       {/* Updates List */}
@@ -193,18 +187,18 @@ const UpdatesTab = () => {
                   {update.content}
                 </p>
                 <div className="mt-2 flex flex-wrap">
-                  {update.links.map((link, i) => (
+                  {/* Only showing primary link for each update */}
+                  {update.links.length > 0 && (
                     <a 
-                      key={i} 
-                      href={link.url} 
+                      href={update.links[0].url} 
                       className="text-blue-700 hover:text-blue-800 text-sm font-medium mr-4 flex items-center"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {link.text}
+                      {update.links[0].text}
                       <ExternalLink className="h-3 w-3 ml-1" />
                     </a>
-                  ))}
+                  )}
                 </div>
               </div>
             </div>

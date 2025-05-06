@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AlertTriangle, CheckCircle, Info } from 'lucide-react';
+import { AlertTriangle, CheckCircle, Info, ExternalLink } from 'lucide-react';
 import ModelsTab from './pages/ModelsTab';
 import PromptLibraryTab from './pages/PromptLibraryTab';
 import UpdatesTab from './pages/UpdatesTab';
@@ -119,7 +119,7 @@ const Dashboard = () => {
               </section>
             )}
             
-            {/* Recent Updates Section - Show only if updates tab is active or on overview */}
+            {/* Recent Updates Section - Show only if overview tab is active, with most recent updates first */}
             {activeTab === 'overview' && (
               <section className="mb-8">
                 <div className="flex justify-between items-center mb-2">
@@ -131,15 +131,42 @@ const Dashboard = () => {
                       <option>Features</option>
                       <option>Legal</option>
                     </select>
-                    <button className="text-sm border border-gray-300 rounded px-2 py-1 bg-white hover:bg-gray-50">
-                      Mark All as Read
-                    </button>
                   </div>
                 </div>
                 <p className="text-gray-600 mb-4">Stay informed about the latest changes to ChatGPT Enterprise for legal research.</p>
                 
                 <div className="space-y-4">
-                  {/* Critical Update */}
+                  {/* Shopping Features - Most recent update */}
+                  <div className="bg-white rounded-lg shadow-sm p-4 border-l-4 border-purple-500">
+                    <div className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <div className="flex items-center">
+                          <h3 className="text-lg font-medium text-gray-800 mr-2">ChatGPT Shopping Search Features Now Available</h3>
+                          <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">FEATURES</span>
+                          <span className="bg-blue-100 text-blue-800 text-xs font-medium ml-2 px-2.5 py-0.5 rounded">NEW</span>
+                          <span className="ml-auto text-sm text-gray-500">Apr 28, 2025</span>
+                          <span className="ml-2 inline-flex h-2 w-2 bg-blue-500 rounded-full"></span>
+                        </div>
+                        <p className="text-gray-600 mt-1">
+                          ChatGPT's web search capabilities now include personalized product recommendations with images, reviews, and direct purchase links. Available to all ChatGPT users, including Enterprise, with no advertisements or commissions.
+                        </p>
+                        <div className="mt-2">
+                          <a 
+                            href="https://www.reuters.com/business/media-telecom/openai-rolls-out-new-shopping-features-with-chatgpt-search-update-2025-04-28/" 
+                            className="text-blue-700 hover:text-blue-800 text-sm font-medium flex items-center"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Feature Details
+                            <ExternalLink className="h-3 w-3 ml-1" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* GPT-4 Retiring */}
                   <div className="bg-white rounded-lg shadow-sm p-4 border-l-4 border-red-500">
                     <div className="flex items-start">
                       <AlertTriangle className="h-5 w-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
@@ -155,63 +182,44 @@ const Dashboard = () => {
                           Effective April 30, 2025, GPT-4 will be retired from ChatGPT and fully replaced by GPT-4o. Enterprise users should prepare for this transition by updating workflows and custom GPTs to ensure compatibility with the new model.
                         </p>
                         <div className="mt-2">
-                          <button className="text-blue-700 hover:text-blue-800 text-sm font-medium">
-                            Read More
-                          </button>
-                          <button className="text-blue-700 hover:text-blue-800 text-sm font-medium ml-4">
+                          <a 
+                            href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes" 
+                            className="text-blue-700 hover:text-blue-800 text-sm font-medium flex items-center"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
                             Migration Guide
-                          </button>
+                            <ExternalLink className="h-3 w-3 ml-1" />
+                          </a>
                         </div>
                       </div>
                     </div>
                   </div>
                   
-                  {/* New Model Update */}
+                  {/* GPT-4o Image Generation */}
                   <div className="bg-white rounded-lg shadow-sm p-4 border-l-4 border-blue-500">
                     <div className="flex items-start">
                       <Info className="h-5 w-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" />
                       <div>
                         <div className="flex items-center">
                           <h3 className="text-lg font-medium text-gray-800 mr-2">GPT-4o Upgraded with Enhanced Image Generation</h3>
-                          <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">NEW</span>
-                          <span className="bg-purple-100 text-purple-800 text-xs font-medium ml-2 px-2.5 py-0.5 rounded">MODELS</span>
+                          <span className="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">MODELS</span>
+                          <span className="bg-blue-100 text-blue-800 text-xs font-medium ml-2 px-2.5 py-0.5 rounded">NEW</span>
                           <span className="ml-auto text-sm text-gray-500">Mar 25, 2025</span>
                         </div>
                         <p className="text-gray-600 mt-1">
                           OpenAI has upgraded ChatGPT's image generation capabilities with GPT-4o. The new functionality allows for more accurate and detailed image creation and editing. Pro subscribers have immediate access, with Plus and Enterprise users gaining access soon.
                         </p>
                         <div className="mt-2">
-                          <button className="text-blue-700 hover:text-blue-800 text-sm font-medium">
-                            Read More
-                          </button>
-                          <button className="text-blue-700 hover:text-blue-800 text-sm font-medium ml-4">
-                            View Capabilities Guide
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Feature Update */}
-                  <div className="bg-white rounded-lg shadow-sm p-4 border-l-4 border-green-500">
-                    <div className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                      <div>
-                        <div className="flex items-center">
-                          <h3 className="text-lg font-medium text-gray-800 mr-2">New Compliance and Administrative Tools for Enterprise</h3>
-                          <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">FEATURES</span>
-                          <span className="ml-auto text-sm text-gray-500">Mar 12, 2025</span>
-                        </div>
-                        <p className="text-gray-600 mt-1">
-                          ChatGPT Enterprise now includes enhanced compliance tools, SCIM support for user management, and improved GPT controls. These updates help organizations meet regulatory requirements while maintaining data security across workspaces.
-                        </p>
-                        <div className="mt-2">
-                          <button className="text-blue-700 hover:text-blue-800 text-sm font-medium">
-                            Read More
-                          </button>
-                          <button className="text-blue-700 hover:text-blue-800 text-sm font-medium ml-4">
-                            Implementation Guide
-                          </button>
+                          <a 
+                            href="https://techcrunch.com/2025/03/25/chatgpts-image-generation-feature-gets-an-upgrade/" 
+                            className="text-blue-700 hover:text-blue-800 text-sm font-medium flex items-center"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Read Announcement
+                            <ExternalLink className="h-3 w-3 ml-1" />
+                          </a>
                         </div>
                       </div>
                     </div>
