@@ -123,13 +123,13 @@ const ModelsTab = () => {
       docsLink: '#'
     },
     {
-      id: 'o3minihigh',
-      name: 'o3-mini-high',
+      id: 'o4minihigh',
+      name: 'o4-mini-high',
       color: 'teal',
       status: 'New',
-      description: 'Specialized reasoning model optimized for deep analysis with higher-level reasoning at efficient computational cost.',
+      description: 'Advanced variant of o4-mini that spends more time reasoning, offering improved accuracy and reliability for complex analytical tasks.',
       contextWindow: '128,000 tokens',
-      knowledgeCutoff: 'October 2024',
+      knowledgeCutoff: 'January 2025',
       tokenLimit: '128,000 tokens',
       legalRating: 4,
       recommended: false,
