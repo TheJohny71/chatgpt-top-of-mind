@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AlertTriangle, CheckCircle, Info } from 'lucide-react';
 import ModelsTab from './pages/ModelsTab';
 import PromptLibraryTab from './pages/PromptLibraryTab';
+import UpdatesTab from './pages/UpdatesTab';
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -11,7 +12,7 @@ const Dashboard = () => {
       {/* Header - removed search box and feedback button but kept last updated */}
       <header className="bg-blue-900 text-white p-6 flex justify-between items-center shadow-md">
         <h1 className="text-3xl font-serif font-bold">ChatGPT Enterprise: Top of Mind</h1>
-        <span className="text-gray-300 text-sm">Last Updated: April 30, 2025</span>
+        <span className="text-gray-300 text-sm">Last Updated: May 06, 2025</span>
       </header>
       
       {/* Navigation */}
@@ -71,6 +72,8 @@ const Dashboard = () => {
           <ModelsTab />
         ) : activeTab === 'prompt-library' ? (
           <PromptLibraryTab />
+        ) : activeTab === 'updates' ? (
+          <UpdatesTab />
         ) : (
           /* Otherwise, show the original content */
           <>
@@ -116,8 +119,8 @@ const Dashboard = () => {
               </section>
             )}
             
-            {/* Recent Updates Section - Show only if updates tab is active */}
-            {(activeTab === 'overview' || activeTab === 'updates') && (
+            {/* Recent Updates Section - Show only if updates tab is active or on overview */}
+            {activeTab === 'overview' && (
               <section className="mb-8">
                 <div className="flex justify-between items-center mb-2">
                   <h2 className="text-2xl font-serif text-blue-900">Recent Updates</h2>
@@ -142,23 +145,21 @@ const Dashboard = () => {
                       <AlertTriangle className="h-5 w-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
                       <div>
                         <div className="flex items-center">
-                          <h3 className="text-lg font-medium text-gray-800 mr-2">API Security Update Required</h3>
+                          <h3 className="text-lg font-medium text-gray-800 mr-2">GPT-4 Retiring: Transition Guide for Enterprise Users</h3>
                           <span className="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">CRITICAL</span>
-                          <span className="bg-blue-100 text-blue-800 text-xs font-medium ml-2 px-2.5 py-0.5 rounded">LEGAL</span>
-                          <span className="ml-auto text-sm text-gray-500">Apr 28, 2025</span>
+                          <span className="bg-purple-100 text-purple-800 text-xs font-medium ml-2 px-2.5 py-0.5 rounded">MODELS</span>
+                          <span className="ml-auto text-sm text-gray-500">Apr 15, 2025</span>
                           <span className="ml-2 inline-flex h-2 w-2 bg-blue-500 rounded-full"></span>
                         </div>
                         <p className="text-gray-600 mt-1">
-                          All Enterprise customers must update their API authentication methods by May 15 to comply 
-                          with new regulatory requirements. Authentication requests using legacy tokens will be rejected 
-                          after this date.
+                          Effective April 30, 2025, GPT-4 will be retired from ChatGPT and fully replaced by GPT-4o. Enterprise users should prepare for this transition by updating workflows and custom GPTs to ensure compatibility with the new model.
                         </p>
                         <div className="mt-2">
                           <button className="text-blue-700 hover:text-blue-800 text-sm font-medium">
                             Read More
                           </button>
                           <button className="text-blue-700 hover:text-blue-800 text-sm font-medium ml-4">
-                            View Implementation Guide
+                            Migration Guide
                           </button>
                         </div>
                       </div>
@@ -171,47 +172,45 @@ const Dashboard = () => {
                       <Info className="h-5 w-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" />
                       <div>
                         <div className="flex items-center">
-                          <h3 className="text-lg font-medium text-gray-800 mr-2">New Models Released: o3 and o4-mini</h3>
+                          <h3 className="text-lg font-medium text-gray-800 mr-2">GPT-4o Upgraded with Enhanced Image Generation</h3>
                           <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">NEW</span>
                           <span className="bg-purple-100 text-purple-800 text-xs font-medium ml-2 px-2.5 py-0.5 rounded">MODELS</span>
-                          <span className="ml-auto text-sm text-gray-500">Apr 16, 2025</span>
+                          <span className="ml-auto text-sm text-gray-500">Mar 25, 2025</span>
                         </div>
                         <p className="text-gray-600 mt-1">
-                          Two new models optimized for legal research are now available. The o3 model excels at 
-                          cross-jurisdictional research, while o4-mini is designed for high-volume document review.
+                          OpenAI has upgraded ChatGPT's image generation capabilities with GPT-4o. The new functionality allows for more accurate and detailed image creation and editing. Pro subscribers have immediate access, with Plus and Enterprise users gaining access soon.
                         </p>
                         <div className="mt-2">
                           <button className="text-blue-700 hover:text-blue-800 text-sm font-medium">
                             Read More
                           </button>
                           <button className="text-blue-700 hover:text-blue-800 text-sm font-medium ml-4">
-                            View Model Capabilities
+                            View Capabilities Guide
                           </button>
                         </div>
                       </div>
                     </div>
                   </div>
                   
-                  {/* API Update */}
+                  {/* Feature Update */}
                   <div className="bg-white rounded-lg shadow-sm p-4 border-l-4 border-green-500">
                     <div className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
                       <div>
                         <div className="flex items-center">
-                          <h3 className="text-lg font-medium text-gray-800 mr-2">Enterprise API Updates for Legal</h3>
+                          <h3 className="text-lg font-medium text-gray-800 mr-2">New Compliance and Administrative Tools for Enterprise</h3>
                           <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">FEATURES</span>
-                          <span className="ml-auto text-sm text-gray-500">Mar 22, 2025</span>
+                          <span className="ml-auto text-sm text-gray-500">Mar 12, 2025</span>
                         </div>
                         <p className="text-gray-600 mt-1">
-                          API enhancements provide improved document handling capabilities, including automatic 
-                          citation formatting and jurisdiction-aware responses.
+                          ChatGPT Enterprise now includes enhanced compliance tools, SCIM support for user management, and improved GPT controls. These updates help organizations meet regulatory requirements while maintaining data security across workspaces.
                         </p>
                         <div className="mt-2">
                           <button className="text-blue-700 hover:text-blue-800 text-sm font-medium">
                             Read More
                           </button>
                           <button className="text-blue-700 hover:text-blue-800 text-sm font-medium ml-4">
-                            View API Documentation
+                            Implementation Guide
                           </button>
                         </div>
                       </div>
@@ -219,7 +218,10 @@ const Dashboard = () => {
                   </div>
                   
                   <div className="flex justify-center mt-4">
-                    <button className="text-blue-700 hover:text-blue-800 border border-blue-700 rounded-full px-4 py-1 text-sm font-medium">
+                    <button 
+                      className="text-blue-700 hover:text-blue-800 border border-blue-700 rounded-full px-4 py-1 text-sm font-medium"
+                      onClick={() => setActiveTab('updates')}
+                    >
                       View All Updates
                     </button>
                   </div>
