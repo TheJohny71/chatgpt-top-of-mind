@@ -1,13 +1,17 @@
 import React from 'react';
 
 const PracticeAreaTable = ({ models }) => {
-  // Define practice areas to compare across
+  // Define practice areas to compare across - expanded based on research
   const practiceAreas = [
     { id: 'contracts', name: 'Contracts & Transactions', description: 'Contract review, analysis, and transaction support' },
     { id: 'litigation', name: 'Litigation & Disputes', description: 'Case analysis, legal precedent review, arguments' },
     { id: 'ip', name: 'Intellectual Property', description: 'Patent, trademark, and copyright analysis' },
     { id: 'compliance', name: 'Compliance & Regulatory', description: 'Regulatory analysis and compliance frameworks' },
     { id: 'corporate', name: 'Corporate & M&A', description: 'Due diligence and transaction advisory' },
+    { id: 'employment', name: 'Employment Law', description: 'Labor relations, HR compliance, and employment regulations' },
+    { id: 'tax', name: 'Tax Law', description: 'Tax planning, compliance, and dispute resolution' },
+    { id: 'health', name: 'Health & Life Sciences', description: 'Healthcare regulations and bioscience compliance' },
+    { id: 'private', name: 'Private Client', description: 'High-net-worth individual services and estate planning' }
   ];
 
   // Rating terms based on score
@@ -17,6 +21,60 @@ const PracticeAreaTable = ({ models }) => {
     if (rating >= 3) return "Good";
     if (rating >= 2) return "Fair";
     return "Limited";
+  };
+
+  // Model ratings for new practice areas (based on research)
+  const getExpandedRatings = (model, areaId) => {
+    // If the model already has a rating for this area, use it
+    if (model.practiceAreas && model.practiceAreas[areaId] !== undefined) {
+      return model.practiceAreas[areaId];
+    }
+    
+    // Otherwise assign ratings based on research and model strengths
+    const modelName = model.name.toLowerCase();
+    
+    // GPT-4o - strong for general tasks, good for multimodal and quick analysis
+    if (modelName.includes('gpt-4o')) {
+      if (areaId === 'employment') return 4;
+      if (areaId === 'tax') return 3;
+      if (areaId === 'health') return 4;
+      if (areaId === 'private') return 5;
+    }
+    
+    // GPT-4.5 - strong across most areas especially with context and nuance
+    else if (modelName.includes('gpt-4.5')) {
+      if (areaId === 'employment') return 5;
+      if (areaId === 'tax') return 4;
+      if (areaId === 'health') return 5;
+      if (areaId === 'private') return 5;
+    }
+    
+    // o3 - excellent reasoning capabilities for complex matters
+    else if (modelName === 'o3') {
+      if (areaId === 'employment') return 4;
+      if (areaId === 'tax') return 5;
+      if (areaId === 'health') return 4;
+      if (areaId === 'private') return 4;
+    }
+    
+    // o4-mini - fast, cost-effective for more straightforward tasks
+    else if (modelName.includes('o4-mini') && !modelName.includes('high')) {
+      if (areaId === 'employment') return 4;
+      if (areaId === 'tax') return 4;
+      if (areaId === 'health') return 3;
+      if (areaId === 'private') return 3;
+    }
+    
+    // o4-mini-high - improved reasoning for complex tasks
+    else if (modelName.includes('o4-mini-high')) {
+      if (areaId === 'employment') return 4;
+      if (areaId === 'tax') return 5;
+      if (areaId === 'health') return 4;
+      if (areaId === 'private') return 4;
+    }
+    
+    // Default rating if no specific value
+    return 3;
   };
 
   return (
@@ -32,11 +90,11 @@ const PracticeAreaTable = ({ models }) => {
         </h3>
         <div className="flex items-center text-sm font-medium text-indigo-100">
           <span className="flex items-center mr-6">
-            <span className="h-3 w-3 rounded-full bg-white opacity-90 mr-2"></span>
+            <span className="h-3 w-3 rounded-full bg-indigo-300 mr-2"></span>
             Highly Recommended
           </span>
           <span className="flex items-center">
-            <span className="h-3 w-3 rounded-full bg-white opacity-50 mr-2"></span>
+            <span className="h-3 w-3 rounded-full bg-indigo-100 mr-2"></span>
             Recommended
           </span>
         </div>
@@ -66,13 +124,14 @@ const PracticeAreaTable = ({ models }) => {
               {/* Rating indicators for each model */}
               {models.slice(0, 5).map((model, modelIndex) => {
                 // Get the rating for this model and practice area
-                const rating = model.practiceAreas?.[area.id] || 0;
+                const rating = model.practiceAreas?.[area.id] || getExpandedRatings(model, area.id);
                 const ratingTerm = getRatingTerm(rating);
+                const colorClass = model.color || 'blue'; // Default to blue if no color specified
                 
                 return (
                   <div key={modelIndex} className="flex flex-col items-center">
-                    <div className={`h-2.5 w-2.5 rounded-full bg-${model.color}-600 mb-1 ring-4 ring-${model.color}-100`}></div>
-                    <div className={`text-xs text-${model.color}-700 font-medium`}>{ratingTerm}</div>
+                    <div className={`h-2.5 w-2.5 rounded-full bg-${colorClass}-600 mb-1 ring-4 ring-${colorClass}-100`}></div>
+                    <div className={`text-xs text-${colorClass}-700 font-medium`}>{ratingTerm}</div>
                   </div>
                 );
               })}
@@ -80,15 +139,15 @@ const PracticeAreaTable = ({ models }) => {
           </div>
         ))}
         
-        {/* Interactive element to improve usability */}
+        {/* Interactive element to improve usability - now a real button */}
         <div className="mt-6 flex justify-end">
-          <button className="flex items-center text-indigo-700 text-sm font-medium hover:text-indigo-900 transition-colors">
+          <a href="#all-practice-areas" className="flex items-center text-indigo-700 text-sm font-medium hover:text-indigo-900 transition-colors px-4 py-2 border border-indigo-200 rounded-lg hover:bg-indigo-50">
             <span>Compare all practice areas</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1">
               <path d="M5 12h14"></path>
               <path d="m12 5 7 7-7 7"></path>
             </svg>
-          </button>
+          </a>
         </div>
       </div>
     </div>

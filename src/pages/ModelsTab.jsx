@@ -128,9 +128,9 @@ const ModelsTab = () => {
       color: 'teal',
       status: 'New',
       description: 'Advanced variant of o4-mini that spends more time reasoning, offering improved accuracy and reliability for complex analytical tasks.',
-      contextWindow: '128,000 tokens',
+      contextWindow: '200,000 tokens',
       knowledgeCutoff: 'January 2025',
-      tokenLimit: '128,000 tokens',
+      tokenLimit: '100,000 tokens',
       legalRating: 4,
       recommended: false,
       performance: {
@@ -147,7 +147,8 @@ const ModelsTab = () => {
         litigation: 4,
         ip: 4,
         compliance: 4,
-        corporate: 4
+        corporate: 4,
+        tax: 5
       },
       docsLink: '#'
     }
@@ -293,7 +294,7 @@ const ModelsTab = () => {
       )}
 
       {/* Practice Area Suitability */}
-      <section className="mb-12">
+      <section className="mb-12" id="all-practice-areas">
         <h3 className="text-xl font-semibold text-gray-900 mb-4">
           Practice Area Suitability
         </h3>
