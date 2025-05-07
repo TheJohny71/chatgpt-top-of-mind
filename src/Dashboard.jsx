@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
-import { AlertTriangle, CheckCircle, Info, ExternalLink } from 'lucide-react';
+import { AlertTriangle, CheckCircle, Info, ExternalLink, Clock } from 'lucide-react';
 import ModelsTab from './pages/ModelsTab';
 import PromptLibraryTab from './pages/PromptLibraryTab';
 import UpdatesTab from './pages/UpdatesTab';
+import LastUpdatedFooter from './components/LastUpdatedFooter';
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
+  const lastUpdated = "May 06, 2025";
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
-      {/* Header - removed search box and feedback button but kept last updated */}
+      {/* Header */}
       <header className="bg-blue-900 text-white p-6 flex justify-between items-center shadow-md">
         <h1 className="text-3xl font-serif font-bold">ChatGPT Enterprise: Top of Mind</h1>
-        <span className="text-gray-300 text-sm">Last Updated: May 06, 2025</span>
+        <span className="text-gray-300 text-sm flex items-center">
+          <Clock className="h-4 w-4 mr-2" />
+          Last Updated: {lastUpdated}
+        </span>
       </header>
       
       {/* Navigation */}
@@ -135,9 +140,9 @@ const Dashboard = () => {
                 </div>
                 <p className="text-gray-600 mb-4">Stay informed about the latest changes to ChatGPT Enterprise for legal research.</p>
                 
-                <div className="space-y-4">
+                <div className="space-y-6">
                   {/* Shopping Features - Most recent update */}
-                  <div className="bg-white rounded-lg shadow-sm p-4 border-l-4 border-purple-500">
+                  <div className="bg-white rounded-lg shadow-sm p-5 border-l-4 border-purple-500">
                     <div className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" />
                       <div>
@@ -148,7 +153,10 @@ const Dashboard = () => {
                           <span className="ml-auto text-sm text-gray-500">Apr 28, 2025</span>
                           <span className="ml-2 inline-flex h-2 w-2 bg-blue-500 rounded-full"></span>
                         </div>
-                        <p className="text-gray-600 mt-1">
+                        <p className="text-sm font-medium italic text-gray-700 mt-1 mb-2">
+                          Key Takeaway: Enterprise users can now access personalized shopping results with no ads or commissions.
+                        </p>
+                        <p className="text-gray-600">
                           ChatGPT's web search capabilities now include personalized product recommendations with images, reviews, and direct purchase links. Available to all ChatGPT users, including Enterprise, with no advertisements or commissions.
                         </p>
                         <div className="mt-2">
@@ -167,7 +175,7 @@ const Dashboard = () => {
                   </div>
 
                   {/* GPT-4 Retiring */}
-                  <div className="bg-white rounded-lg shadow-sm p-4 border-l-4 border-red-500">
+                  <div className="bg-white rounded-lg shadow-sm p-5 border-l-4 border-red-500">
                     <div className="flex items-start">
                       <AlertTriangle className="h-5 w-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
                       <div>
@@ -178,7 +186,10 @@ const Dashboard = () => {
                           <span className="ml-auto text-sm text-gray-500">Apr 15, 2025</span>
                           <span className="ml-2 inline-flex h-2 w-2 bg-blue-500 rounded-full"></span>
                         </div>
-                        <p className="text-gray-600 mt-1">
+                        <p className="text-sm font-medium italic text-gray-700 mt-1 mb-2">
+                          Key Takeaway: All GPT-4 workflows must be updated to GPT-4o compatibility by April 30th.
+                        </p>
+                        <p className="text-gray-600">
                           Effective April 30, 2025, GPT-4 will be retired from ChatGPT and fully replaced by GPT-4o. Enterprise users should prepare for this transition by updating workflows and custom GPTs to ensure compatibility with the new model.
                         </p>
                         <div className="mt-2">
@@ -197,7 +208,7 @@ const Dashboard = () => {
                   </div>
                   
                   {/* GPT-4o Image Generation */}
-                  <div className="bg-white rounded-lg shadow-sm p-4 border-l-4 border-blue-500">
+                  <div className="bg-white rounded-lg shadow-sm p-5 border-l-4 border-blue-500">
                     <div className="flex items-start">
                       <Info className="h-5 w-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" />
                       <div>
@@ -207,7 +218,10 @@ const Dashboard = () => {
                           <span className="bg-blue-100 text-blue-800 text-xs font-medium ml-2 px-2.5 py-0.5 rounded">NEW</span>
                           <span className="ml-auto text-sm text-gray-500">Mar 25, 2025</span>
                         </div>
-                        <p className="text-gray-600 mt-1">
+                        <p className="text-sm font-medium italic text-gray-700 mt-1 mb-2">
+                          Key Takeaway: Advanced image creation and editing now available, rolling out soon to Enterprise users.
+                        </p>
+                        <p className="text-gray-600">
                           OpenAI has upgraded ChatGPT's image generation capabilities with GPT-4o. The new functionality allows for more accurate and detailed image creation and editing. Pro subscribers have immediate access, with Plus and Enterprise users gaining access soon.
                         </p>
                         <div className="mt-2">
@@ -251,7 +265,7 @@ const Dashboard = () => {
                 </div>
                 <p className="text-gray-600 mb-4">Select models optimized for legal research with specialized capabilities.</p>
                 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="bg-white rounded-lg shadow-sm overflow-hidden relative">
                     <div className="h-2 bg-blue-700 w-full absolute top-0"></div>
                     <div className="p-5 pt-6">
@@ -363,10 +377,10 @@ const Dashboard = () => {
                 <h2 className="text-2xl font-serif text-blue-900 mb-2">Resources</h2>
                 <p className="text-gray-600 mb-4">Quick access to documentation and frequently asked questions.</p>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div className="bg-white rounded-lg shadow-sm p-5">
                     <h3 className="text-lg font-medium text-gray-800 mb-3">Documentation</h3>
-                    <ul className="space-y-2 text-sm">
+                    <ul className="space-y-3 text-sm">
                       <li>
                         <a href="#" className="text-blue-700 hover:underline flex items-center">
                           <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -434,6 +448,9 @@ const Dashboard = () => {
           </>
         )}
       </main>
+      
+      {/* Persistent Footer with Last Updated */}
+      <LastUpdatedFooter lastUpdated={lastUpdated} />
     </div>
   );
 };

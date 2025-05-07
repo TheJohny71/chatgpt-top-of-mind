@@ -1,9 +1,13 @@
 // src/pages/ModelsTab.jsx
 import React, { useState } from 'react';
+import { BarChart2, Table, Clock } from 'lucide-react';
 import ModelCard from '../components/ModelCard';
 import ComparisonTable from '../components/ComparisonTable';
+import ModelComparisonChart from '../components/ModelComparisonChart';
 import PracticeAreaTable from '../components/PracticeAreaTable';
 import HallucinationDataTab from '../components/HallucinationDataTab';
+import CitationGuide from '../components/CitationGuide';
+import '../styles/MobileResponsiveStyles.css';
 
 const ModelsTab = () => {
   // Sample model data - in a real app this would come from an API or data source
@@ -167,7 +171,7 @@ const ModelsTab = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedModels, setSelectedModels] = useState([]);
   const [showComparison, setShowComparison] = useState(false);
-  // New state for subtabs
+  const [comparisonView, setComparisonView] = useState('chart'); // 'chart' or 'table'
   const [activeSubtab, setActiveSubtab] = useState('overview');
 
   // Filter models based on selected filter
@@ -213,21 +217,32 @@ const ModelsTab = () => {
     }
   };
 
+  // Toggle between chart and table view
+  const toggleComparisonView = () => {
+    setComparisonView(comparisonView === 'chart' ? 'table' : 'chart');
+  };
+
   return (
-    <div className="max-w-7xl mx-auto px-6 py-8">
-      <div className="mb-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Language Models</h2>
-        <p className="text-gray-600">
-          Compare and explore available language models for your legal work. Select up to three models to compare.
-        </p>
+    <div className="max-w-7xl mx-auto px-6 py-8 dashboard-content">
+      <div className="mb-8 flex justify-between items-center flex-wrap">
+        <div>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2 mobile-text-xl">Language Models</h2>
+          <p className="text-gray-600">
+            Compare and explore available language models for your legal work. Select up to three models to compare.
+          </p>
+        </div>
+        <div className="flex items-center text-sm text-gray-500 mt-2 md:mt-0">
+          <Clock className="h-4 w-4 mr-2" />
+          Last Updated: May 06, 2025
+        </div>
       </div>
 
       {/* Subtabs Navigation */}
-      <div className="mb-8 border-b border-gray-200">
+      <div className="mb-8 border-b border-gray-200 nav-container">
         <nav className="flex space-x-8">
           <button
             onClick={() => setActiveSubtab('overview')}
-            className={`py-3 px-1 border-b-2 font-medium text-sm ${
+            className={`py-3 px-1 border-b-2 font-medium text-sm min-h-[44px] ${
               activeSubtab === 'overview'
                 ? 'border-blue-600 text-blue-600'
                 : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
@@ -237,7 +252,7 @@ const ModelsTab = () => {
           </button>
           <button
             onClick={() => setActiveSubtab('hallucination')}
-            className={`py-3 px-1 border-b-2 font-medium text-sm ${
+            className={`py-3 px-1 border-b-2 font-medium text-sm min-h-[44px] ${
               activeSubtab === 'hallucination'
                 ? 'border-blue-600 text-blue-600'
                 : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
@@ -247,13 +262,23 @@ const ModelsTab = () => {
           </button>
           <button
             onClick={() => setActiveSubtab('practice')}
-            className={`py-3 px-1 border-b-2 font-medium text-sm ${
+            className={`py-3 px-1 border-b-2 font-medium text-sm min-h-[44px] ${
               activeSubtab === 'practice'
                 ? 'border-blue-600 text-blue-600'
                 : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
             }`}
           >
             Practice Areas
+          </button>
+          <button
+            onClick={() => setActiveSubtab('citation')}
+            className={`py-3 px-1 border-b-2 font-medium text-sm min-h-[44px] ${
+              activeSubtab === 'citation'
+                ? 'border-blue-600 text-blue-600'
+                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+            }`}
+          >
+            Citation Guide
           </button>
         </nav>
       </div>
@@ -265,6 +290,10 @@ const ModelsTab = () => {
         <section className="mb-12" id="all-practice-areas">
           <PracticeAreaTable models={allModels} />
         </section>
+      ) : activeSubtab === 'citation' ? (
+        <section className="mb-12">
+          <CitationGuide />
+        </section>
       ) : (
         // Default 'overview' subtab
         <>
@@ -274,7 +303,7 @@ const ModelsTab = () => {
               <button
                 key={option.id}
                 onClick={() => setActiveFilter(option.id)}
-                className={`px-4 py-2 rounded-full text-sm font-medium ${
+                className={`px-4 py-2 rounded-full text-sm font-medium min-h-[44px] ${
                   activeFilter === option.id
                     ? 'bg-blue-600 text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -291,7 +320,7 @@ const ModelsTab = () => {
               <h3 className="text-xl font-semibold text-gray-900 mb-4">
                 Recommended for Legal Research
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 responsive-grid card-container">
                 {recommendedModels.map(model => (
                   <ModelCard
                     key={model.id}
@@ -317,7 +346,7 @@ const ModelsTab = () => {
                 <p className="text-gray-500">No models match your current filter. Try a different selection.</p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 responsive-grid card-container">
                 {filteredModels.map(model => (
                   <ModelCard
                     key={model.id}
@@ -330,16 +359,50 @@ const ModelsTab = () => {
             )}
           </section>
 
-          {/* Comparison Section */}
-          {showComparison && (
+          {/* Comparison Section with Toggle between Chart and Table */}
+          {showComparison && selectedModels.length > 0 && (
             <section className="mb-12">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Model Comparison
-              </h3>
-              <ComparisonTable 
-                selectedModels={selectedModels} 
-                onRemove={handleRemoveFromComparison} 
-              />
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Model Comparison
+                </h3>
+                <div className="flex items-center bg-gray-100 rounded-lg p-1">
+                  <button
+                    onClick={() => setComparisonView('chart')}
+                    className={`flex items-center px-3 py-1.5 rounded-md text-sm ${
+                      comparisonView === 'chart' 
+                        ? 'bg-white text-blue-600 shadow-sm' 
+                        : 'text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    <BarChart2 className="h-4 w-4 mr-1.5" />
+                    Chart
+                  </button>
+                  <button
+                    onClick={() => setComparisonView('table')}
+                    className={`flex items-center px-3 py-1.5 rounded-md text-sm ${
+                      comparisonView === 'table' 
+                        ? 'bg-white text-blue-600 shadow-sm' 
+                        : 'text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    <Table className="h-4 w-4 mr-1.5" />
+                    Table
+                  </button>
+                </div>
+              </div>
+              
+              {/* Render different comparison views based on state */}
+              {comparisonView === 'chart' ? (
+                <ModelComparisonChart selectedModels={selectedModels} />
+              ) : (
+                <div className="comparison-table">
+                  <ComparisonTable 
+                    selectedModels={selectedModels} 
+                    onRemove={handleRemoveFromComparison} 
+                  />
+                </div>
+              )}
             </section>
           )}
         </>

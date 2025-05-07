@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Dashboard from './Dashboard';
 import ModelsTab from './pages/ModelsTab';
 import './App.css';
+import './styles/MobileResponsiveStyles.css';
 
 function App() {
   // If dashboard is active, render only the Dashboard component without wrapper

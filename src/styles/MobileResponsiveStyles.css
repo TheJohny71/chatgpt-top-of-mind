@@ -1,0 +1,206 @@
+/* Mobile responsive enhancements */
+
+/* Base responsive adjustments */
+@media (max-width: 768px) {
+    /* Increase touch targets for better mobile experience */
+    button, 
+    a,
+    .clickable {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    /* Adjust padding for smaller screens */
+    .dashboard-header {
+      padding: 1rem !important;
+    }
+    
+    .dashboard-content {
+      padding: 1rem !important;
+    }
+    
+    /* Make navigation scrollable horizontally on small screens */
+    .nav-container {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      flex-wrap: nowrap;
+      padding-bottom: 0.5rem;
+    }
+    
+    .nav-container::-webkit-scrollbar {
+      display: none; /* Hide scrollbar for Chrome/Safari */
+    }
+    
+    /* Switch grids to single column on mobile */
+    .responsive-grid {
+      grid-template-columns: 1fr !important;
+    }
+    
+    /* Adjust card spacing */
+    .card-container {
+      gap: 1rem !important;
+    }
+    
+    /* Make model comparison more mobile-friendly */
+    .comparison-table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Adjust font sizes for readability on mobile */
+    .mobile-text-base {
+      font-size: 1rem !important;
+    }
+    
+    .mobile-text-lg {
+      font-size: 1.125rem !important;
+    }
+    
+    .mobile-text-xl {
+      font-size: 1.25rem !important;
+    }
+    
+    /* Adjust spacing for mobile */
+    .mobile-my-2 {
+      margin-top: 0.5rem !important;
+      margin-bottom: 0.5rem !important;
+    }
+    
+    .mobile-px-4 {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+    
+    /* Stack flex items on mobile */
+    .mobile-flex-col {
+      flex-direction: column !important;
+    }
+    
+    .mobile-items-start {
+      align-items: flex-start !important;
+    }
+    
+    /* For items that should have space between on mobile */
+    .mobile-space-y-4 > * {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
+    
+    .mobile-space-y-4 > * + * {
+      margin-top: 1rem !important;
+    }
+    
+    /* Mobile-optimized navigation menu toggle for very small screens */
+    @media (max-width: 480px) {
+      .nav-toggle {
+        display: flex !important;
+      }
+      
+      .nav-menu {
+        position: fixed;
+        top: 64px; /* Adjust based on header height */
+        left: 0;
+        right: 0;
+        background-color: white;
+        padding: 1rem;
+        z-index: 50;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        display: none;
+      }
+      
+      .nav-menu.open {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .nav-menu li {
+        width: 100%;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #f3f4f6;
+      }
+      
+      .nav-menu li:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+  
+  /* Medium screens */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    /* Adjust to 2 columns for medium screens */
+    .responsive-grid-md {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    /* Slightly adjust padding for medium screens */
+    .dashboard-content {
+      padding: 1.5rem !important;
+    }
+  }
+  
+  /* Orientation-specific adjustments */
+  @media (max-width: 768px) and (orientation: landscape) {
+    /* For landscape mode on small devices */
+    .landscape-h-auto {
+      height: auto !important;
+      min-height: unset !important;
+    }
+    
+    /* Makes better use of width in landscape */
+    .responsive-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+  
+  /* Instead of using @apply, we'll manually define these classes */
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .dashboard-content {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    padding: 1.5rem;
+  }
+  
+  .nav-container {
+    display: flex;
+    overflow-x: auto;
+  }
+  
+  .card-container {
+    display: grid;
+    gap: 1.5rem;
+  }
+  
+  .responsive-grid {
+    display: grid;
+  }
+  
+  .responsive-grid-md {
+    display: grid;
+  }
+  
+  .comparison-table {
+    width: 100%;
+  }
+  
+  /* Hamburger menu toggle button */
+  .nav-toggle {
+    display: none;
+  }
+  
+  @media (max-width: 1024px) {
+    .lg\:hidden {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
