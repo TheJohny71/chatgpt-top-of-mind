@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AlertTriangle, Info, CheckCircle, ExternalLink } from 'lucide-react';
+import { AlertTriangle, Info, CheckCircle, ExternalLink, Clock } from 'lucide-react';
 
 const UpdatesTab = () => {
   // State for category filter
@@ -7,17 +7,18 @@ const UpdatesTab = () => {
   
   // Updates data based on provided links, excluding API updates
   // Now sorted with most recent updates first (by date)
+  // Removed isNew flag which controlled the blue dots
   const updates = [
     {
       id: 4,
       title: "ChatGPT Shopping Search Features Now Available",
+      keyTakeaway: "Enterprise users can now access personalized shopping results with no ads or commissions.",
       date: "Apr 28, 2025", // Most recent
       category: "FEATURES",
       tags: ["NEW"],
       content: "ChatGPT's web search capabilities now include personalized product recommendations with images, reviews, and direct purchase links. Available to all ChatGPT users, including Enterprise, with no advertisements or commissions.",
-      isNew: true,
-      icon: "CheckCircle",
-      color: "purple",
+      icon: "new",
+      color: "green",
       links: [
         { text: "Feature Details", url: "https://www.reuters.com/business/media-telecom/openai-rolls-out-new-shopping-features-with-chatgpt-search-update-2025-04-28/" }
       ]
@@ -25,13 +26,13 @@ const UpdatesTab = () => {
     {
       id: 5,
       title: "GPT-4 Retiring: Transition Guide for Enterprise Users",
+      keyTakeaway: "All GPT-4 workflows must be updated to GPT-4o compatibility by April 30th.",
       date: "Apr 15, 2025",
       category: "CRITICAL",
       tags: ["MODELS"],
       content: "Effective April 30, 2025, GPT-4 will be retired from ChatGPT and fully replaced by GPT-4o. Enterprise users should prepare for this transition by updating workflows and custom GPTs to ensure compatibility with the new model.",
-      isNew: false,
-      icon: "AlertTriangle",
-      color: "amber",
+      icon: "critical",
+      color: "red",
       links: [
         { text: "Migration Guide", url: "https://help.openai.com/en/articles/6825453-chatgpt-release-notes" }
       ]
@@ -39,12 +40,12 @@ const UpdatesTab = () => {
     {
       id: 1,
       title: "GPT-4o Upgraded with Enhanced Image Generation",
+      keyTakeaway: "Advanced image creation and editing now available, rolling out soon to Enterprise users.",
       date: "Mar 25, 2025",
       category: "MODELS",
       tags: ["NEW"],
       content: "OpenAI has upgraded ChatGPT's image generation capabilities with GPT-4o. The new functionality allows for more accurate and detailed image creation and editing. Pro subscribers have immediate access, with Plus and Enterprise users gaining access soon.",
-      isNew: true,
-      icon: "Info",
+      icon: "updated",
       color: "blue",
       links: [
         { text: "Read Announcement", url: "https://techcrunch.com/2025/03/25/chatgpts-image-generation-feature-gets-an-upgrade/" }
@@ -53,12 +54,12 @@ const UpdatesTab = () => {
     {
       id: 2,
       title: "New Compliance and Administrative Tools for Enterprise",
+      keyTakeaway: "Enhanced security tools now available for meeting regulatory requirements across workspaces.",
       date: "Mar 12, 2025",
       category: "FEATURES",
       tags: ["SECURITY"],
       content: "ChatGPT Enterprise now includes enhanced compliance tools, SCIM support for user management, and improved GPT controls. These updates help organizations meet regulatory requirements while maintaining data security across workspaces.",
-      isNew: true,
-      icon: "CheckCircle",
+      icon: "new",
       color: "green",
       links: [
         { text: "Read More", url: "https://openai.com/index/new-tools-for-chatgpt-enterprise/" }
@@ -67,12 +68,12 @@ const UpdatesTab = () => {
     {
       id: 3,
       title: "GPT-4o Improvements: Enhanced Instruction Following",
+      keyTakeaway: "More accurate instruction following and smoother code handling in latest GPT-4o update.",
       date: "Feb 27, 2025", // Oldest
       category: "MODELS",
       tags: ["UPDATE"],
       content: "OpenAI has made significant improvements to GPT-4o, making it more intuitive, creative, and collaborative. The model now follows instructions more accurately, handles coding tasks more smoothly, and communicates in a clearer, more natural way.",
-      isNew: false,
-      icon: "Info",
+      icon: "updated",
       color: "blue",
       links: [
         { text: "Release Notes", url: "https://help.openai.com/en/articles/6825453-chatgpt-release-notes" }
@@ -88,11 +89,11 @@ const UpdatesTab = () => {
   // Get icon component based on name
   const getIcon = (iconName) => {
     switch (iconName) {
-      case 'AlertTriangle':
+      case 'critical':
         return <AlertTriangle />;
-      case 'Info':
+      case 'updated':
         return <Info />;
-      case 'CheckCircle':
+      case 'new':
         return <CheckCircle />;
       default:
         return <Info />;
@@ -100,19 +101,19 @@ const UpdatesTab = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-8">
+    <div className="max-w-7xl mx-auto px-6 py-8 dashboard-content">
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Recent Updates</h2>
-        <p className="text-gray-600">
+        <h2 className="text-2xl font-bold text-gray-900 mb-2 mobile-text-xl">Recent Updates</h2>
+        <p className="text-gray-600 mb-4 leading-6">
           Stay informed about the latest changes to ChatGPT Enterprise for legal research.
         </p>
       </div>
 
       {/* Filter Controls */}
-      <div className="flex justify-between items-center mb-6">
-        <div className="flex gap-2">
+      <div className="flex justify-between items-center mb-6 mobile-flex-col mobile-items-start">
+        <div className="flex gap-2 mb-4 md:mb-0">
           <select 
-            className="text-sm border border-gray-300 rounded px-2 py-1 bg-white"
+            className="text-sm border border-gray-300 rounded px-3 py-2 bg-white min-h-[44px]"
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
           >
@@ -122,35 +123,38 @@ const UpdatesTab = () => {
             <option>CRITICAL</option>
           </select>
         </div>
-        {/* Removed "Mark All as Read" button */}
+        <div className="flex items-center text-sm text-gray-500">
+          <Clock className="h-4 w-4 mr-2" />
+          Last Updated: May 06, 2025
+        </div>
       </div>
 
-      {/* Updates List */}
-      <div className="space-y-4 mb-8">
+      {/* Updates List with increased spacing */}
+      <div className="space-y-6 mb-8">
         {filteredUpdates.map(update => (
           <div 
             key={update.id} 
-            className={`bg-white rounded-lg shadow-sm p-4 border-l-4 ${
+            className={`bg-white rounded-lg shadow-sm p-5 border-l-4 ${
               update.color === 'blue' ? 'border-blue-500' :
               update.color === 'green' ? 'border-green-500' :
-              update.color === 'amber' ? 'border-amber-500' :
+              update.color === 'red' ? 'border-red-500' :
               update.color === 'purple' ? 'border-purple-500' :
               'border-gray-500'
             }`}
           >
             <div className="flex items-start">
-              <div className={`h-5 w-5 mr-3 mt-0.5 flex-shrink-0 ${
+              <div className={`h-5 w-5 mr-4 mt-1 flex-shrink-0 ${
                 update.color === 'blue' ? 'text-blue-500' :
                 update.color === 'green' ? 'text-green-500' :
-                update.color === 'amber' ? 'text-amber-500' :
+                update.color === 'red' ? 'text-red-500' :
                 update.color === 'purple' ? 'text-purple-500' :
                 'text-gray-500'
               }`}>
                 {getIcon(update.icon)}
               </div>
-              <div>
-                <div className="flex items-center flex-wrap">
-                  <h3 className="text-lg font-medium text-gray-800 mr-2">{update.title}</h3>
+              <div className="w-full">
+                <div className="flex items-center flex-wrap mb-1">
+                  <h3 className="text-lg font-medium text-gray-800 mr-2 mobile-text-base">{update.title}</h3>
                   
                   {update.category && (
                     <span className={`
@@ -179,14 +183,19 @@ const UpdatesTab = () => {
                   
                   <span className="ml-auto text-sm text-gray-500">{update.date}</span>
                   
-                  {update.isNew && (
-                    <span className="ml-2 inline-flex h-2 w-2 bg-blue-500 rounded-full"></span>
-                  )}
+                  {/* Removed the blue dot indicator */}
                 </div>
-                <p className="text-gray-600 mt-1">
+                
+                {/* Added Key Takeaway */}
+                <p className="text-sm font-medium italic text-gray-700 mt-1 mb-3 border-l-2 border-gray-300 pl-3">
+                  {update.keyTakeaway}
+                </p>
+                
+                <p className="text-gray-600 leading-relaxed mb-3">
                   {update.content}
                 </p>
-                <div className="mt-2 flex flex-wrap">
+                
+                <div className="mt-3 flex flex-wrap">
                   {/* Only showing primary link for each update */}
                   {update.links.length > 0 && (
                     <a 
@@ -213,9 +222,17 @@ const UpdatesTab = () => {
       
       {/* View All Button */}
       <div className="flex justify-center mt-8">
-        <button className="text-blue-700 hover:text-blue-800 border border-blue-700 rounded-full px-4 py-1 text-sm font-medium">
+        <button className="text-blue-700 hover:text-blue-800 border border-blue-700 rounded-full px-5 py-2 text-sm font-medium min-h-[44px]">
           View All Updates
         </button>
+      </div>
+      
+      {/* Mobile-friendly footer with last updated info */}
+      <div className="mt-8 pt-6 border-t border-gray-200 text-center text-sm text-gray-500 md:hidden">
+        <div className="flex items-center justify-center">
+          <Clock className="h-4 w-4 mr-2" />
+          <span>Dashboard Last Updated: May 06, 2025</span>
+        </div>
       </div>
     </div>
   );

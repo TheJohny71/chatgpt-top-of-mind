@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ModelCard = ({ model, onSelect, isSelected, showCompareButton = true }) => {
+const ModelCard = ({ model, onSelect, isSelected, showCompareButton = false }) => {
   // Default color if not provided
   const color = model.color || 'blue';
   
@@ -139,18 +139,7 @@ const ModelCard = ({ model, onSelect, isSelected, showCompareButton = true }) =>
           View Documentation
         </a>
         
-        {showCompareButton && (
-          <button
-            onClick={() => onSelect(model)}
-            className={`px-3 py-1 text-sm rounded-md ${
-              isSelected 
-                ? `bg-${color}-100 text-${color}-600 border border-${color}-500` 
-                : 'bg-white text-gray-600 border border-gray-300 hover:bg-gray-50'
-            }`}
-          >
-            {isSelected ? 'Selected' : 'Select for Comparison'}
-          </button>
-        )}
+        {/* Remove the "Select for Comparison" button since it's non-functional */}
       </div>
     </div>
   );

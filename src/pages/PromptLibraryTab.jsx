@@ -109,23 +109,24 @@ If certain information is unavailable or outside your knowledge base, clearly in
                   <p className="text-center text-gray-600 italic mb-8">"Structure Beats Charm"</p>
                   
                   <div className="relative flex">
-                    {/* Left connecting lines */}
-                    <div className="absolute left-0 top-0 bottom-0 flex flex-col justify-between items-center">
-                      {/* Vertical dotted line - now with proper height */}
-                      <div className="absolute h-full w-0 border-l border-gray-300 border-dashed left-0" style={{ top: '10px', height: 'calc(100% - 20px)' }}></div>
+                    {/* Left connecting lines - FIXED: Proper positioning */}
+                    <div className="absolute left-0 top-0 bottom-0">
+                      {/* Vertical dotted line - now with correct height: stopping 10px from top and bottom */}
+                      <div className="absolute h-full w-0 border-l border-gray-300 border-dashed left-8" 
+                           style={{ top: '10px', height: 'calc(100% - 20px)' }}></div>
                       
-                      {/* Horizontal lines for each item - adjusted to be in middle of cards */}
-                      <div className="w-8 border-t border-gray-300 absolute" style={{ left: 0, top: 'calc(50px + 30px)' }}></div>
-                      <div className="w-8 border-t border-gray-300 absolute" style={{ left: 0, top: 'calc(50px + 30px + 84px)' }}></div>
-                      <div className="w-8 border-t border-gray-300 absolute" style={{ left: 0, top: 'calc(50px + 30px + 84px + 84px)' }}></div>
-                      <div className="w-8 border-t border-gray-300 absolute" style={{ left: 0, top: 'calc(50px + 30px + 84px + 84px + 84px)' }}></div>
-                      <div className="w-8 border-t border-gray-300 absolute" style={{ left: 0, top: 'calc(50px + 30px + 84px + 84px + 84px + 84px)' }}></div>
-                      <div className="w-8 border-t border-gray-300 absolute" style={{ left: 0, top: 'calc(50px + 30px + 84px + 84px + 84px + 84px + 84px)' }}></div>
-                      <div className="w-8 border-t border-gray-300 absolute" style={{ left: 0, top: 'calc(50px + 30px + 84px + 84px + 84px + 84px + 84px + 84px)' }}></div>
+                      {/* Horizontal lines for each item - aligned to center of each card */}
+                      <div className="w-8 border-t border-gray-300 absolute left-0" style={{ top: '42px' }}></div>
+                      <div className="w-8 border-t border-gray-300 absolute left-0" style={{ top: '126px' }}></div>
+                      <div className="w-8 border-t border-gray-300 absolute left-0" style={{ top: '210px' }}></div>
+                      <div className="w-8 border-t border-gray-300 absolute left-0" style={{ top: '294px' }}></div>
+                      <div className="w-8 border-t border-gray-300 absolute left-0" style={{ top: '378px' }}></div>
+                      <div className="w-8 border-t border-gray-300 absolute left-0" style={{ top: '462px' }}></div>
+                      <div className="w-8 border-t border-gray-300 absolute left-0" style={{ top: '546px' }}></div>
                     </div>
                     
                     {/* Main content blocks with consistent height */}
-                    <div className="ml-12 flex-grow mr-14 space-y-3 z-10">
+                    <div className="ml-12 flex-grow mr-14 space-y-3">
                       {/* 1. CONTEXT/POLICY */}
                       <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 flex items-start justify-between" style={{ height: '84px' }}>
                         <div>
