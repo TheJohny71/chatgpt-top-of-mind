@@ -108,102 +108,91 @@ If certain information is unavailable or outside your knowledge base, clearly in
                   <h2 className="text-2xl font-bold text-center mb-2">The Anatomy of a Prompt: 7 Building Blocks</h2>
                   <p className="text-center text-gray-600 italic mb-8">"Structure Beats Charm"</p>
                   
-                  <div className="relative">
+                  <div className="relative pb-4">
                     {/* Sequential Processing vertical text */}
                     <div className="absolute right-0 top-0 bottom-0 flex items-center justify-center">
-                      <div className="h-full flex items-center justify-center px-2">
+                      <div className="bg-gray-50 h-full flex items-center justify-center px-2">
                         <div className="transform rotate-90 whitespace-nowrap font-medium text-gray-700 uppercase text-sm tracking-wider origin-center">
                           SEQUENTIAL PROCESSING
                         </div>
                       </div>
                     </div>
                     
-                    {/* Left connecting lines */}
-                    <div className="absolute left-0 top-0 bottom-0 flex flex-col justify-between items-center">
-                      <div className="w-8 border-t border-l border-gray-300 h-8 self-start mt-[75px]"></div>
-                      <div className="w-8 border-t border-l border-gray-300 h-8 self-start mt-[68px]"></div>
-                      <div className="w-8 border-t border-l border-gray-300 h-8 self-start mt-[68px]"></div>
-                      <div className="w-8 border-t border-l border-gray-300 h-8 self-start mt-[68px]"></div>
-                      <div className="w-8 border-t border-l border-gray-300 h-8 self-start mt-[68px]"></div>
-                      <div className="w-8 border-t border-l border-gray-300 h-8 self-start mt-[68px]"></div>
-                      <div className="w-8 border-t border-l border-gray-300 h-8 self-start mt-[68px]"></div>
-                    </div>
-                    
-                    {/* Content blocks */}
-                    <div className="ml-10 mr-14 space-y-3">
-                      {/* 1. CONTEXT/POLICY - Fixed label spacing */}
-                      <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 flex items-start justify-between">
-                        <div>
+                    {/* Main content blocks */}
+                    <div className="mr-14 space-y-3">
+                      {/* 1. CONTEXT/POLICY */}
+                      <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 flex items-start">
+                        <div className="flex-grow">
                           <h4 className="font-bold text-blue-800">1. CONTEXT/POLICY</h4>
                           <p className="text-gray-700">Background information and purpose for the model. Sets the stage.</p>
                         </div>
-                        <div className="text-blue-700 text-sm font-medium ml-6 self-start mt-0">
+                        <div className="text-blue-700 text-sm font-medium ml-6 self-start">
                           Early influence
                         </div>
                       </div>
                       
                       {/* 2. ROLE */}
-                      <div className="bg-green-50 p-4 rounded-lg border border-green-100 flex items-start justify-between">
-                        <div>
+                      <div className="bg-green-50 p-4 rounded-lg border border-green-100 flex items-start">
+                        <div className="flex-grow">
                           <h4 className="font-bold text-green-800">2. ROLE</h4>
                           <p className="text-gray-700">The persona or identity the model should adopt.</p>
                         </div>
-                        <div className="text-green-700 text-sm font-medium ml-6 self-start mt-0">
+                        <div className="text-green-700 text-sm font-medium ml-6 self-start">
                           Identity framing
                         </div>
                       </div>
                       
                       {/* 3. TASK */}
-                      <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-100 flex items-start justify-between">
-                        <div>
+                      <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-100 flex items-start">
+                        <div className="flex-grow">
                           <h4 className="font-bold text-yellow-800">3. TASK</h4>
                           <p className="text-gray-700">The specific action or goal the model needs to achieve.</p>
                         </div>
-                        <div className="text-yellow-700 text-sm font-medium ml-6 self-start mt-0">
+                        <div className="text-yellow-700 text-sm font-medium ml-6 self-start">
                           Goal direction
                         </div>
                       </div>
                       
                       {/* 4. CONSTRAINTS */}
-                      <div className="bg-red-50 p-4 rounded-lg border border-red-100 flex items-start justify-between">
-                        <div>
+                      <div className="bg-red-50 p-4 rounded-lg border border-red-100 flex items-start">
+                        <div className="flex-grow">
                           <h4 className="font-bold text-red-800">4. CONSTRAINTS</h4>
                           <p className="text-gray-700">Rules, style guidelines, and format requirements.</p>
                         </div>
-                        <div className="text-red-700 text-sm font-medium ml-6 self-start mt-0">
+                        <div className="text-red-700 text-sm font-medium ml-6 self-start">
                           Boundary setting
                         </div>
                       </div>
                       
-                      {/* 5. EXAMPLES - Fixed label spacing */}
-                      <div className="bg-purple-50 p-4 rounded-lg border border-purple-100 flex items-start justify-between">
-                        <div>
+                      {/* 5. EXAMPLES */}
+                      <div className="bg-purple-50 p-4 rounded-lg border border-purple-100 flex items-start">
+                        <div className="flex-grow">
                           <h4 className="font-bold text-purple-800">5. EXAMPLES</h4>
                           <p className="text-gray-700">Demonstrations of the desired input-output format or behavior.</p>
                         </div>
-                        <div className="text-purple-700 text-sm font-medium ml-6 self-start mt-0">
+                        <div className="text-purple-700 text-sm font-medium ml-6 self-start">
                           Pattern teaching
                         </div>
                       </div>
                       
                       {/* 6. OUTPUT SPEC */}
-                      <div className="bg-teal-50 p-4 rounded-lg border border-teal-100 flex items-start justify-between">
-                        <div>
+                      <div className="bg-teal-50 p-4 rounded-lg border border-teal-100 flex items-start">
+                        <div className="flex-grow">
                           <h4 className="font-bold text-teal-800">6. OUTPUT SPEC</h4>
                           <p className="text-gray-700">Explicit instructions on the required output format.</p>
                         </div>
-                        <div className="text-teal-700 text-sm font-medium ml-6 self-start mt-0">
+                        <div className="text-teal-700 text-sm font-medium ml-6 self-start">
                           Response shaping
                         </div>
                       </div>
                       
                       {/* 7. FALLBACK/ERROR HANDLING */}
-                      <div className="bg-pink-50 p-4 rounded-lg border border-pink-100 flex items-start justify-between">
-                        <div>
+                      <div className="bg-pink-50 p-4 rounded-lg border border-pink-100 flex items-start">
+                        <div className="flex-grow">
                           <h4 className="font-bold text-pink-800">7. FALLBACK/ERROR HANDLING</h4>
                           <p className="text-gray-700">Instructions on how to respond if difficulties arise.</p>
                         </div>
-                        <div className="text-pink-700 text-sm font-medium ml-6 self-start mt-0">
+                        <div className="text-pink-700 text-sm font-medium ml-6 self-start">
                           Safety net
                         </div>
                       </div>
