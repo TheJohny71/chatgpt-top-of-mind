@@ -111,23 +111,23 @@ If certain information is unavailable or outside your knowledge base, clearly in
                   <div className="relative flex">
                     {/* Left connecting lines */}
                     <div className="absolute left-0 top-0 bottom-0 flex flex-col justify-between items-center">
-                      {/* Vertical dotted line */}
-                      <div className="absolute h-full w-0 border-l border-gray-300 border-dashed left-0" style={{ top: '20px' }}></div>
+                      {/* Vertical dotted line - now with proper height */}
+                      <div className="absolute h-full w-0 border-l border-gray-300 border-dashed left-0" style={{ top: '10px', height: 'calc(100% - 20px)' }}></div>
                       
-                      {/* Horizontal lines for each item */}
-                      <div className="w-8 border-t border-gray-300 h-8 mt-[67px]"></div>
-                      <div className="w-8 border-t border-gray-300 h-8 mt-[72px]"></div>
-                      <div className="w-8 border-t border-gray-300 h-8 mt-[72px]"></div>
-                      <div className="w-8 border-t border-gray-300 h-8 mt-[72px]"></div>
-                      <div className="w-8 border-t border-gray-300 h-8 mt-[72px]"></div>
-                      <div className="w-8 border-t border-gray-300 h-8 mt-[72px]"></div>
-                      <div className="w-8 border-t border-gray-300 h-8 mt-[72px]"></div>
+                      {/* Horizontal lines for each item - adjusted to be in middle of cards */}
+                      <div className="w-8 border-t border-gray-300 absolute" style={{ left: 0, top: 'calc(50px + 30px)' }}></div>
+                      <div className="w-8 border-t border-gray-300 absolute" style={{ left: 0, top: 'calc(50px + 30px + 84px)' }}></div>
+                      <div className="w-8 border-t border-gray-300 absolute" style={{ left: 0, top: 'calc(50px + 30px + 84px + 84px)' }}></div>
+                      <div className="w-8 border-t border-gray-300 absolute" style={{ left: 0, top: 'calc(50px + 30px + 84px + 84px + 84px)' }}></div>
+                      <div className="w-8 border-t border-gray-300 absolute" style={{ left: 0, top: 'calc(50px + 30px + 84px + 84px + 84px + 84px)' }}></div>
+                      <div className="w-8 border-t border-gray-300 absolute" style={{ left: 0, top: 'calc(50px + 30px + 84px + 84px + 84px + 84px + 84px)' }}></div>
+                      <div className="w-8 border-t border-gray-300 absolute" style={{ left: 0, top: 'calc(50px + 30px + 84px + 84px + 84px + 84px + 84px + 84px)' }}></div>
                     </div>
                     
-                    {/* Main content blocks */}
+                    {/* Main content blocks with consistent height */}
                     <div className="ml-12 flex-grow mr-14 space-y-3 z-10">
                       {/* 1. CONTEXT/POLICY */}
-                      <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 flex items-start justify-between">
+                      <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 flex items-start justify-between" style={{ height: '84px' }}>
                         <div>
                           <h4 className="font-bold text-blue-800">1. CONTEXT/POLICY</h4>
                           <p className="text-gray-700">Background information and purpose for the model. Sets the stage.</p>
@@ -138,7 +138,7 @@ If certain information is unavailable or outside your knowledge base, clearly in
                       </div>
                       
                       {/* 2. ROLE */}
-                      <div className="bg-green-50 p-4 rounded-lg border border-green-100 flex items-start justify-between">
+                      <div className="bg-green-50 p-4 rounded-lg border border-green-100 flex items-start justify-between" style={{ height: '84px' }}>
                         <div>
                           <h4 className="font-bold text-green-800">2. ROLE</h4>
                           <p className="text-gray-700">The persona or identity the model should adopt.</p>
@@ -149,7 +149,7 @@ If certain information is unavailable or outside your knowledge base, clearly in
                       </div>
                       
                       {/* 3. TASK */}
-                      <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-100 flex items-start justify-between">
+                      <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-100 flex items-start justify-between" style={{ height: '84px' }}>
                         <div>
                           <h4 className="font-bold text-yellow-800">3. TASK</h4>
                           <p className="text-gray-700">The specific action or goal the model needs to achieve.</p>
@@ -160,7 +160,7 @@ If certain information is unavailable or outside your knowledge base, clearly in
                       </div>
                       
                       {/* 4. CONSTRAINTS */}
-                      <div className="bg-red-50 p-4 rounded-lg border border-red-100 flex items-start justify-between">
+                      <div className="bg-red-50 p-4 rounded-lg border border-red-100 flex items-start justify-between" style={{ height: '84px' }}>
                         <div>
                           <h4 className="font-bold text-red-800">4. CONSTRAINTS</h4>
                           <p className="text-gray-700">Rules, style guidelines, and format requirements.</p>
@@ -171,7 +171,7 @@ If certain information is unavailable or outside your knowledge base, clearly in
                       </div>
                       
                       {/* 5. EXAMPLES */}
-                      <div className="bg-purple-50 p-4 rounded-lg border border-purple-100 flex items-start justify-between">
+                      <div className="bg-purple-50 p-4 rounded-lg border border-purple-100 flex items-start justify-between" style={{ height: '84px' }}>
                         <div>
                           <h4 className="font-bold text-purple-800">5. EXAMPLES</h4>
                           <p className="text-gray-700">Demonstrations of the desired input-output format or behavior.</p>
@@ -182,7 +182,7 @@ If certain information is unavailable or outside your knowledge base, clearly in
                       </div>
                       
                       {/* 6. OUTPUT SPEC */}
-                      <div className="bg-teal-50 p-4 rounded-lg border border-teal-100 flex items-start justify-between">
+                      <div className="bg-teal-50 p-4 rounded-lg border border-teal-100 flex items-start justify-between" style={{ height: '84px' }}>
                         <div>
                           <h4 className="font-bold text-teal-800">6. OUTPUT SPEC</h4>
                           <p className="text-gray-700">Explicit instructions on the required output format.</p>
@@ -193,7 +193,7 @@ If certain information is unavailable or outside your knowledge base, clearly in
                       </div>
                       
                       {/* 7. FALLBACK/ERROR HANDLING */}
-                      <div className="bg-pink-50 p-4 rounded-lg border border-pink-100 flex items-start justify-between">
+                      <div className="bg-pink-50 p-4 rounded-lg border border-pink-100 flex items-start justify-between" style={{ height: '84px' }}>
                         <div>
                           <h4 className="font-bold text-pink-800">7. FALLBACK/ERROR HANDLING</h4>
                           <p className="text-gray-700">Instructions on how to respond if difficulties arise.</p>
