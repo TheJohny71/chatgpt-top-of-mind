@@ -103,12 +103,103 @@ If certain information is unavailable or outside your knowledge base, clearly in
             <h3 className="text-xl font-semibold text-gray-800 mb-4">The Anatomy of a Prompt: 7 Building Blocks</h3>
             
             <div className="mb-6">
-              <div className="bg-white border border-gray-200 rounded-lg mb-6">
-                <img 
-                  src="/prompt-anatomy.svg" 
-                  alt="Prompt Anatomy Diagram" 
-                  className="w-full h-auto"
-                />
+              <div className="bg-white border border-gray-200 rounded-lg mb-6 relative">
+                {/* Main diagram content */}
+                <div className="p-6">
+                  <h2 className="text-2xl font-bold text-center mb-2">The Anatomy of a Prompt: 7 Building Blocks</h2>
+                  <p className="text-center text-gray-600 italic mb-8">"Structure Beats Charm"</p>
+                  
+                  <div className="relative">
+                    {/* Sequential Processing vertical text - Fixed positioning and vertical centering */}
+                    <div className="absolute right-0 top-1/2 transform -translate-y-1/2 -translate-x-4">
+                      <div className="bg-gray-100 px-2 py-8 rounded-lg flex items-center justify-center">
+                        <div className="transform rotate-90 whitespace-nowrap font-medium text-gray-700 tracking-wide text-sm w-32 text-center">
+                          SEQUENTIAL PROCESSING
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Diagram blocks */}
+                    <div className="space-y-4 mr-16"> {/* Added margin to avoid overlap with vertical text */}
+                      {/* 1. CONTEXT/POLICY - Fixed label spacing */}
+                      <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 relative flex items-start">
+                        <div className="flex-grow">
+                          <h4 className="font-bold text-blue-800">1. CONTEXT/POLICY</h4>
+                          <p className="text-gray-700">Background information and purpose for the model. Sets the stage.</p>
+                        </div>
+                        <div className="ml-4 flex-shrink-0 text-blue-700 text-sm font-medium p-1 rounded bg-blue-50">
+                          Early influence
+                        </div>
+                      </div>
+                      
+                      {/* 2. ROLE */}
+                      <div className="bg-green-50 p-4 rounded-lg border border-green-100 relative flex items-start">
+                        <div className="flex-grow">
+                          <h4 className="font-bold text-green-800">2. ROLE</h4>
+                          <p className="text-gray-700">The persona or identity the model should adopt.</p>
+                        </div>
+                        <div className="ml-4 flex-shrink-0 text-green-700 text-sm font-medium p-1 rounded bg-green-50">
+                          Identity framing
+                        </div>
+                      </div>
+                      
+                      {/* 3. TASK */}
+                      <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-100 relative flex items-start">
+                        <div className="flex-grow">
+                          <h4 className="font-bold text-yellow-800">3. TASK</h4>
+                          <p className="text-gray-700">The specific action or goal the model needs to achieve.</p>
+                        </div>
+                        <div className="ml-4 flex-shrink-0 text-yellow-700 text-sm font-medium p-1 rounded bg-yellow-50">
+                          Goal direction
+                        </div>
+                      </div>
+                      
+                      {/* 4. CONSTRAINTS */}
+                      <div className="bg-red-50 p-4 rounded-lg border border-red-100 relative flex items-start">
+                        <div className="flex-grow">
+                          <h4 className="font-bold text-red-800">4. CONSTRAINTS</h4>
+                          <p className="text-gray-700">Rules, style guidelines, and format requirements.</p>
+                        </div>
+                        <div className="ml-4 flex-shrink-0 text-red-700 text-sm font-medium p-1 rounded bg-red-50">
+                          Boundary setting
+                        </div>
+                      </div>
+                      
+                      {/* 5. EXAMPLES - Fixed label spacing */}
+                      <div className="bg-purple-50 p-4 rounded-lg border border-purple-100 relative flex items-start">
+                        <div className="flex-grow">
+                          <h4 className="font-bold text-purple-800">5. EXAMPLES</h4>
+                          <p className="text-gray-700">Demonstrations of the desired input-output format or behavior.</p>
+                        </div>
+                        <div className="ml-4 flex-shrink-0 text-purple-700 text-sm font-medium p-1 rounded bg-purple-50">
+                          Pattern teaching
+                        </div>
+                      </div>
+                      
+                      {/* 6. OUTPUT SPEC */}
+                      <div className="bg-teal-50 p-4 rounded-lg border border-teal-100 relative flex items-start">
+                        <div className="flex-grow">
+                          <h4 className="font-bold text-teal-800">6. OUTPUT SPEC</h4>
+                          <p className="text-gray-700">Explicit instructions on the required output format.</p>
+                        </div>
+                        <div className="ml-4 flex-shrink-0 text-teal-700 text-sm font-medium p-1 rounded bg-teal-50">
+                          Response shaping
+                        </div>
+                      </div>
+                      
+                      {/* 7. FALLBACK/ERROR HANDLING */}
+                      <div className="bg-pink-50 p-4 rounded-lg border border-pink-100 relative flex items-start">
+                        <div className="flex-grow">
+                          <h4 className="font-bold text-pink-800">7. FALLBACK/ERROR HANDLING</h4>
+                          <p className="text-gray-700">Instructions on how to respond if difficulties arise.</p>
+                        </div>
+                        <div className="ml-4 flex-shrink-0 text-pink-700 text-sm font-medium p-1 rounded bg-pink-50">
+                          Safety net
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
