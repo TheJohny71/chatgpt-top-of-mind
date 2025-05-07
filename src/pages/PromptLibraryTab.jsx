@@ -1,3 +1,4 @@
+// src/pages/PromptLibraryTab.jsx
 import React, { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
 
@@ -104,111 +105,130 @@ If certain information is unavailable or outside your knowledge base, clearly in
             
             <div className="mb-6">
               <div className="bg-white border border-gray-200 rounded-lg mb-6">
-                <div className="p-4">
+                <div className="p-6">
                   <h2 className="text-2xl font-bold text-center mb-2">The Anatomy of a Prompt: 7 Building Blocks</h2>
                   <p className="text-center text-gray-600 italic mb-8">"Structure Beats Charm"</p>
                   
                   <div className="relative flex">
-                    {/* Left connecting lines - FIXED: Proper positioning */}
-                    <div className="absolute left-0 top-0 bottom-0">
-                      {/* Vertical dotted line - now with correct height: stopping 10px from top and bottom */}
-                      <div className="absolute h-full w-0 border-l border-gray-300 border-dashed left-8" 
-                           style={{ top: '10px', height: 'calc(100% - 20px)' }}></div>
-                      
-                      {/* Horizontal lines for each item - aligned to center of each card */}
-                      <div className="w-8 border-t border-gray-300 absolute left-0" style={{ top: '42px' }}></div>
-                      <div className="w-8 border-t border-gray-300 absolute left-0" style={{ top: '126px' }}></div>
-                      <div className="w-8 border-t border-gray-300 absolute left-0" style={{ top: '210px' }}></div>
-                      <div className="w-8 border-t border-gray-300 absolute left-0" style={{ top: '294px' }}></div>
-                      <div className="w-8 border-t border-gray-300 absolute left-0" style={{ top: '378px' }}></div>
-                      <div className="w-8 border-t border-gray-300 absolute left-0" style={{ top: '462px' }}></div>
-                      <div className="w-8 border-t border-gray-300 absolute left-0" style={{ top: '546px' }}></div>
-                    </div>
-                    
-                    {/* Main content blocks with consistent height */}
-                    <div className="ml-12 flex-grow mr-14 space-y-3">
+                    {/* Main content blocks - Full size with label adjustments */}
+                    <div className="flex-grow">
                       {/* 1. CONTEXT/POLICY */}
-                      <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 flex items-start justify-between" style={{ height: '84px' }}>
-                        <div>
-                          <h4 className="font-bold text-blue-800">1. CONTEXT/POLICY</h4>
-                          <p className="text-gray-700">Background information and purpose for the model. Sets the stage.</p>
-                        </div>
-                        <div className="text-blue-700 text-sm font-medium ml-6 self-start mt-0">
-                          Early influence
+                      <div className="bg-blue-50 p-5 rounded-lg border-l-4 border-l-blue-600 shadow-sm mb-4">
+                        <div className="flex items-start justify-between">
+                          <div className="flex-grow pr-4">
+                            <h4 className="text-lg font-bold text-blue-800 flex items-center">
+                              <div className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 text-blue-700 mr-3 shadow-sm">1</div>
+                              CONTEXT/POLICY
+                            </h4>
+                            <p className="text-gray-700 mt-2 pl-11">Background information and purpose for the model. Sets the stage.</p>
+                          </div>
+                          <div className="whitespace-nowrap text-blue-700 text-sm px-3 py-1 rounded-full border border-blue-200 bg-blue-50 flex-shrink-0 mt-1">
+                            Early influence
+                          </div>
                         </div>
                       </div>
                       
                       {/* 2. ROLE */}
-                      <div className="bg-green-50 p-4 rounded-lg border border-green-100 flex items-start justify-between" style={{ height: '84px' }}>
-                        <div>
-                          <h4 className="font-bold text-green-800">2. ROLE</h4>
-                          <p className="text-gray-700">The persona or identity the model should adopt.</p>
-                        </div>
-                        <div className="text-green-700 text-sm font-medium ml-6 self-start mt-0">
-                          Identity framing
+                      <div className="bg-green-50 p-5 rounded-lg border-l-4 border-l-green-600 shadow-sm mb-4">
+                        <div className="flex items-start justify-between">
+                          <div className="flex-grow pr-4">
+                            <h4 className="text-lg font-bold text-green-800 flex items-center">
+                              <div className="flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700 mr-3 shadow-sm">2</div>
+                              ROLE
+                            </h4>
+                            <p className="text-gray-700 mt-2 pl-11">The persona or identity the model should adopt.</p>
+                          </div>
+                          <div className="whitespace-nowrap text-green-700 text-sm px-3 py-1 rounded-full border border-green-200 bg-green-50 flex-shrink-0 mt-1">
+                            Identity framing
+                          </div>
                         </div>
                       </div>
                       
                       {/* 3. TASK */}
-                      <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-100 flex items-start justify-between" style={{ height: '84px' }}>
-                        <div>
-                          <h4 className="font-bold text-yellow-800">3. TASK</h4>
-                          <p className="text-gray-700">The specific action or goal the model needs to achieve.</p>
-                        </div>
-                        <div className="text-yellow-700 text-sm font-medium ml-6 self-start mt-0">
-                          Goal direction
+                      <div className="bg-yellow-50 p-5 rounded-lg border-l-4 border-l-yellow-600 shadow-sm mb-4">
+                        <div className="flex items-start justify-between">
+                          <div className="flex-grow pr-4">
+                            <h4 className="text-lg font-bold text-yellow-800 flex items-center">
+                              <div className="flex items-center justify-center w-8 h-8 rounded-full bg-yellow-100 text-yellow-700 mr-3 shadow-sm">3</div>
+                              TASK
+                            </h4>
+                            <p className="text-gray-700 mt-2 pl-11">The specific action or goal the model needs to achieve.</p>
+                          </div>
+                          <div className="whitespace-nowrap text-yellow-700 text-sm px-3 py-1 rounded-full border border-yellow-200 bg-yellow-50 flex-shrink-0 mt-1">
+                            Goal direction
+                          </div>
                         </div>
                       </div>
                       
                       {/* 4. CONSTRAINTS */}
-                      <div className="bg-red-50 p-4 rounded-lg border border-red-100 flex items-start justify-between" style={{ height: '84px' }}>
-                        <div>
-                          <h4 className="font-bold text-red-800">4. CONSTRAINTS</h4>
-                          <p className="text-gray-700">Rules, style guidelines, and format requirements.</p>
-                        </div>
-                        <div className="text-red-700 text-sm font-medium ml-6 self-start mt-0">
-                          Boundary setting
+                      <div className="bg-red-50 p-5 rounded-lg border-l-4 border-l-red-600 shadow-sm mb-4">
+                        <div className="flex items-start justify-between">
+                          <div className="flex-grow pr-4">
+                            <h4 className="text-lg font-bold text-red-800 flex items-center">
+                              <div className="flex items-center justify-center w-8 h-8 rounded-full bg-red-100 text-red-700 mr-3 shadow-sm">4</div>
+                              CONSTRAINTS
+                            </h4>
+                            <p className="text-gray-700 mt-2 pl-11">Rules, style guidelines, and format requirements.</p>
+                          </div>
+                          <div className="whitespace-nowrap text-red-700 text-sm px-3 py-1 rounded-full border border-red-200 bg-red-50 flex-shrink-0 mt-1">
+                            Boundary setting
+                          </div>
                         </div>
                       </div>
                       
                       {/* 5. EXAMPLES */}
-                      <div className="bg-purple-50 p-4 rounded-lg border border-purple-100 flex items-start justify-between" style={{ height: '84px' }}>
-                        <div>
-                          <h4 className="font-bold text-purple-800">5. EXAMPLES</h4>
-                          <p className="text-gray-700">Demonstrations of the desired input-output format or behavior.</p>
-                        </div>
-                        <div className="text-purple-700 text-sm font-medium ml-6 self-start mt-0">
-                          Pattern teaching
+                      <div className="bg-purple-50 p-5 rounded-lg border-l-4 border-l-purple-600 shadow-sm mb-4">
+                        <div className="flex items-start justify-between">
+                          <div className="flex-grow pr-4">
+                            <h4 className="text-lg font-bold text-purple-800 flex items-center">
+                              <div className="flex items-center justify-center w-8 h-8 rounded-full bg-purple-100 text-purple-700 mr-3 shadow-sm">5</div>
+                              EXAMPLES
+                            </h4>
+                            <p className="text-gray-700 mt-2 pl-11">Demonstrations of the desired input-output format or behavior.</p>
+                          </div>
+                          <div className="whitespace-nowrap text-purple-700 text-sm px-3 py-1 rounded-full border border-purple-200 bg-purple-50 flex-shrink-0 mt-1">
+                            Pattern teaching
+                          </div>
                         </div>
                       </div>
                       
                       {/* 6. OUTPUT SPEC */}
-                      <div className="bg-teal-50 p-4 rounded-lg border border-teal-100 flex items-start justify-between" style={{ height: '84px' }}>
-                        <div>
-                          <h4 className="font-bold text-teal-800">6. OUTPUT SPEC</h4>
-                          <p className="text-gray-700">Explicit instructions on the required output format.</p>
-                        </div>
-                        <div className="text-teal-700 text-sm font-medium ml-6 self-start mt-0">
-                          Response shaping
+                      <div className="bg-teal-50 p-5 rounded-lg border-l-4 border-l-teal-600 shadow-sm mb-4">
+                        <div className="flex items-start justify-between">
+                          <div className="flex-grow pr-4">
+                            <h4 className="text-lg font-bold text-teal-800 flex items-center">
+                              <div className="flex items-center justify-center w-8 h-8 rounded-full bg-teal-100 text-teal-700 mr-3 shadow-sm">6</div>
+                              OUTPUT SPEC
+                            </h4>
+                            <p className="text-gray-700 mt-2 pl-11">Explicit instructions on the required output format.</p>
+                          </div>
+                          <div className="whitespace-nowrap text-teal-700 text-sm px-3 py-1 rounded-full border border-teal-200 bg-teal-50 flex-shrink-0 mt-1">
+                            Response shaping
+                          </div>
                         </div>
                       </div>
                       
                       {/* 7. FALLBACK/ERROR HANDLING */}
-                      <div className="bg-pink-50 p-4 rounded-lg border border-pink-100 flex items-start justify-between" style={{ height: '84px' }}>
-                        <div>
-                          <h4 className="font-bold text-pink-800">7. FALLBACK/ERROR HANDLING</h4>
-                          <p className="text-gray-700">Instructions on how to respond if difficulties arise.</p>
-                        </div>
-                        <div className="text-pink-700 text-sm font-medium ml-6 self-start mt-0">
-                          Safety net
+                      <div className="bg-pink-50 p-5 rounded-lg border-l-4 border-l-pink-600 shadow-sm mb-4">
+                        <div className="flex items-start justify-between">
+                          <div className="flex-grow pr-4">
+                            <h4 className="text-lg font-bold text-pink-800 flex items-center">
+                              <div className="flex items-center justify-center w-8 h-8 rounded-full bg-pink-100 text-pink-700 mr-3 shadow-sm">7</div>
+                              FALLBACK/ERROR HANDLING
+                            </h4>
+                            <p className="text-gray-700 mt-2 pl-11">Instructions on how to respond if difficulties arise.</p>
+                          </div>
+                          <div className="whitespace-nowrap text-pink-700 text-sm px-3 py-1 rounded-full border border-pink-200 bg-pink-50 flex-shrink-0 mt-1">
+                            Safety net
+                          </div>
                         </div>
                       </div>
                     </div>
                     
                     {/* Sequential Processing vertical text */}
-                    <div className="absolute right-0 top-0 bottom-0">
-                      <div className="relative h-full flex items-center justify-center bg-gray-50" style={{ width: '28px' }}>
-                        <div className="transform rotate-90 whitespace-nowrap font-medium text-gray-700 uppercase text-sm tracking-wider origin-center">
+                    <div className="ml-6">
+                      <div className="relative h-full flex items-center justify-center bg-blue-900 text-white rounded-lg shadow-sm" style={{ width: '36px' }}>
+                        <div className="transform rotate-90 whitespace-nowrap font-bold uppercase text-sm tracking-wider origin-center">
                           SEQUENTIAL PROCESSING
                         </div>
                       </div>
@@ -218,32 +238,33 @@ If certain information is unavailable or outside your knowledge base, clearly in
               </div>
             </div>
 
-            <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">Critical Rules for Prompt Block Ordering</h3>
-              <div className="space-y-3">
-                <div className="border-l-4 border-indigo-500 pl-3 py-1">
+            {/* Critical Rules for Prompt Block Ordering */}
+            <div className="bg-gray-50 p-5 rounded-lg border border-gray-200 shadow-sm mt-8">
+              <h3 className="text-lg font-bold text-blue-900 mb-4 text-center">Critical Rules for Prompt Block Ordering</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="border-l-4 border-blue-600 pl-4 py-2 bg-white rounded-r-lg shadow-sm">
                   <h4 className="font-medium text-gray-900">Rule 1: Early tokens steer the search space</h4>
                   <p className="text-gray-700 text-sm">Instructions placed earlier in the prompt have a disproportionately strong influence on the model's initial processing. Critical rules and policies should be front-loaded.</p>
                 </div>
                 
-                <div className="border-l-4 border-amber-500 pl-3 py-1">
+                <div className="border-l-4 border-blue-600 pl-4 py-2 bg-white rounded-r-lg shadow-sm">
                   <h4 className="font-medium text-gray-900">Rule 2: Recency beats rank when rules collide</h4>
                   <p className="text-gray-700 text-sm">Due to positional encoding decay, later instructions can sometimes override earlier ones. This creates the vulnerability for prompt injection attacks if critical constraints aren't properly segregated.</p>
                 </div>
                 
-                <div className="border-l-4 border-emerald-500 pl-3 py-1">
+                <div className="border-l-4 border-blue-600 pl-4 py-2 bg-white rounded-r-lg shadow-sm">
                   <h4 className="font-medium text-gray-900">Rule 3: Output format doubles as a stop-token</h4>
                   <p className="text-gray-700 text-sm">Placing the required output format at the end of the prompt biases the model to stop generating text once that pattern is emitted, improving correctness and efficiency.</p>
                 </div>
                 
-                <div className="border-l-4 border-purple-500 pl-3 py-1">
+                <div className="border-l-4 border-blue-600 pl-4 py-2 bg-white rounded-r-lg shadow-sm">
                   <h4 className="font-medium text-gray-900">Optimal Order</h4>
                   <p className="text-gray-700 text-sm">The most effective sequence is: <strong>immovable rules first</strong> (via Context/Policy), <strong>task-specific details next</strong> (Role through Examples), and <strong>output format last</strong> (Output Spec and Fallback).</p>
                 </div>
-                
-                <div className="mt-2 text-gray-600 italic text-sm">
-                  "Remove a piece and the load shifts unpredictably... place these in a different order and you'll likely get more unpredictable responses."
-                </div>
+              </div>
+              
+              <div className="mt-4 text-gray-600 italic text-sm text-center px-4 py-2 bg-white rounded-lg border border-gray-100">
+                "Remove a piece and the load shifts unpredictably... place these in a different order and you'll likely get more unpredictable responses."
               </div>
             </div>
           </div>
