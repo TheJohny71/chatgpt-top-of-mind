@@ -1,7 +1,9 @@
+// src/pages/ModelsTab.jsx
 import React, { useState } from 'react';
 import ModelCard from '../components/ModelCard';
 import ComparisonTable from '../components/ComparisonTable';
 import PracticeAreaTable from '../components/PracticeAreaTable';
+import HallucinationDataTab from '../components/HallucinationDataTab';
 
 const ModelsTab = () => {
   // Sample model data - in a real app this would come from an API or data source
@@ -165,6 +167,8 @@ const ModelsTab = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedModels, setSelectedModels] = useState([]);
   const [showComparison, setShowComparison] = useState(false);
+  // New state for subtabs
+  const [activeSubtab, setActiveSubtab] = useState('overview');
 
   // Filter models based on selected filter
   const filteredModels = allModels.filter(model => {
@@ -218,88 +222,128 @@ const ModelsTab = () => {
         </p>
       </div>
 
-      {/* Filter Options */}
-      <div className="flex flex-wrap gap-2 mb-6">
-        {filterOptions.map(option => (
+      {/* Subtabs Navigation */}
+      <div className="mb-8 border-b border-gray-200">
+        <nav className="flex space-x-8">
           <button
-            key={option.id}
-            onClick={() => setActiveFilter(option.id)}
-            className={`px-4 py-2 rounded-full text-sm font-medium ${
-              activeFilter === option.id
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+            onClick={() => setActiveSubtab('overview')}
+            className={`py-3 px-1 border-b-2 font-medium text-sm ${
+              activeSubtab === 'overview'
+                ? 'border-blue-600 text-blue-600'
+                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
             }`}
           >
-            {option.label}
+            Model Overview
           </button>
-        ))}
+          <button
+            onClick={() => setActiveSubtab('hallucination')}
+            className={`py-3 px-1 border-b-2 font-medium text-sm ${
+              activeSubtab === 'hallucination'
+                ? 'border-blue-600 text-blue-600'
+                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+            }`}
+          >
+            Hallucination Data
+          </button>
+          <button
+            onClick={() => setActiveSubtab('practice')}
+            className={`py-3 px-1 border-b-2 font-medium text-sm ${
+              activeSubtab === 'practice'
+                ? 'border-blue-600 text-blue-600'
+                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+            }`}
+          >
+            Practice Areas
+          </button>
+        </nav>
       </div>
 
-      {/* Recommended for Legal Research Section */}
-      {activeFilter === 'all' || activeFilter === 'recommended' ? (
-        <section className="mb-12">
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">
-            Recommended for Legal Research
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {recommendedModels.map(model => (
-              <ModelCard
-                key={model.id}
-                model={model}
-                onSelect={handleModelSelect}
-                isSelected={selectedModels.some(m => m.id === model.id)}
-              />
+      {/* Render content based on active subtab */}
+      {activeSubtab === 'hallucination' ? (
+        <HallucinationDataTab />
+      ) : activeSubtab === 'practice' ? (
+        <section className="mb-12" id="all-practice-areas">
+          <PracticeAreaTable models={allModels} />
+        </section>
+      ) : (
+        // Default 'overview' subtab
+        <>
+          {/* Filter Options */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {filterOptions.map(option => (
+              <button
+                key={option.id}
+                onClick={() => setActiveFilter(option.id)}
+                className={`px-4 py-2 rounded-full text-sm font-medium ${
+                  activeFilter === option.id
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                {option.label}
+              </button>
             ))}
           </div>
-        </section>
-      ) : null}
 
-      {/* All Available Models */}
-      <section className="mb-12">
-        <h3 className="text-xl font-semibold text-gray-900 mb-4">
-          {activeFilter === 'all' ? 'All Available Models' : 
-           activeFilter === 'recommended' ? 'All Recommended Models' : 
-           'New & Beta Models'}
-        </h3>
-        
-        {filteredModels.length === 0 ? (
-          <div className="bg-gray-50 p-6 rounded-lg text-center">
-            <p className="text-gray-500">No models match your current filter. Try a different selection.</p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredModels.map(model => (
-              <ModelCard
-                key={model.id}
-                model={model}
-                onSelect={handleModelSelect}
-                isSelected={selectedModels.some(m => m.id === model.id)}
+          {/* Recommended for Legal Research Section */}
+          {activeFilter === 'all' || activeFilter === 'recommended' ? (
+            <section className="mb-12">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                Recommended for Legal Research
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {recommendedModels.map(model => (
+                  <ModelCard
+                    key={model.id}
+                    model={model}
+                    onSelect={handleModelSelect}
+                    isSelected={selectedModels.some(m => m.id === model.id)}
+                  />
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          {/* All Available Models */}
+          <section className="mb-12">
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">
+              {activeFilter === 'all' ? 'All Available Models' : 
+               activeFilter === 'recommended' ? 'All Recommended Models' : 
+               'New & Beta Models'}
+            </h3>
+            
+            {filteredModels.length === 0 ? (
+              <div className="bg-gray-50 p-6 rounded-lg text-center">
+                <p className="text-gray-500">No models match your current filter. Try a different selection.</p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredModels.map(model => (
+                  <ModelCard
+                    key={model.id}
+                    model={model}
+                    onSelect={handleModelSelect}
+                    isSelected={selectedModels.some(m => m.id === model.id)}
+                  />
+                ))}
+              </div>
+            )}
+          </section>
+
+          {/* Comparison Section */}
+          {showComparison && (
+            <section className="mb-12">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                Model Comparison
+              </h3>
+              <ComparisonTable 
+                selectedModels={selectedModels} 
+                onRemove={handleRemoveFromComparison} 
               />
-            ))}
-          </div>
-        )}
-      </section>
-
-      {/* Comparison Section */}
-      {showComparison && (
-        <section className="mb-12">
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">
-            Model Comparison
-          </h3>
-          <ComparisonTable 
-            selectedModels={selectedModels} 
-            onRemove={handleRemoveFromComparison} 
-          />
-        </section>
+            </section>
+          )}
+        </>
       )}
-
-      {/* Practice Area Suitability */}
-      <section className="mb-12" id="all-practice-areas">
-        <h3 className="text-xl font-semibold text-gray-900 mb-4">
-          Practice Area Suitability
-        </h3>
-        <PracticeAreaTable models={allModels} />
-      </section>
     </div>
   );
 };
