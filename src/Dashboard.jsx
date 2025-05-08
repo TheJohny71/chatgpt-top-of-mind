@@ -5,6 +5,7 @@ import PromptLibraryTab from './pages/PromptLibraryTab';
 import UpdatesTab from './pages/UpdatesTab';
 import LegalUseCasesTab from './pages/LegalUseCasesTab';
 import LastUpdatedFooter from './components/LastUpdatedFooter';
+import LegalUseCasesTab from './pages/LegalUseCasesTab';
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
