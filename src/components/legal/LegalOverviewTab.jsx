@@ -1,6 +1,6 @@
 // src/components/legal/LegalOverviewTab.jsx
 import React from 'react';
-import { FileText, HelpCircle, ExternalLink, Clock } from 'lucide-react';
+import { FileText, HelpCircle, ExternalLink } from 'lucide-react';
 
 const LegalOverviewTab = () => {
   return (
@@ -127,76 +127,9 @@ const LegalOverviewTab = () => {
         </div>
       </section>
 
-      {/* Resources Section */}
-      <section className="mb-8">
-        <h2 className="text-2xl font-serif text-blue-900 mb-2">Resources</h2>
-        <p className="text-gray-600 mb-4">Quick access to documentation and frequently asked questions.</p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div className="bg-white rounded-lg shadow-sm p-5">
-            <h3 className="text-lg font-medium text-gray-800 mb-3">Documentation</h3>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <a href="#" className="text-blue-700 hover:underline flex items-center">
-                  <FileText className="h-4 w-4 mr-2" />
-                  API Documentation for Legal Researchers
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-blue-700 hover:underline flex items-center">
-                  <FileText className="h-4 w-4 mr-2" />
-                  Model Comparison Guide
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-blue-700 hover:underline flex items-center">
-                  <FileText className="h-4 w-4 mr-2" />
-                  Prompt Engineering for Legal Research
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-blue-700 hover:underline flex items-center">
-                  <FileText className="h-4 w-4 mr-2" />
-                  Security and Compliance Guide
-                </a>
-              </li>
-            </ul>
-            <button className="mt-4 text-blue-700 hover:text-blue-800 text-sm font-medium">
-              View All Documentation →
-            </button>
-          </div>
-          
-          <div className="bg-white rounded-lg shadow-sm p-5">
-            <h3 className="text-lg font-medium text-gray-800 mb-3">Frequently Asked Questions</h3>
-            <div className="space-y-3 text-sm">
-              <div>
-                <h4 className="font-medium text-gray-800">How do I choose the right model for my research needs?</h4>
-                <p className="text-gray-600 mt-1">Each model has different strengths based on the type of legal research...</p>
-                <button className="text-blue-700 hover:text-blue-800 text-xs mt-1">Read More</button>
-              </div>
-              <div>
-                <h4 className="font-medium text-gray-800">What citation formats are supported?</h4>
-                <p className="text-gray-600 mt-1">All models support Bluebook, ALWD, APA, and MLA citation formats...</p>
-                <button className="text-blue-700 hover:text-blue-800 text-xs mt-1">Read More</button>
-              </div>
-              <div>
-                <h4 className="font-medium text-gray-800">How do I report a citation or legal accuracy issue?</h4>
-                <p className="text-gray-600 mt-1">Use the feedback button in the interface to report any issues...</p>
-                <button className="text-blue-700 hover:text-blue-800 text-xs mt-1">Read More</button>
-              </div>
-            </div>
-            <button className="mt-4 text-blue-700 hover:text-blue-800 text-sm font-medium">
-              View All FAQs →
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Last Updated Footer */}
-      <div className="mt-8 text-sm text-gray-500 flex items-center justify-center">
-        <Clock className="h-4 w-4 mr-2" />
-        Last Updated: May 06, 2025
-      </div>
+      {/* Resources section removed as requested */}
+      {/* FAQ section removed as requested */}
+      {/* Last updated information removed as requested */}
     </div>
   );
 };
