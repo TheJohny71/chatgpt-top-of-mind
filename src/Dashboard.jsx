@@ -3,6 +3,7 @@ import { AlertTriangle, CheckCircle, Info, ExternalLink, Clock } from 'lucide-re
 import ModelsTab from './pages/ModelsTab';
 import PromptLibraryTab from './pages/PromptLibraryTab';
 import UpdatesTab from './pages/UpdatesTab';
+import LegalUseCasesTab from './pages/LegalUseCasesTab';
 import LastUpdatedFooter from './components/LastUpdatedFooter';
 
 const Dashboard = () => {
@@ -79,6 +80,8 @@ const Dashboard = () => {
           <PromptLibraryTab />
         ) : activeTab === 'updates' ? (
           <UpdatesTab />
+        ) : activeTab === 'use-cases' ? (
+          <LegalUseCasesTab />
         ) : (
           /* Otherwise, show the original content */
           <>
