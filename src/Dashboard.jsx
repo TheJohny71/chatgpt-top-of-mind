@@ -4,6 +4,7 @@ import ModelsTab from './pages/ModelsTab';
 import PromptLibraryTab from './pages/PromptLibraryTab';
 import UpdatesTab from './pages/UpdatesTab';
 import LegalUseCasesTab from './pages/LegalUseCasesTab';
+import ResourcesTab from './pages/ResourcesTab';
 import LastUpdatedFooter from './components/LastUpdatedFooter';
 
 const Dashboard = () => {
@@ -82,8 +83,10 @@ const Dashboard = () => {
           <UpdatesTab />
         ) : activeTab === 'use-cases' ? (
           <LegalUseCasesTab />
+        ) : activeTab === 'resources' ? (
+          <ResourcesTab />
         ) : (
-          /* Otherwise, show the original content */
+          /* Otherwise, show the original overview content */
           <>
             {/* Overview Section - Show only if overview tab is active */}
             {activeTab === 'overview' && (
@@ -375,7 +378,7 @@ const Dashboard = () => {
             )}
             
             {/* Resources Section - Show only if resources tab is active or on overview */}
-            {(activeTab === 'overview' || activeTab === 'resources') && (
+            {(activeTab === 'overview') && (
               <section className="mb-8">
                 <h2 className="text-2xl font-serif text-blue-900 mb-2">Resources</h2>
                 <p className="text-gray-600 mb-4">Quick access to documentation and frequently asked questions.</p>
@@ -417,7 +420,10 @@ const Dashboard = () => {
                         </a>
                       </li>
                     </ul>
-                    <button className="mt-4 text-blue-700 hover:text-blue-800 text-sm font-medium">
+                    <button 
+                      className="mt-4 text-blue-700 hover:text-blue-800 text-sm font-medium"
+                      onClick={() => setActiveTab('resources')}
+                    >
                       View All Documentation →
                     </button>
                   </div>
@@ -441,7 +447,10 @@ const Dashboard = () => {
                         <button className="text-blue-700 hover:text-blue-800 text-xs mt-1">Read More</button>
                       </div>
                     </div>
-                    <button className="mt-4 text-blue-700 hover:text-blue-800 text-sm font-medium">
+                    <button 
+                      className="mt-4 text-blue-700 hover:text-blue-800 text-sm font-medium"
+                      onClick={() => setActiveTab('resources')}
+                    >
                       View All FAQs →
                     </button>
                   </div>
