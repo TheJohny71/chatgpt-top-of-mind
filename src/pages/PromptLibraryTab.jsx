@@ -63,7 +63,7 @@ If certain information is unavailable or outside your knowledge base, clearly in
         </p>
       </div>
 
-      {/* Navigation Tabs */}
+      {/* Navigation Tabs - Reordered to move Wake Words to the end */}
       <div className="border-b border-gray-200 mb-6">
         <nav className="-mb-px flex space-x-8">
           <button
@@ -87,16 +87,6 @@ If certain information is unavailable or outside your knowledge base, clearly in
             Prompt Builder
           </button>
           <button
-            onClick={() => setActiveSection('wakewords')}
-            className={`py-4 px-1 border-b-2 font-medium text-sm ${
-              activeSection === 'wakewords'
-                ? 'border-blue-700 text-blue-700'
-                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-            }`}
-          >
-            Wake Words
-          </button>
-          <button
             onClick={() => setActiveSection('template')}
             className={`py-4 px-1 border-b-2 font-medium text-sm ${
               activeSection === 'template'
@@ -116,6 +106,16 @@ If certain information is unavailable or outside your knowledge base, clearly in
           >
             Implementation Guide
           </button>
+          <button
+            onClick={() => setActiveSection('wakewords')}
+            className={`py-4 px-1 border-b-2 font-medium text-sm ${
+              activeSection === 'wakewords'
+                ? 'border-blue-700 text-blue-700'
+                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+            }`}
+          >
+            Wake Words
+          </button>
         </nav>
       </div>
 
@@ -133,16 +133,16 @@ If certain information is unavailable or outside your knowledge base, clearly in
         </section>
       )}
 
-      {/* Prompt Anatomy Diagram Section */}
+      {/* Prompt Anatomy Diagram Section with centered title */}
       {activeSection === 'diagram' && (
         <section className="mb-12">
           <div className="bg-white p-6 rounded-lg shadow-md mb-8">
-            <h3 className="text-xl font-semibold text-gray-800 mb-4">The Anatomy of a Prompt: 7 Building Blocks</h3>
+            <h3 className="text-xl font-semibold text-gray-800 mb-4 text-center">The Anatomy of a Prompt: 7 Building Blocks</h3>
             
             <div className="mb-6">
               <div className="bg-white border border-gray-200 rounded-lg mb-6">
                 <div className="p-6">
-                  {/* Removed the duplicate title here */}
+                  {/* Centered tagline */}
                   <p className="text-center text-gray-600 italic mb-8">"Structure Beats Charm"</p>
                   
                   <div className="relative flex">
