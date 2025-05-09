@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AlertTriangle, Info, CheckCircle, ExternalLink, Clock } from 'lucide-react';
+import { AlertTriangle, Info, CheckCircle, ExternalLink } from 'lucide-react';
 
 const UpdatesTab = () => {
   // State for category filter
@@ -110,23 +110,17 @@ const UpdatesTab = () => {
       </div>
 
       {/* Filter Controls */}
-      <div className="flex justify-between items-center mb-6 mobile-flex-col mobile-items-start">
-        <div className="flex gap-2 mb-4 md:mb-0">
-          <select 
-            className="text-sm border border-gray-300 rounded px-3 py-2 bg-white min-h-[44px]"
-            value={categoryFilter}
-            onChange={(e) => setCategoryFilter(e.target.value)}
-          >
-            <option>All Categories</option>
-            <option>MODELS</option>
-            <option>FEATURES</option>
-            <option>CRITICAL</option>
-          </select>
-        </div>
-        <div className="flex items-center text-sm text-gray-500">
-          <Clock className="h-4 w-4 mr-2" />
-          Last Updated: May 06, 2025
-        </div>
+      <div className="flex mb-6 mobile-flex-col mobile-items-start">
+        <select 
+          className="text-sm border border-gray-300 rounded px-3 py-2 bg-white min-h-[44px]"
+          value={categoryFilter}
+          onChange={(e) => setCategoryFilter(e.target.value)}
+        >
+          <option>All Categories</option>
+          <option>MODELS</option>
+          <option>FEATURES</option>
+          <option>CRITICAL</option>
+        </select>
       </div>
 
       {/* Updates List with increased spacing */}
@@ -182,8 +176,6 @@ const UpdatesTab = () => {
                   ))}
                   
                   <span className="ml-auto text-sm text-gray-500">{update.date}</span>
-                  
-                  {/* Removed the blue dot indicator */}
                 </div>
                 
                 {/* Added Key Takeaway */}
@@ -225,14 +217,6 @@ const UpdatesTab = () => {
         <button className="text-blue-700 hover:text-blue-800 border border-blue-700 rounded-full px-5 py-2 text-sm font-medium min-h-[44px]">
           View All Updates
         </button>
-      </div>
-      
-      {/* Mobile-friendly footer with last updated info */}
-      <div className="mt-8 pt-6 border-t border-gray-200 text-center text-sm text-gray-500 md:hidden">
-        <div className="flex items-center justify-center">
-          <Clock className="h-4 w-4 mr-2" />
-          <span>Dashboard Last Updated: May 06, 2025</span>
-        </div>
       </div>
     </div>
   );

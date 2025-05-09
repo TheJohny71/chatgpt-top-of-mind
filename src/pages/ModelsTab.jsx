@@ -1,6 +1,6 @@
 // src/pages/ModelsTab.jsx
 import React, { useState } from 'react';
-import { BarChart2, Table, Clock } from 'lucide-react';
+import { BarChart2, Table } from 'lucide-react';
 import ModelCard from '../components/ModelCard';
 import ComparisonTable from '../components/ComparisonTable';
 import ModelComparisonChart from '../components/ModelComparisonChart';
@@ -224,17 +224,11 @@ const ModelsTab = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-8 dashboard-content">
-      <div className="mb-8 flex justify-between items-center flex-wrap">
-        <div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2 mobile-text-xl">Language Models</h2>
-          <p className="text-gray-600">
-            Compare and explore available language models for your legal work. Select up to three models to compare.
-          </p>
-        </div>
-        <div className="flex items-center text-sm text-gray-500 mt-2 md:mt-0">
-          <Clock className="h-4 w-4 mr-2" />
-          Last Updated: May 06, 2025
-        </div>
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold text-gray-900 mb-2 mobile-text-xl">Language Models</h2>
+        <p className="text-gray-600">
+          Compare and explore available language models for your legal work. Select up to three models to compare.
+        </p>
       </div>
 
       {/* Subtabs Navigation */}

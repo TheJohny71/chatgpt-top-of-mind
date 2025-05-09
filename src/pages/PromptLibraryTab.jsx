@@ -106,7 +106,7 @@ If certain information is unavailable or outside your knowledge base, clearly in
             <div className="mb-6">
               <div className="bg-white border border-gray-200 rounded-lg mb-6">
                 <div className="p-6">
-                  <h2 className="text-2xl font-bold text-center mb-2">The Anatomy of a Prompt: 7 Building Blocks</h2>
+                  {/* Removed the duplicate title here */}
                   <p className="text-center text-gray-600 italic mb-8">"Structure Beats Charm"</p>
                   
                   <div className="relative flex">
