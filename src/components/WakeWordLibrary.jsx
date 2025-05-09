@@ -1,6 +1,6 @@
 // src/components/WakeWordLibrary.jsx
 import React, { useState } from 'react';
-import { Copy, Check, ArrowRight, Code, Book, Scale, FileText, Clipboard, AlertTriangle } from 'lucide-react';
+import { Copy, Check, ArrowRight, Code, Book, Scale, FileText, Clipboard, AlertTriangle, Layers } from 'lucide-react';
 
 const WakeWordLibrary = () => {
   const [activeTabs, setActiveTabs] = useState('library');
