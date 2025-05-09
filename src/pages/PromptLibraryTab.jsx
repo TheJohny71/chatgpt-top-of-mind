@@ -1,6 +1,7 @@
 // src/pages/PromptLibraryTab.jsx
 import React, { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
+import PromptCreationGuide from '../components/PromptCreationGuide';
 
 const PromptLibraryTab = () => {
   const [activeSection, setActiveSection] = useState('diagram');
@@ -75,6 +76,16 @@ If certain information is unavailable or outside your knowledge base, clearly in
             Prompt Anatomy Diagram
           </button>
           <button
+            onClick={() => setActiveSection('builder')}
+            className={`py-4 px-1 border-b-2 font-medium text-sm ${
+              activeSection === 'builder'
+                ? 'border-blue-700 text-blue-700'
+                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+            }`}
+          >
+            Prompt Builder
+          </button>
+          <button
             onClick={() => setActiveSection('template')}
             className={`py-4 px-1 border-b-2 font-medium text-sm ${
               activeSection === 'template'
@@ -96,6 +107,13 @@ If certain information is unavailable or outside your knowledge base, clearly in
           </button>
         </nav>
       </div>
+
+      {/* Prompt Builder Section */}
+      {activeSection === 'builder' && (
+        <section className="mb-12">
+          <PromptCreationGuide />
+        </section>
+      )}
 
       {/* Prompt Anatomy Diagram Section */}
       {activeSection === 'diagram' && (
@@ -266,6 +284,17 @@ If certain information is unavailable or outside your knowledge base, clearly in
               <div className="mt-4 text-gray-600 italic text-sm text-center px-4 py-2 bg-white rounded-lg border border-gray-100">
                 "Remove a piece and the load shifts unpredictably... place these in a different order and you'll likely get more unpredictable responses."
               </div>
+            </div>
+            
+            {/* Call to action for Prompt Builder */}
+            <div className="mt-8 text-center">
+              <p className="text-gray-700 mb-4">Ready to create your own structured prompt?</p>
+              <button 
+                onClick={() => setActiveSection('builder')} 
+                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+              >
+                Try the Prompt Builder
+              </button>
             </div>
           </div>
         </section>
