@@ -409,7 +409,7 @@ If certain information is unavailable or outside your knowledge base, clearly in
               <ul className="space-y-2">
                 <li className="flex items-center">
                   <ExternalLink className="h-4 w-4 text-blue-600 mr-2" />
-                  <a href="#" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                  <a href="https://academy.openai.com/public/collections/chatgpt-at-work" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
                     ChatGPT at Work - Understanding Prompts
                   </a>
                 </li>
