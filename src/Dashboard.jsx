@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AlertTriangle, CheckCircle, Info, ExternalLink, Clock } from 'lucide-react';
+import { AlertTriangle, CheckCircle, Info, ExternalLink, Clock, FileText, Shield, Book, Cpu } from 'lucide-react';
 import ModelsTab from './pages/ModelsTab';
 import PromptLibraryTab from './pages/PromptLibraryTab';
 import UpdatesTab from './pages/UpdatesTab';
@@ -10,6 +10,57 @@ import LastUpdatedFooter from './components/LastUpdatedFooter';
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const lastUpdated = "May 06, 2025";
+
+  // Featured resources from ResourcesTab.jsx - most relevant for Overview page
+  const featuredResources = [
+    {
+      id: 1,
+      title: "ChatGPT Enterprise Documentation",
+      description: "Official product documentation for ChatGPT Enterprise features and capabilities.",
+      icon: <FileText className="h-4 w-4 mr-2 text-blue-700" />,
+      link: "https://help.openai.com/en/collections/5688074-chatgpt-enterprise"
+    },
+    {
+      id: 3,
+      title: "OpenAI Trust Portal",
+      description: "Security documentation, compliance certifications, and SOC 2 Type 2 report access.",
+      icon: <Shield className="h-4 w-4 mr-2 text-blue-700" />,
+      link: "https://trust.openai.com/"
+    },
+    {
+      id: 7,
+      title: "Advanced Prompt Engineering Documentation",
+      description: "Technical instructions for specialized prompt construction in professional contexts.",
+      icon: <Book className="h-4 w-4 mr-2 text-blue-700" />,
+      link: "https://academy.openai.com/public/content"
+    },
+    {
+      id: 9,
+      title: "Custom GPT Technical Documentation",
+      description: "Technical specifications for GPT construction, permissions management, and knowledge retrieval.",
+      icon: <Cpu className="h-4 w-4 mr-2 text-blue-700" />,
+      link: "https://openai.com/chatgpt/enterprise"
+    }
+  ];
+
+  // Frequently asked questions - synced with the Resources tab content
+  const faqs = [
+    {
+      question: "How do I choose the right model for my research needs?",
+      answer: "Each model has different strengths based on the type of legal research...",
+      link: "Read More"
+    },
+    {
+      question: "What citation formats are supported?",
+      answer: "All models support Bluebook, ALWD, APA, and MLA citation formats...",
+      link: "Read More"
+    },
+    {
+      question: "How do I report a citation or legal accuracy issue?",
+      answer: "Use the feedback button in the interface to report any issues...",
+      link: "Read More"
+    }
+  ];
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
@@ -387,38 +438,14 @@ const Dashboard = () => {
                   <div className="bg-white rounded-lg shadow-sm p-5">
                     <h3 className="text-lg font-medium text-gray-800 mb-3">Documentation</h3>
                     <ul className="space-y-3 text-sm">
-                      <li>
-                        <a href="#" className="text-blue-700 hover:underline flex items-center">
-                          <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                          </svg>
-                          API Documentation for Legal Researchers
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className="text-blue-700 hover:underline flex items-center">
-                          <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                          </svg>
-                          Model Comparison Guide
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className="text-blue-700 hover:underline flex items-center">
-                          <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                          </svg>
-                          Prompt Engineering for Legal Research
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className="text-blue-700 hover:underline flex items-center">
-                          <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                          </svg>
-                          Security and Compliance Guide
-                        </a>
-                      </li>
+                      {featuredResources.map((resource) => (
+                        <li key={resource.id}>
+                          <a href={resource.link} className="text-blue-700 hover:underline flex items-center" target="_blank" rel="noopener noreferrer">
+                            {resource.icon}
+                            {resource.title}
+                          </a>
+                        </li>
+                      ))}
                     </ul>
                     <button 
                       className="mt-4 text-blue-700 hover:text-blue-800 text-sm font-medium"
@@ -431,21 +458,13 @@ const Dashboard = () => {
                   <div className="bg-white rounded-lg shadow-sm p-5">
                     <h3 className="text-lg font-medium text-gray-800 mb-3">Frequently Asked Questions</h3>
                     <div className="space-y-3 text-sm">
-                      <div>
-                        <h4 className="font-medium text-gray-800">How do I choose the right model for my research needs?</h4>
-                        <p className="text-gray-600 mt-1">Each model has different strengths based on the type of legal research...</p>
-                        <button className="text-blue-700 hover:text-blue-800 text-xs mt-1">Read More</button>
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-gray-800">What citation formats are supported?</h4>
-                        <p className="text-gray-600 mt-1">All models support Bluebook, ALWD, APA, and MLA citation formats...</p>
-                        <button className="text-blue-700 hover:text-blue-800 text-xs mt-1">Read More</button>
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-gray-800">How do I report a citation or legal accuracy issue?</h4>
-                        <p className="text-gray-600 mt-1">Use the feedback button in the interface to report any issues...</p>
-                        <button className="text-blue-700 hover:text-blue-800 text-xs mt-1">Read More</button>
-                      </div>
+                      {faqs.map((faq, index) => (
+                        <div key={index}>
+                          <h4 className="font-medium text-gray-800">{faq.question}</h4>
+                          <p className="text-gray-600 mt-1">{faq.answer}</p>
+                          <button className="text-blue-700 hover:text-blue-800 text-xs mt-1">{faq.link}</button>
+                        </div>
+                      ))}
                     </div>
                     <button 
                       className="mt-4 text-blue-700 hover:text-blue-800 text-sm font-medium"
