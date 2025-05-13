@@ -1,13 +1,26 @@
 import React, { useState } from 'react';
 import Dashboard from './Dashboard';
+import LandingPage from './components/LandingPage';
 import ModelsTab from './pages/ModelsTab';
 import './App.css';
 import './styles/MobileResponsiveStyles.css';
 
 function App() {
-  // If dashboard is active, render only the Dashboard component without wrapper
+  // Add state to control whether to show landing page or main app
+  const [showLanding, setShowLanding] = useState(true);
   const [activeTab, setActiveTab] = useState('dashboard');
 
+  // Handle transition from landing page to dashboard
+  const handleEnterDashboard = () => {
+    setShowLanding(false);
+  };
+
+  // If we're showing the landing page, render only that
+  if (showLanding) {
+    return <LandingPage onEnter={handleEnterDashboard} />;
+  }
+
+  // Otherwise render the main app
   if (activeTab === 'dashboard') {
     return <Dashboard />;
   }
