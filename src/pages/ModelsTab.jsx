@@ -168,15 +168,15 @@ const ModelsTab = () => {
     }
   ];
 
-  // Filter categories
+  // Filter categories - reordered as requested
   const filterOptions = [
-    { id: 'recommended', label: 'Recommended for Legal' },
+    { id: 'new', label: 'Latest Models' },
     { id: 'all', label: 'All Models' },
-    { id: 'new', label: 'Latest Models' }
+    { id: 'recommended', label: 'Recommended for Legal' }
   ];
 
   // State management
-  const [activeFilter, setActiveFilter] = useState('all');
+  const [activeFilter, setActiveFilter] = useState('new');
   const [selectedModels, setSelectedModels] = useState([]);
   const [showComparison, setShowComparison] = useState(false);
   const [comparisonView, setComparisonView] = useState('chart');
@@ -185,7 +185,7 @@ const ModelsTab = () => {
   // Filter models based on selected filter
   const filteredModels = allModels.filter(model => {
     if (activeFilter === 'all') return true;
-    if (activeFilter === 'recommended') return model.recommended;
+    if (activeFilter === 'recommended') return model.recommended; // Only show recommended models
     if (activeFilter === 'new') return model.status.toLowerCase() === 'generally available';
     return true;
   });
@@ -294,7 +294,7 @@ const ModelsTab = () => {
       ) : (
         // Default 'overview' subtab
         <>
-          {/* Filter Options */}
+          {/* Filter Options - Reordered */}
           <div className="flex flex-wrap gap-2 mb-6">
             {filterOptions.map(option => (
               <button
@@ -311,54 +311,37 @@ const ModelsTab = () => {
             ))}
           </div>
 
-          {/* Tool Access Comparison */}
-          <section className="mb-8">
-            <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-md">
-              <h3 className="text-lg font-medium text-blue-800 mb-2">Model Tool Access Comparison</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                <div className="bg-white p-3 rounded border border-blue-200">
-                  <h4 className="font-medium text-gray-800">Full Tool Access</h4>
-                  <p className="text-sm text-gray-600 mt-1">o3, o4-mini, o4-mini-high</p>
-                  <p className="text-xs text-blue-600 mt-2">Web search, Python, images, files</p>
+          {/* Tool Access Comparison - Shows when not on "Recommended for Legal" */}
+          {activeFilter !== 'recommended' && (
+            <section className="mb-8">
+              <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-md">
+                <h3 className="text-lg font-medium text-blue-800 mb-2">Model Tool Access Comparison</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                  <div className="bg-white p-3 rounded border border-blue-200">
+                    <h4 className="font-medium text-gray-800">Full Tool Access</h4>
+                    <p className="text-sm text-gray-600 mt-1">o3, o4-mini, o4-mini-high</p>
+                    <p className="text-xs text-blue-600 mt-2">Web search, Python, images, files</p>
+                  </div>
+                  <div className="bg-white p-3 rounded border border-blue-200">
+                    <h4 className="font-medium text-gray-800">Standard Access</h4>
+                    <p className="text-sm text-gray-600 mt-1">GPT-4.5</p>
+                    <p className="text-xs text-gray-500 mt-2">Basic tools only</p>
+                  </div>
+                  <div className="bg-white p-3 rounded border border-blue-200">
+                    <h4 className="font-medium text-gray-800">Limited Access</h4>
+                    <p className="text-sm text-gray-600 mt-1">GPT-4o</p>
+                    <p className="text-xs text-gray-500 mt-2">Text and vision only</p>
+                  </div>
                 </div>
-                <div className="bg-white p-3 rounded border border-blue-200">
-                  <h4 className="font-medium text-gray-800">Standard Access</h4>
-                  <p className="text-sm text-gray-600 mt-1">GPT-4.5</p>
-                  <p className="text-xs text-gray-500 mt-2">Basic tools only</p>
-                </div>
-                <div className="bg-white p-3 rounded border border-blue-200">
-                  <h4 className="font-medium text-gray-800">Limited Access</h4>
-                  <p className="text-sm text-gray-600 mt-1">GPT-4o</p>
-                  <p className="text-xs text-gray-500 mt-2">Text and vision only</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Recommended for Legal Research Section */}
-          {activeFilter === 'all' || activeFilter === 'recommended' ? (
-            <section className="mb-12">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Recommended for Legal Research
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 responsive-grid card-container">
-                {recommendedModels.map(model => (
-                  <ModelCard
-                    key={model.id}
-                    model={model}
-                    onSelect={handleModelSelect}
-                    isSelected={selectedModels.some(m => m.id === model.id)}
-                  />
-                ))}
               </div>
             </section>
-          ) : null}
+          )}
 
-          {/* All Available Models */}
+          {/* Models Display */}
           <section className="mb-12">
             <h3 className="text-xl font-semibold text-gray-900 mb-4">
               {activeFilter === 'all' ? 'All Available Models' : 
-               activeFilter === 'recommended' ? 'All Recommended Models' : 
+               activeFilter === 'recommended' ? 'Recommended for Legal Research' : 
                'Latest Models'}
             </h3>
             
