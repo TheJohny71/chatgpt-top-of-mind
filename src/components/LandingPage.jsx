@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ArrowRight, Clock } from 'lucide-react';
 
 const LandingPage = ({ onEnter }) => {
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  
   // Create particles animation
   useEffect(() => {
     const createParticles = () => {
@@ -25,15 +27,14 @@ const LandingPage = ({ onEnter }) => {
   }, []);
 
   const handleEnterDashboard = () => {
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.3s';
+    setIsTransitioning(true);
     setTimeout(() => {
       onEnter();
     }, 300);
   };
 
   return (
-    <div className="landing-hero">
+    <div className={`landing-hero ${isTransitioning ? 'transitioning' : ''}`}>
       <div className="particles" id="particles"></div>
       
       <div className="landing-container">
@@ -66,6 +67,11 @@ const LandingPage = ({ onEnter }) => {
           justify-content: center;
           background: linear-gradient(180deg, #0A0E27 0%, #1A1F3A 50%, #0F172A 100%);
           overflow: hidden;
+          transition: opacity 0.3s ease-out;
+        }
+        
+        .landing-hero.transitioning {
+          opacity: 0;
         }
         
         .landing-hero::after {
