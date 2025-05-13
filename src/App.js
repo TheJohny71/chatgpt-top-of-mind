@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Dashboard from './Dashboard';
+import Dashboard from './Dashboard.jsx';
 import LandingPage from './components/LandingPage';
 import ModelsTab from './pages/ModelsTab';
 import './App.css';
