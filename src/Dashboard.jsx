@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AlertTriangle, CheckCircle, Info, ExternalLink, Clock, FileText, Shield, Book, Cpu } from 'lucide-react';
+import { AlertTriangle, CheckCircle, Info, ExternalLink, Clock, FileText, Shield, Book, Cpu, Settings, Users } from 'lucide-react';
 import ModelsTab from './pages/ModelsTab';
 import PromptLibraryTab from './pages/PromptLibraryTab';
 import UpdatesTab from './pages/UpdatesTab';
@@ -9,7 +9,7 @@ import LastUpdatedFooter from './components/LastUpdatedFooter';
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
-  const lastUpdated = "May 06, 2025";
+  const lastUpdated = "May 13, 2025";
 
   // Featured resources from ResourcesTab.jsx - most relevant for Overview page
   const featuredResources = [
@@ -139,6 +139,31 @@ const Dashboard = () => {
         ) : (
           /* Otherwise, show the original overview content */
           <>
+            {/* Critical Update Banner */}
+            {activeTab === 'overview' && (
+              <section className="mb-6">
+                <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-md">
+                  <div className="flex items-start">
+                    <AlertTriangle className="h-5 w-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h3 className="text-lg font-medium text-red-800">Critical Update: GPT-4 Retiring April 30, 2025</h3>
+                      <p className="text-red-700 mt-1">
+                        All legal teams must migrate GPT-4 workflows to GPT-4o by April 30th. Update custom GPTs, prompts, and workflows immediately.
+                      </p>
+                      <a 
+                        href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes" 
+                        className="text-red-800 underline text-sm font-medium mt-2 inline-block"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        View Migration Guide →
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            )}
+            
             {/* Overview Section - Show only if overview tab is active */}
             {activeTab === 'overview' && (
               <section className="mb-8">
@@ -149,30 +174,30 @@ const Dashboard = () => {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div className="border-l-4 border-blue-700 pl-4">
                       <h3 className="text-lg font-medium text-gray-800">Available Models</h3>
-                      <p className="text-gray-600">4 models optimized for legal research</p>
+                      <p className="text-gray-600">5 models with full tool access capabilities</p>
                       <div className="mt-2">
                         <span className="inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">
-                          2 NEW
+                          o3 & o4-mini GA
                         </span>
                       </div>
                     </div>
                     
                     <div className="border-l-4 border-purple-600 pl-4">
                       <h3 className="text-lg font-medium text-gray-800">Updates This Month</h3>
-                      <p className="text-gray-600">3 significant platform updates</p>
+                      <p className="text-gray-600">4 significant platform updates</p>
                       <div className="mt-2">
                         <span className="inline-block bg-purple-100 text-purple-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">
-                          1 CRITICAL
+                          GPT-4 SUNSET
                         </span>
                       </div>
                     </div>
                     
                     <div className="border-l-4 border-teal-600 pl-4">
-                      <h3 className="text-lg font-medium text-gray-800">Research Tools</h3>
-                      <p className="text-gray-600">Legal research workflows and templates</p>
+                      <h3 className="text-lg font-medium text-gray-800">Compliance Tools</h3>
+                      <p className="text-gray-600">Enhanced SCIM and API integrations</p>
                       <div className="mt-2">
                         <span className="inline-block bg-teal-100 text-teal-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">
-                          UPDATED
+                          ENHANCED
                         </span>
                       </div>
                     </div>
@@ -198,40 +223,7 @@ const Dashboard = () => {
                 <p className="text-gray-600 mb-4">Stay informed about the latest changes to ChatGPT Enterprise for legal research.</p>
                 
                 <div className="space-y-6">
-                  {/* Shopping Features - Most recent update */}
-                  <div className="bg-white rounded-lg shadow-sm p-5 border-l-4 border-purple-500">
-                    <div className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" />
-                      <div>
-                        <div className="flex items-center">
-                          <h3 className="text-lg font-medium text-gray-800 mr-2">ChatGPT Shopping Search Features Now Available</h3>
-                          <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">FEATURES</span>
-                          <span className="bg-blue-100 text-blue-800 text-xs font-medium ml-2 px-2.5 py-0.5 rounded">NEW</span>
-                          <span className="ml-auto text-sm text-gray-500">Apr 28, 2025</span>
-                          <span className="ml-2 inline-flex h-2 w-2 bg-blue-500 rounded-full"></span>
-                        </div>
-                        <p className="text-sm font-medium italic text-gray-700 mt-1 mb-2">
-                          Key Takeaway: Enterprise users can now access personalized shopping results with no ads or commissions.
-                        </p>
-                        <p className="text-gray-600">
-                          ChatGPT's web search capabilities now include personalized product recommendations with images, reviews, and direct purchase links. Available to all ChatGPT users, including Enterprise, with no advertisements or commissions.
-                        </p>
-                        <div className="mt-2">
-                          <a 
-                            href="https://www.reuters.com/business/media-telecom/openai-rolls-out-new-shopping-features-with-chatgpt-search-update-2025-04-28/" 
-                            className="text-blue-700 hover:text-blue-800 text-sm font-medium flex items-center"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            Feature Details
-                            <ExternalLink className="h-3 w-3 ml-1" />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* GPT-4 Retiring */}
+                  {/* GPT-4 Retiring - Most Critical */}
                   <div className="bg-white rounded-lg shadow-sm p-5 border-l-4 border-red-500">
                     <div className="flex items-start">
                       <AlertTriangle className="h-5 w-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
@@ -241,7 +233,6 @@ const Dashboard = () => {
                           <span className="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">CRITICAL</span>
                           <span className="bg-purple-100 text-purple-800 text-xs font-medium ml-2 px-2.5 py-0.5 rounded">MODELS</span>
                           <span className="ml-auto text-sm text-gray-500">Apr 15, 2025</span>
-                          <span className="ml-2 inline-flex h-2 w-2 bg-blue-500 rounded-full"></span>
                         </div>
                         <p className="text-sm font-medium italic text-gray-700 mt-1 mb-2">
                           Key Takeaway: All GPT-4 workflows must be updated to GPT-4o compatibility by April 30th.
@@ -263,32 +254,64 @@ const Dashboard = () => {
                       </div>
                     </div>
                   </div>
-                  
-                  {/* GPT-4o Image Generation */}
+
+                  {/* o3 and o4-mini GA */}
                   <div className="bg-white rounded-lg shadow-sm p-5 border-l-4 border-blue-500">
                     <div className="flex items-start">
                       <Info className="h-5 w-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" />
                       <div>
                         <div className="flex items-center">
-                          <h3 className="text-lg font-medium text-gray-800 mr-2">GPT-4o Upgraded with Enhanced Image Generation</h3>
+                          <h3 className="text-lg font-medium text-gray-800 mr-2">o3 and o4-mini Models Now Generally Available</h3>
                           <span className="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">MODELS</span>
                           <span className="bg-blue-100 text-blue-800 text-xs font-medium ml-2 px-2.5 py-0.5 rounded">NEW</span>
-                          <span className="ml-auto text-sm text-gray-500">Mar 25, 2025</span>
+                          <span className="ml-auto text-sm text-gray-500">Apr 16, 2025</span>
                         </div>
                         <p className="text-sm font-medium italic text-gray-700 mt-1 mb-2">
-                          Key Takeaway: Advanced image creation and editing now available, rolling out soon to Enterprise users.
+                          Key Takeaway: Most advanced reasoning models with full tool access now available for Enterprise users.
                         </p>
                         <p className="text-gray-600">
-                          OpenAI has upgraded ChatGPT's image generation capabilities with GPT-4o. The new functionality allows for more accurate and detailed image creation and editing. Pro subscribers have immediate access, with Plus and Enterprise users gaining access soon.
+                          OpenAI's o3 and o4-mini models are now generally available. These models feature full tool access including web search, Python, image analysis, and files. o3 offers superior reasoning capabilities while o4-mini provides exceptional mathematical performance.
                         </p>
                         <div className="mt-2">
                           <a 
-                            href="https://techcrunch.com/2025/03/25/chatgpts-image-generation-feature-gets-an-upgrade/" 
+                            href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes" 
                             className="text-blue-700 hover:text-blue-800 text-sm font-medium flex items-center"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            Read Announcement
+                            Model Documentation
+                            <ExternalLink className="h-3 w-3 ml-1" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Compliance Tools */}
+                  <div className="bg-white rounded-lg shadow-sm p-5 border-l-4 border-green-500">
+                    <div className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <div className="flex items-center">
+                          <h3 className="text-lg font-medium text-gray-800 mr-2">New Compliance and Administrative Tools for Enterprise</h3>
+                          <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">FEATURES</span>
+                          <span className="bg-teal-100 text-teal-800 text-xs font-medium ml-2 px-2.5 py-0.5 rounded">SECURITY</span>
+                          <span className="ml-auto text-sm text-gray-500">Mar 12, 2025</span>
+                        </div>
+                        <p className="text-sm font-medium italic text-gray-700 mt-1 mb-2">
+                          Key Takeaway: Enhanced security tools now available for meeting regulatory requirements across workspaces.
+                        </p>
+                        <p className="text-gray-600">
+                          ChatGPT Enterprise now includes enhanced compliance tools, SCIM support for user management, and improved GPT controls. These updates help organizations meet FINRA, HIPAA, and GDPR requirements.
+                        </p>
+                        <div className="mt-2">
+                          <a 
+                            href="https://openai.com/index/new-tools-for-chatgpt-enterprise/" 
+                            className="text-blue-700 hover:text-blue-800 text-sm font-medium flex items-center"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Read More
                             <ExternalLink className="h-3 w-3 ml-1" />
                           </a>
                         </div>
@@ -324,64 +347,30 @@ const Dashboard = () => {
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="bg-white rounded-lg shadow-sm overflow-hidden relative">
-                    <div className="h-2 bg-blue-700 w-full absolute top-0"></div>
+                    <div className="h-2 bg-indigo-700 w-full absolute top-0"></div>
                     <div className="p-5 pt-6">
                       <div className="flex items-center justify-between">
                         <h3 className="text-lg font-serif text-gray-800">o3</h3>
-                        <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">NEW</span>
+                        <span className="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded">GA</span>
                       </div>
                       <p className="text-gray-600 mt-2 text-sm">
-                        Advanced legal reasoning with cross-jurisdictional capabilities
+                        Advanced legal reasoning with full tool access and cross-jurisdictional capabilities
                       </p>
                       <div className="mt-4 text-sm">
                         <div className="flex justify-between mb-1">
                           <span>Case Law Research</span>
-                          <span className="text-blue-700 font-medium">Excellent</span>
+                          <span className="text-indigo-700 font-medium">Excellent</span>
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-1.5 mb-3">
-                          <div className="bg-blue-700 h-1.5 rounded-full" style={{ width: "100%" }}></div>
+                          <div className="bg-indigo-700 h-1.5 rounded-full" style={{ width: "100%" }}></div>
                         </div>
                         
                         <div className="flex justify-between mb-1">
                           <span>Document Analysis</span>
-                          <span className="text-blue-700 font-medium">Good</span>
+                          <span className="text-indigo-700 font-medium">Excellent</span>
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-1.5 mb-3">
-                          <div className="bg-blue-700 h-1.5 rounded-full" style={{ width: "80%" }}></div>
-                        </div>
-                        
-                        <button className="mt-3 w-full text-center border border-gray-300 rounded-lg py-2 hover:bg-gray-50 transition-colors text-gray-700">
-                          View Details
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-white rounded-lg shadow-sm overflow-hidden relative">
-                    <div className="h-2 bg-purple-600 w-full absolute top-0"></div>
-                    <div className="p-5 pt-6">
-                      <div className="flex items-center justify-between">
-                        <h3 className="text-lg font-serif text-gray-800">o4-mini</h3>
-                        <span className="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded">NEW</span>
-                      </div>
-                      <p className="text-gray-600 mt-2 text-sm">
-                        Optimized for speed and high-volume document review applications
-                      </p>
-                      <div className="mt-4 text-sm">
-                        <div className="flex justify-between mb-1">
-                          <span>Case Law Research</span>
-                          <span className="text-purple-700 font-medium">Fair</span>
-                        </div>
-                        <div className="w-full bg-gray-200 rounded-full h-1.5 mb-3">
-                          <div className="bg-purple-600 h-1.5 rounded-full" style={{ width: "60%" }}></div>
-                        </div>
-                        
-                        <div className="flex justify-between mb-1">
-                          <span>Document Analysis</span>
-                          <span className="text-purple-700 font-medium">Fair</span>
-                        </div>
-                        <div className="w-full bg-gray-200 rounded-full h-1.5 mb-3">
-                          <div className="bg-purple-600 h-1.5 rounded-full" style={{ width: "60%" }}></div>
+                          <div className="bg-indigo-700 h-1.5 rounded-full" style={{ width: "90%" }}></div>
                         </div>
                         
                         <button className="mt-3 w-full text-center border border-gray-300 rounded-lg py-2 hover:bg-gray-50 transition-colors text-gray-700">
@@ -395,19 +384,19 @@ const Dashboard = () => {
                     <div className="h-2 bg-green-600 w-full absolute top-0"></div>
                     <div className="p-5 pt-6">
                       <div className="flex items-center justify-between">
-                        <h3 className="text-lg font-serif text-gray-800">o1</h3>
-                        <span className="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">STANDARD</span>
+                        <h3 className="text-lg font-serif text-gray-800">o4-mini</h3>
+                        <span className="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">GA</span>
                       </div>
                       <p className="text-gray-600 mt-2 text-sm">
-                        Reliable performance for general legal research and document review
+                        Cost-efficient reasoning model with exceptional mathematical performance
                       </p>
                       <div className="mt-4 text-sm">
                         <div className="flex justify-between mb-1">
                           <span>Case Law Research</span>
-                          <span className="text-green-700 font-medium">Excellent</span>
+                          <span className="text-green-700 font-medium">Good</span>
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-1.5 mb-3">
-                          <div className="bg-green-600 h-1.5 rounded-full" style={{ width: "100%" }}></div>
+                          <div className="bg-green-600 h-1.5 rounded-full" style={{ width: "80%" }}></div>
                         </div>
                         
                         <div className="flex justify-between mb-1">
@@ -423,6 +412,95 @@ const Dashboard = () => {
                         </button>
                       </div>
                     </div>
+                  </div>
+                  
+                  <div className="bg-white rounded-lg shadow-sm overflow-hidden relative">
+                    <div className="h-2 bg-purple-600 w-full absolute top-0"></div>
+                    <div className="p-5 pt-6">
+                      <div className="flex items-center justify-between">
+                        <h3 className="text-lg font-serif text-gray-800">GPT-4.5</h3>
+                        <span className="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded">POWERFUL</span>
+                      </div>
+                      <p className="text-gray-600 mt-2 text-sm">
+                        Superior nuanced understanding with large context window
+                      </p>
+                      <div className="mt-4 text-sm">
+                        <div className="flex justify-between mb-1">
+                          <span>Case Law Research</span>
+                          <span className="text-purple-700 font-medium">Excellent</span>
+                        </div>
+                        <div className="w-full bg-gray-200 rounded-full h-1.5 mb-3">
+                          <div className="bg-purple-600 h-1.5 rounded-full" style={{ width: "95%" }}></div>
+                        </div>
+                        
+                        <div className="flex justify-between mb-1">
+                          <span>Document Analysis</span>
+                          <span className="text-purple-700 font-medium">Excellent</span>
+                        </div>
+                        <div className="w-full bg-gray-200 rounded-full h-1.5 mb-3">
+                          <div className="bg-purple-600 h-1.5 rounded-full" style={{ width: "96%" }}></div>
+                        </div>
+                        
+                        <button className="mt-3 w-full text-center border border-gray-300 rounded-lg py-2 hover:bg-gray-50 transition-colors text-gray-700">
+                          View Details
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            )}
+            
+            {/* Compliance Tools Section */}
+            {activeTab === 'overview' && (
+              <section className="mb-8">
+                <h2 className="text-2xl font-serif text-blue-900 mb-2">Enterprise Compliance Features</h2>
+                <p className="text-gray-600 mb-4">Enhanced tools for regulatory compliance and data security.</p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="bg-white rounded-lg shadow-sm p-5">
+                    <div className="flex items-center mb-3">
+                      <Shield className="h-6 w-6 text-blue-700 mr-3" />
+                      <h3 className="text-lg font-medium text-gray-800">Compliance API</h3>
+                    </div>
+                    <p className="text-gray-600 text-sm mb-3">
+                      Detailed audit trails for FINRA, HIPAA, and GDPR compliance requirements.
+                    </p>
+                    <ul className="text-sm text-gray-500 space-y-1">
+                      <li>• Complete conversation tracking</li>
+                      <li>• File upload audit logs</li>
+                      <li>• Metadata retention</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-white rounded-lg shadow-sm p-5">
+                    <div className="flex items-center mb-3">
+                      <Users className="h-6 w-6 text-green-700 mr-3" />
+                      <h3 className="text-lg font-medium text-gray-800">SCIM Support</h3>
+                    </div>
+                    <p className="text-gray-600 text-sm mb-3">
+                      Automated user provisioning and de-provisioning across your organization.
+                    </p>
+                    <ul className="text-sm text-gray-500 space-y-1">
+                      <li>• Okta & Entra ID sync</li>
+                      <li>• Automated account management</li>
+                      <li>• Group permissions</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-white rounded-lg shadow-sm p-5">
+                    <div className="flex items-center mb-3">
+                      <Settings className="h-6 w-6 text-teal-700 mr-3" />
+                      <h3 className="text-lg font-medium text-gray-800">GPT Controls</h3>
+                    </div>
+                    <p className="text-gray-600 text-sm mb-3">
+                      Granular control over custom GPT usage and external connections.
+                    </p>
+                    <ul className="text-sm text-gray-500 space-y-1">
+                      <li>• Domain whitelist</li>
+                      <li>• Ownership transfer</li>
+                      <li>• Third-party approval</li>
+                    </ul>
                   </div>
                 </div>
               </section>

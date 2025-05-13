@@ -23,6 +23,13 @@ const ModelCard = ({ model, onSelect, isSelected, showCompareButton = false }) =
           <p className="text-sm text-gray-600">{model.description}</p>
         </div>
         
+        {/* Tool Access Indicator - NEW */}
+        {model.toolAccess && (
+          <div className="mb-4 p-2 bg-blue-50 rounded">
+            <p className="text-xs font-medium text-blue-700">Tool Access: {model.toolAccess}</p>
+          </div>
+        )}
+        
         {/* Key Stats */}
         <div className="grid grid-cols-2 gap-2 mb-4">
           <div className="bg-gray-50 p-2 rounded">
@@ -138,8 +145,6 @@ const ModelCard = ({ model, onSelect, isSelected, showCompareButton = false }) =
         >
           View Documentation
         </a>
-        
-        {/* Remove the "Select for Comparison" button since it's non-functional */}
       </div>
     </div>
   );

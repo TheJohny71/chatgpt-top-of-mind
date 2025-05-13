@@ -10,7 +10,7 @@ import CitationGuide from '../components/CitationGuide';
 import '../styles/MobileResponsiveStyles.css';
 
 const ModelsTab = () => {
-  // Sample model data - in a real app this would come from an API or data source
+  // Updated model data with latest information
   const allModels = [
     {
       id: 'gpt4o',
@@ -23,6 +23,7 @@ const ModelsTab = () => {
       tokenLimit: '128,000 tokens',
       legalRating: 5,
       recommended: true,
+      toolAccess: 'Limited',
       performance: {
         contractReview: 92,
         caseAnalysis: 90,
@@ -45,13 +46,14 @@ const ModelsTab = () => {
       id: 'gpt45',
       name: 'GPT-4.5',
       color: 'purple',
-      status: 'New',
+      status: 'Available',
       description: 'OpenAI\'s powerful model with superior nuanced understanding and exceptional document analysis capabilities.',
       contextWindow: '200,000 tokens',
       knowledgeCutoff: 'January 2025',
       tokenLimit: '200,000 tokens',
       legalRating: 5,
       recommended: true,
+      toolAccess: 'Standard',
       performance: {
         contractReview: 97,
         caseAnalysis: 96,
@@ -74,17 +76,20 @@ const ModelsTab = () => {
       id: 'o3',
       name: 'o3',
       color: 'indigo',
-      status: 'New',
-      description: 'OpenAI\'s advanced reasoning model with exceptional capabilities in complex legal analysis and problem-solving.',
-      contextWindow: '128,000 tokens',
-      knowledgeCutoff: 'January 2025',
-      tokenLimit: '128,000 tokens',
+      status: 'Generally Available',
+      description: 'OpenAI\'s most advanced reasoning model with full tool access including web search, Python, and image analysis.',
+      contextWindow: '200,000 tokens',
+      knowledgeCutoff: 'September 2023',
+      tokenLimit: '200,000 tokens',
       legalRating: 5,
       recommended: true,
+      toolAccess: 'Full - Web, Python, Images, Files',
       performance: {
         contractReview: 96,
         caseAnalysis: 94,
-        legalResearch: 95
+        legalResearch: 95,
+        mathematicalReasoning: 92,
+        scientificResearch: 83
       },
       estimatedTime: {
         contractReview: '25-30 min',
@@ -103,17 +108,19 @@ const ModelsTab = () => {
       id: 'o4mini',
       name: 'o4-mini',
       color: 'green',
-      status: 'New',
-      description: 'Smaller, faster reasoning model offering impressive results for math, coding, and visual analysis at lower cost.',
+      status: 'Generally Available',
+      description: 'Latest mini model with exceptional math and reasoning capabilities, replacing o3-mini.',
       contextWindow: '128,000 tokens',
       knowledgeCutoff: 'January 2025',
       tokenLimit: '128,000 tokens',
       legalRating: 4,
       recommended: false,
+      toolAccess: 'Full - Web, Python, Images, Files',
       performance: {
-        contractReview: 89,
-        caseAnalysis: 86,
-        legalResearch: 87
+        contractReview: 92,
+        caseAnalysis: 90,
+        legalResearch: 91,
+        mathematicalReasoning: 93
       },
       estimatedTime: {
         contractReview: '18-22 min',
@@ -132,13 +139,14 @@ const ModelsTab = () => {
       id: 'o4minihigh',
       name: 'o4-mini-high',
       color: 'teal',
-      status: 'New',
+      status: 'Generally Available',
       description: 'Advanced variant of o4-mini that spends more time reasoning, offering improved accuracy and reliability for complex analytical tasks.',
       contextWindow: '200,000 tokens',
       knowledgeCutoff: 'January 2025',
       tokenLimit: '100,000 tokens',
       legalRating: 4,
       recommended: false,
+      toolAccess: 'Full - Web, Python, Images, Files',
       performance: {
         contractReview: 85,
         caseAnalysis: 83,
@@ -160,25 +168,25 @@ const ModelsTab = () => {
     }
   ];
 
-  // Filter categories - removed "Available Now" as requested
+  // Filter categories
   const filterOptions = [
     { id: 'recommended', label: 'Recommended for Legal' },
     { id: 'all', label: 'All Models' },
-    { id: 'new', label: 'New Models' }
+    { id: 'new', label: 'Latest Models' }
   ];
 
   // State management
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedModels, setSelectedModels] = useState([]);
   const [showComparison, setShowComparison] = useState(false);
-  const [comparisonView, setComparisonView] = useState('chart'); // 'chart' or 'table'
+  const [comparisonView, setComparisonView] = useState('chart');
   const [activeSubtab, setActiveSubtab] = useState('overview');
 
   // Filter models based on selected filter
   const filteredModels = allModels.filter(model => {
     if (activeFilter === 'all') return true;
     if (activeFilter === 'recommended') return model.recommended;
-    if (activeFilter === 'new') return model.status.toLowerCase() === 'new' || model.status.toLowerCase() === 'beta';
+    if (activeFilter === 'new') return model.status.toLowerCase() === 'generally available';
     return true;
   });
 
@@ -187,21 +195,17 @@ const ModelsTab = () => {
 
   // Handle model selection for comparison
   const handleModelSelect = (model) => {
-    // Check if model is already selected
     if (selectedModels.some(m => m.id === model.id)) {
       setSelectedModels(selectedModels.filter(m => m.id !== model.id));
     } else {
-      // Limit selection to 3 models
       if (selectedModels.length < 3) {
         setSelectedModels([...selectedModels, model]);
       } else {
-        // Replace the first selected model if already have 3
         const updatedSelection = [...selectedModels.slice(1), model];
         setSelectedModels(updatedSelection);
       }
     }
     
-    // Automatically show comparison when models are selected
     if (selectedModels.length > 0 || !selectedModels.some(m => m.id === model.id)) {
       setShowComparison(true);
     }
@@ -211,7 +215,6 @@ const ModelsTab = () => {
   const handleRemoveFromComparison = (model) => {
     setSelectedModels(selectedModels.filter(m => m.id !== model.id));
     
-    // Hide comparison if no models left
     if (selectedModels.length <= 1) {
       setShowComparison(false);
     }
@@ -308,6 +311,30 @@ const ModelsTab = () => {
             ))}
           </div>
 
+          {/* Tool Access Comparison */}
+          <section className="mb-8">
+            <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-md">
+              <h3 className="text-lg font-medium text-blue-800 mb-2">Model Tool Access Comparison</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                <div className="bg-white p-3 rounded border border-blue-200">
+                  <h4 className="font-medium text-gray-800">Full Tool Access</h4>
+                  <p className="text-sm text-gray-600 mt-1">o3, o4-mini, o4-mini-high</p>
+                  <p className="text-xs text-blue-600 mt-2">Web search, Python, images, files</p>
+                </div>
+                <div className="bg-white p-3 rounded border border-blue-200">
+                  <h4 className="font-medium text-gray-800">Standard Access</h4>
+                  <p className="text-sm text-gray-600 mt-1">GPT-4.5</p>
+                  <p className="text-xs text-gray-500 mt-2">Basic tools only</p>
+                </div>
+                <div className="bg-white p-3 rounded border border-blue-200">
+                  <h4 className="font-medium text-gray-800">Limited Access</h4>
+                  <p className="text-sm text-gray-600 mt-1">GPT-4o</p>
+                  <p className="text-xs text-gray-500 mt-2">Text and vision only</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* Recommended for Legal Research Section */}
           {activeFilter === 'all' || activeFilter === 'recommended' ? (
             <section className="mb-12">
@@ -332,7 +359,7 @@ const ModelsTab = () => {
             <h3 className="text-xl font-semibold text-gray-900 mb-4">
               {activeFilter === 'all' ? 'All Available Models' : 
                activeFilter === 'recommended' ? 'All Recommended Models' : 
-               'New & Beta Models'}
+               'Latest Models'}
             </h3>
             
             {filteredModels.length === 0 ? (
@@ -386,7 +413,6 @@ const ModelsTab = () => {
                 </div>
               </div>
               
-              {/* Render different comparison views based on state */}
               {comparisonView === 'chart' ? (
                 <ModelComparisonChart selectedModels={selectedModels} />
               ) : (

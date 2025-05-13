@@ -1,6 +1,6 @@
 // src/components/WakeWordLibrary.jsx
 import React, { useState } from 'react';
-import { Copy, Check, ArrowRight, Code, Book, Scale, FileText, Clipboard, AlertTriangle, Layers } from 'lucide-react';
+import { Copy, Check, ArrowRight, Code, Book, Scale, FileText, Clipboard, AlertTriangle, Layers, Search } from 'lucide-react';
 
 const WakeWordLibrary = () => {
   const [activeTabs, setActiveTabs] = useState('library');
@@ -11,8 +11,16 @@ const WakeWordLibrary = () => {
     instruction: ''
   });
   
-  // Wake word data - from the examples in the provided content
+  // Updated wake word data with o3 capabilities
   const wakeWords = [
+    {
+      id: 'o3-deep',
+      name: 'O3-DEEP',
+      icon: <Search className="h-5 w-5 text-indigo-700" />,
+      description: 'Conduct comprehensive legal research using o3\'s full tool access',
+      usage: 'O3-DEEP → [paste legal question]',
+      instruction: 'Use o3 model to conduct comprehensive legal research. Access web search, analyze documents, and create a structured memorandum with proper citations. Use Python for any statistical analysis of case law trends. Utilize image analysis for any visual elements in documents.'
+    },
     {
       id: 'cross-jur',
       name: 'CROSS-JUR',
@@ -192,7 +200,7 @@ Start by explaining you'll guide me through creating a prompt, then begin with t
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            {wakeWords.slice(0, 5).map((wakeWord, index) => (
+            {wakeWords.slice(0, 6).map((wakeWord, index) => (
               <div key={wakeWord.id} className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
                 <div className="flex items-center p-4 border-b border-gray-100">
                   <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">

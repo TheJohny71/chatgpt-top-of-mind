@@ -5,15 +5,27 @@ const UpdatesTab = () => {
   // State for category filter
   const [categoryFilter, setCategoryFilter] = useState('All Categories');
   
-  // Updates data based on provided links, excluding API updates
-  // Now sorted with most recent updates first (by date)
-  // Removed isNew flag which controlled the blue dots
+  // Updates data with GPT-4 sunset notice added
   const updates = [
+    {
+      id: 'gpt4-sunset',
+      title: "CRITICAL: GPT-4 Retiring April 30, 2025",
+      keyTakeaway: "All GPT-4 workflows must be migrated to GPT-4o by April 30, 2025.",
+      date: "Apr 15, 2025",
+      category: "CRITICAL",
+      tags: ["MODELS", "MIGRATION"],
+      content: "GPT-4 will be fully retired from ChatGPT on April 30, 2025, and replaced by GPT-4o. Legal teams must update all custom GPTs, workflows, and prompts to ensure compatibility. GPT-4o offers superior performance in writing, coding, and analysis tasks.",
+      icon: "critical",
+      color: "red",
+      links: [
+        { text: "Migration Guide", url: "https://help.openai.com/en/articles/6825453-chatgpt-release-notes" }
+      ]
+    },
     {
       id: 4,
       title: "ChatGPT Shopping Search Features Now Available",
       keyTakeaway: "Enterprise users can now access personalized shopping results with no ads or commissions.",
-      date: "Apr 28, 2025", // Most recent
+      date: "Apr 28, 2025",
       category: "FEATURES",
       tags: ["NEW"],
       content: "ChatGPT's web search capabilities now include personalized product recommendations with images, reviews, and direct purchase links. Available to all ChatGPT users, including Enterprise, with no advertisements or commissions.",
@@ -21,6 +33,20 @@ const UpdatesTab = () => {
       color: "green",
       links: [
         { text: "Feature Details", url: "https://www.reuters.com/business/media-telecom/openai-rolls-out-new-shopping-features-with-chatgpt-search-update-2025-04-28/" }
+      ]
+    },
+    {
+      id: 'o3-general-availability',
+      title: "o3 and o4-mini Models Now Generally Available",
+      keyTakeaway: "Most advanced reasoning models with full tool access now available for Enterprise users.",
+      date: "Apr 16, 2025",
+      category: "MODELS",
+      tags: ["NEW", "FEATURES"],
+      content: "OpenAI's o3 and o4-mini models are now generally available. These models feature full tool access including web search, Python, image analysis, and files. o3 offers superior reasoning capabilities while o4-mini provides exceptional mathematical performance at lower cost.",
+      icon: "new",
+      color: "blue",
+      links: [
+        { text: "Model Documentation", url: "https://help.openai.com/en/articles/6825453-chatgpt-release-notes" }
       ]
     },
     {
@@ -69,7 +95,7 @@ const UpdatesTab = () => {
       id: 3,
       title: "GPT-4o Improvements: Enhanced Instruction Following",
       keyTakeaway: "More accurate instruction following and smoother code handling in latest GPT-4o update.",
-      date: "Feb 27, 2025", // Oldest
+      date: "Feb 27, 2025",
       category: "MODELS",
       tags: ["UPDATE"],
       content: "OpenAI has made significant improvements to GPT-4o, making it more intuitive, creative, and collaborative. The model now follows instructions more accurately, handles coding tasks more smoothly, and communicates in a clearer, more natural way.",
@@ -168,6 +194,7 @@ const UpdatesTab = () => {
                         text-xs font-medium px-2.5 py-0.5 rounded mx-1
                         ${tag === 'NEW' ? 'bg-blue-100 text-blue-800' :
                           tag === 'SECURITY' ? 'bg-teal-100 text-teal-800' :
+                          tag === 'MIGRATION' ? 'bg-orange-100 text-orange-800' :
                           'bg-gray-100 text-gray-800'}
                       `}
                     >
